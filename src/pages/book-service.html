@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>5 · Book a service visit – Mantrac prototypes</title>
+  <link rel="stylesheet" href="~/css/base.css">
+  <link rel="stylesheet" href="~/css/components.css">
+  <link rel="stylesheet" href="~/css/proto.css">
+  <link rel="stylesheet" href="~/css/theme.css">
+</head>
+<body data-page="book-service" data-wa="Hello Mantrac, I need a service visit.">
+  <!-- @@include header.html -->
+
+  <main id="main">
+    <div class="container">
+
+      <aside class="proto-why" aria-label="About this prototype">
+        <div>
+          <h2>What we're proposing</h2>
+          <p>Book a service visit online in four short steps: the machine, the problem, where and when, and who to call. The request goes to the nearest workshop with a reference, and a breakdown is steered to the hotline straight away rather than left waiting in a form.</p>
+        </div>
+        <div>
+          <h2>Why</h2>
+          <p>Repairs and Maintenance each have pages on the live site, but the only ways to ask for a visit are the general contact form and the hotline. A booking request that already has the serial number, the hours and the location saves the first phone call, which is usually spent collecting exactly that.</p>
+        </div>
+      </aside>
+
+      <!-- Booking (R43) -->
+      <section class="two-col" aria-labelledby="h1">
+        <div>
+          <h1 id="h1">Book a service visit</h1>
+          <ol class="steps" data-bsteps><li>Machine</li><li>What's needed</li><li>Where and when</li><li>Your details</li></ol>
+          <form id="book-form" novalidate>
+            <div data-bstep="0">
+              <div class="field"><label for="k-model">Machine model</label><input type="text" id="k-model" list="k-models" data-required><datalist id="k-models"></datalist><p class="field-hint">For example 320 GX or 950 GC</p><p class="field-error" hidden>Enter the model.</p></div>
+              <div class="grid grid-2">
+                <div class="field"><label for="k-serial">Serial number <span class="req">(optional)</span></label><input type="text" id="k-serial"><p class="field-hint">On the plate by the cab door</p></div>
+                <div class="field"><label for="k-hrs">Hours on the meter</label><input type="number" id="k-hrs" min="0" inputmode="numeric" data-required><p class="field-error" hidden>Enter the hours.</p></div>
+              </div>
+            </div>
+            <div data-bstep="1" hidden>
+              <fieldset><legend>What do you need?</legend><div class="choice-grid" data-jobs></div></fieldset>
+              <p class="field-error" data-job-error hidden>Choose what you need.</p>
+              <div data-breakdown hidden class="panel surface" role="alert" style="margin-bottom:1rem"><strong>Machine stopped?</strong> For a breakdown, call <strong>19266</strong> now and we'll send someone. You can still send this form so the technician has the details.</div>
+              <div class="field"><label for="k-desc">Tell us more <span class="req">(optional)</span></label><textarea id="k-desc" rows="3"></textarea><p class="field-hint">Warning lights, noises, when it started</p></div>
+            </div>
+            <div data-bstep="2" hidden>
+              <div class="field"><label for="k-gov">Governorate</label><select id="k-gov" data-gov-select data-required></select><p class="field-hint" data-k-branch></p><p class="field-error" hidden>Choose a governorate.</p></div>
+              <fieldset><legend>Where should we do the work?</legend>
+                <label class="check"><input type="radio" name="k-where" value="On site" checked> <span>On site</span></label>
+                <label class="check"><input type="radio" name="k-where" value="At the workshop"> <span>At the workshop</span></label>
+              </fieldset>
+              <div class="field" data-site-field><label for="k-site">Site location</label><input type="text" id="k-site"><p class="field-hint">Nearest town and road, or a map pin shared later on WhatsApp</p></div>
+              <div class="grid grid-2">
+                <div class="field"><label for="k-date">Preferred date</label><input type="date" id="k-date" min="2026-10-02" data-required><p class="field-error" hidden>Choose a date.</p></div>
+                <div class="field"><label for="k-time">Time</label><select id="k-time"><option>Morning</option><option>Afternoon</option><option>Any time</option></select></div>
+              </div>
+            </div>
+            <div data-bstep="3" hidden>
+              <div class="field"><label for="k-name">Your name</label><input type="text" id="k-name" autocomplete="name" data-required><p class="field-error" hidden>Enter your name.</p></div>
+              <div class="field"><label for="k-mob">Mobile number</label><input type="tel" id="k-mob" autocomplete="tel" data-required data-pattern="^(\+20|0)?1[0125]\d{8}$"><p class="field-hint">The technician will call or WhatsApp this number</p><p class="field-error" hidden>Enter an 11-digit Egyptian mobile number, for example 0100 123 4567.</p></div>
+              <div class="field"><label for="k-co">Company <span class="req">(optional)</span></label><input type="text" id="k-co" autocomplete="organization"></div>
+              <div class="panel surface" data-review></div>
+            </div>
+            <div class="step-actions">
+              <button type="button" class="btn btn-secondary" data-bback hidden>Back</button>
+              <button type="submit" class="btn" data-bnext>Next</button>
+            </div>
+          </form>
+          <div class="panel surface" data-bdone hidden tabindex="-1" role="status"></div>
+        </div>
+        <aside class="panel" aria-label="Good to know">
+          <h2>Good to know</h2>
+          <p>Scheduled services at 250, 500 and 1,000 hours can be booked up to two months ahead.</p>
+          <p>Machines covered by an Equipment Protection Plan or a maintenance agreement are booked the same way; we check your cover when we confirm.</p>
+          <p><a href="~/pages/branches.html">Find a workshop</a></p>
+          <p class="wf-note" data-note="1"><span class="wf-note-label">Behaviour</span>The model field suggests Cat models as you type. Choosing "Breakdown" shows the hotline straight away. Arriving from a branch (<span class="code">?branch=suez</span>) sets the workshop (R43).</p>
+        </aside>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- @@include footer.html -->
+</body>
+</html>

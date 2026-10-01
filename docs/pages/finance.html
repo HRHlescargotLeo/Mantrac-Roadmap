@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>4 · Finance and running costs – Mantrac prototypes</title>
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/proto.css">
+  <link rel="stylesheet" href="../css/theme.css">
+</head>
+<body data-page="finance" data-wa="Hello Mantrac, I'd like to talk about finance for a machine.">
+<a class="sr-only" href="#main">Skip to content</a>
+<!-- Prototype navigator (R01, R02) -->
+<nav class="proto-nav" aria-label="Prototypes">
+  <div class="container">
+    <a class="proto-pack" href="../index.html">Mantrac roadmap <span>· greyscale v0.1</span></a>
+    <ul class="proto-links">
+      <li><a href="../index.html" data-proto="0">Overview</a></li>
+      <li><a href="../pages/machines.html" data-proto="1" title="Find the right Cat machine">1<span class="proto-title">&nbsp;Machines</span></a></li>
+      <li><a href="../pages/used.html" data-proto="2" title="Used and rental">2<span class="proto-title">&nbsp;Used &amp; rental</span></a></li>
+      <li><a href="../pages/enquiry.html" data-proto="3" title="One enquiry">3<span class="proto-title">&nbsp;Enquiry</span></a></li>
+      <li><a href="../pages/offers.html" data-proto="4" title="Offers and finance">4<span class="proto-title">&nbsp;Offers &amp; finance</span></a></li>
+      <li><a href="../pages/branches.html" data-proto="5" title="Mantrac near you">5<span class="proto-title">&nbsp;Near you</span></a></li>
+    </ul>
+    <a class="proto-basket" href="../pages/enquiry.html" data-basket-link>Quote <span class="basket-count" data-basket-count>0</span></a>
+    <button type="button" class="notes-switch" role="switch" aria-checked="false" data-notes-switch hidden>
+      <span class="track" aria-hidden="true"></span><span>Notes</span>
+    </button>
+  </div>
+</nav>
+
+
+  <main id="main">
+    <div class="container">
+
+      <aside class="proto-why" aria-label="About this prototype">
+        <div>
+          <h2>What we're proposing</h2>
+          <p>Two calculators in Egyptian pounds. The finance estimator takes a machine, a deposit and a term and gives an indicative monthly payment, which the visitor can send to the finance team as it stands. The running cost calculator turns Caterpillar's fuel and maintenance claims into a yearly figure using the customer's own hours and fuel price. Underneath, the finance options are named, with who qualifies and what to bring.</p>
+        </div>
+        <div>
+          <h2>Why</h2>
+          <ul>
+            <li>The live Financing page describes "5+ options", "100% in-house teams" and "360° cost-benefit analysis" without a single term, rate or example.</li>
+            <li>The homepage claims "up to $6,500 total life cost saving" for the 426F2 backhoe, in US dollars, on a site for Egyptian buyers.</li>
+            <li>A monthly figure is often easier to publish than a cash price, and it is the number most buyers are working out anyway.</li>
+          </ul>
+        </div>
+      </aside>
+
+      <h1>Finance and running costs</h1>
+      <p class="lead">Work out roughly what a machine would cost each month, and what a newer machine could save you in fuel and maintenance. The figures are estimates to start a conversation, not offers.</p>
+
+      <div class="tabs" role="tablist">
+        <button type="button" class="tab active" data-tab="t-fin">Finance estimator</button>
+        <button type="button" class="tab" data-tab="t-run">Running costs</button>
+      </div>
+      <div>
+        <!-- Finance estimator (R38) -->
+        <section class="tab-panel active" id="t-fin" aria-label="Finance estimator">
+          <div class="two-col even">
+            <form id="fin-form" onsubmit="return false" class="panel">
+              <div class="field"><label for="f-machine">Machine</label><select id="f-machine"></select></div>
+              <div class="field"><label for="f-price">Price, EGP</label><input type="number" id="f-price" min="100000" step="50000" inputmode="numeric"><p class="field-hint">Filled in from the indicative price. Change it if you have a quote.</p></div>
+              <div class="field"><label for="f-dep">Deposit: <span data-dep-out>30%</span></label><input type="range" id="f-dep" min="20" max="60" step="5" value="30"></div>
+              <fieldset><legend>Term</legend><div class="seg" role="group" aria-label="Term in months" data-terms><button type="button" data-term="12" aria-pressed="false">12 months</button><button type="button" data-term="24" aria-pressed="false">24</button><button type="button" data-term="36" aria-pressed="true">36</button><button type="button" data-term="48" aria-pressed="false">48</button></div></fieldset>
+            </form>
+            <div class="panel surface" aria-live="polite">
+              <p class="muted">Indicative monthly payment</p>
+              <p class="result-big" data-fin-monthly>EGP 0</p>
+              <dl class="kv" data-fin-kv></dl>
+              <p class="disclaimer" style="margin-top:1rem">Estimate only, using sample rates. Real terms depend on approval, the machine and current rates. Not an offer of credit.</p>
+              <button type="button" class="btn" data-fin-send>Send this to the finance team</button>
+            </div>
+          </div>
+          <p class="wf-note" data-note="1"><span class="wf-note-label">Behaviour</span>Arriving from a machine page fills in the machine and price (<span class="code">?model=320-gc</span>). "Send this to the finance team" adds the calculation to the quote basket so it arrives with the machine (R38).</p>
+          <p class="wf-note query" data-note="2"><span class="wf-note-label">Open question</span><strong>Q:</strong> Which rates and terms could Mantrac publish, even as "from" figures? The 12-month term uses the 0% offer from the offers page; the others are invented.</p>
+
+          <!-- Finance options (R39) -->
+          <h2 class="section-title" style="margin-top:2rem">Ways to pay</h2>
+          <div class="accordion" data-single>
+            <div class="accordion-item open"><button type="button" class="accordion-title">Instalments with Mantrac <span class="accordion-icon" aria-hidden="true">▾</span></button><div class="accordion-content"><p>Pay a deposit and the balance over 12 to 48 months. For businesses registered in Egypt with [x] years of accounts.</p><p><strong>Bring:</strong> commercial register, tax card, last two years' accounts, ID of the signatory.</p></div></div>
+            <div class="accordion-item"><button type="button" class="accordion-title">Bank finance through our partners <span class="accordion-icon" aria-hidden="true">▾</span></button><div class="accordion-content"><p>[Partner banks to confirm]. Mantrac prepares the machine documents and quotation the bank needs.</p></div></div>
+            <div class="accordion-item"><button type="button" class="accordion-title">Leasing <span class="accordion-icon" aria-hidden="true">▾</span></button><div class="accordion-content"><p>[Leasing partners and terms to confirm].</p></div></div>
+            <div class="accordion-item"><button type="button" class="accordion-title">Power purchase agreements <span class="accordion-icon" aria-hidden="true">▾</span></button><div class="accordion-content"><p>For power systems: Mantrac installs and runs the plant and you pay for the electricity used. [Minimum size and term to confirm.]</p></div></div>
+          </div>
+          <p class="wf-note query" data-note="3"><span class="wf-note-label">Open question</span><strong>Q:</strong> Which of these does Mantrac Egypt offer today, and who qualifies? Bracketed text is for Mantrac to fill in (R39).</p>
+        </section>
+
+        <!-- Running costs (R40) -->
+        <section class="tab-panel" id="t-run" aria-label="Running cost calculator">
+          <div class="two-col even">
+            <form id="run-form" onsubmit="return false" class="panel">
+              <div class="field"><label for="c-hrs">Hours worked a year: <span data-hrs-out>1,500</span></label><input type="range" id="c-hrs" min="500" max="4000" step="100" value="1500"></div>
+              <div class="field"><label for="c-fuel">Diesel price, EGP a litre</label><input type="number" id="c-fuel" min="1" step="0.25" value="17.50"><p class="field-hint">Sample figure. Enter what you pay.</p></div>
+              <div class="field"><label for="c-burn">Your current machine's fuel use, litres an hour</label><input type="number" id="c-burn" min="1" step="0.5" value="9"></div>
+              <div class="field"><label for="c-maint">Your current maintenance cost, EGP an hour</label><input type="number" id="c-maint" min="0" step="10" value="220"></div>
+              <div class="grid grid-2">
+                <div class="field"><label for="c-fs">Fuel saving with a new 426F2, %</label><input type="number" id="c-fs" min="0" max="50" value="15"></div>
+                <div class="field"><label for="c-ms">Maintenance saving, %</label><input type="number" id="c-ms" min="0" max="80" value="40"></div>
+              </div>
+            </form>
+            <div class="panel surface" aria-live="polite">
+              <p class="muted">Estimated saving a year with a new Cat 426F2 backhoe loader</p>
+              <p class="result-big" data-run-total>EGP 0</p>
+              <dl class="kv" data-run-kv></dl>
+              <p class="disclaimer" style="margin-top:1rem">Savings percentages are Caterpillar's "up to" figures for the 426F2 and will vary with the job, the operator and the machine you have now. Change them to see the effect.</p>
+              <button type="button" class="btn btn-secondary" data-run-ask>Ask for a 426F2 quote</button>
+            </div>
+          </div>
+          <p class="wf-note" data-note="4"><span class="wf-note-label">Behaviour</span>Every assumption is an editable field, so a sales person can sit with a customer and use their numbers (R40).</p>
+        </section>
+      </div>
+
+    </div>
+  </main>
+
+<!-- Previous / next pager (R03) -->
+<nav class="proto-pager" aria-label="Prototype pages">
+  <div class="container" data-pager>
+    <p class="sample-note">Greyscale prototype. Machines, stock, prices, dates and people are sample data for discussion; model names and branch names come from mantracgroup.com.</p>
+  </div>
+</nav>
+<!-- Mobile contact dock (R07, R25 idea 25, R35) -->
+<nav class="contact-dock" aria-label="Contact Mantrac">
+  <a href="tel:19266" data-dock="call"><span class="glyph" aria-hidden="true">T</span>Call 19266</a>
+  <a href="#" data-dock="whatsapp" target="_blank" rel="noopener"><span class="glyph" aria-hidden="true">W</span>WhatsApp</a>
+  <a href="../pages/branches.html" data-dock="branch"><span class="glyph" aria-hidden="true">B</span>Branch</a>
+  <button type="button" data-modal-open="chat-modal"><span class="glyph" aria-hidden="true">C</span>Chat</button>
+</nav>
+<div class="wf-modal" id="chat-modal" role="dialog" aria-modal="true" aria-labelledby="chat-title">
+  <div class="wf-modal-panel">
+    <button type="button" class="wf-modal-close" aria-label="Close">×</button>
+    <h2 id="chat-title">Chat with Mantrac</h2>
+    <p>Live chat opens only when you ask for it. Sunday to Thursday, 8:30 to 16:30.</p>
+    <div class="wf-placeholder embed">Live chat window (Salesforce)</div>
+  </div>
+</div>
+<script src="../js/data.js"></script>
+<script src="../js/wireframe.js"></script>
+<script src="../js/proto.js"></script>
+<script src="../js/pages.js"></script>
+
+</body>
+</html>

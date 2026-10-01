@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>5 · Branches and parts – Mantrac prototypes</title>
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/proto.css">
+  <link rel="stylesheet" href="../css/theme.css">
+</head>
+<body data-page="branches" data-wa="Hello Mantrac, which branch should I contact?">
+<a class="sr-only" href="#main">Skip to content</a>
+<!-- Prototype navigator (R01, R02) -->
+<nav class="proto-nav" aria-label="Prototypes">
+  <div class="container">
+    <a class="proto-pack" href="../index.html">Mantrac roadmap <span>· greyscale v0.1</span></a>
+    <ul class="proto-links">
+      <li><a href="../index.html" data-proto="0">Overview</a></li>
+      <li><a href="../pages/machines.html" data-proto="1" title="Find the right Cat machine">1<span class="proto-title">&nbsp;Machines</span></a></li>
+      <li><a href="../pages/used.html" data-proto="2" title="Used and rental">2<span class="proto-title">&nbsp;Used &amp; rental</span></a></li>
+      <li><a href="../pages/enquiry.html" data-proto="3" title="One enquiry">3<span class="proto-title">&nbsp;Enquiry</span></a></li>
+      <li><a href="../pages/offers.html" data-proto="4" title="Offers and finance">4<span class="proto-title">&nbsp;Offers &amp; finance</span></a></li>
+      <li><a href="../pages/branches.html" data-proto="5" title="Mantrac near you">5<span class="proto-title">&nbsp;Near you</span></a></li>
+    </ul>
+    <a class="proto-basket" href="../pages/enquiry.html" data-basket-link>Quote <span class="basket-count" data-basket-count>0</span></a>
+    <button type="button" class="notes-switch" role="switch" aria-checked="false" data-notes-switch hidden>
+      <span class="track" aria-hidden="true"></span><span>Notes</span>
+    </button>
+  </div>
+</nav>
+
+
+  <main id="main">
+    <div class="container">
+
+      <aside class="proto-why" aria-label="About this prototype">
+        <div>
+          <h2>What we're proposing</h2>
+          <p>A branch finder that answers "where do I go for this?" rather than "where are your branches?". Visitors filter by what they need (a parts counter, a workshop, the SOS lab) and by governorate, and each branch shows its services, hours, whether it's open now and how to get there. A second tab gathers parts help in one place, and a My Mantrac panel points customers at the online tools they already use.</p>
+        </div>
+        <div>
+          <h2>Why</h2>
+          <ul>
+            <li>The 13 Egypt branches sit in a list under a country filter on the Contact page. The detail is good (services, hours, WhatsApp); it is just hard to search.</li>
+            <li>Two branch names are misspelt on the live site: "Abu Simble" and "Marsa Allam".</li>
+            <li>"Shop now" on the Parts page goes to the Cat parts store under another group company's name, and the nav lists 29 parts categories that mostly describe what that store sells.</li>
+            <li>Service copy promises "Timely service" without saying what timely means. One measured promise would do more.</li>
+          </ul>
+        </div>
+      </aside>
+
+      <h1>Mantrac near you</h1>
+
+      <!-- Service promise (R44) -->
+      <section class="panel surface" aria-labelledby="promise-h" style="margin-bottom:1.5rem">
+        <h2 id="promise-h">[Service promise to agree]</h2>
+        <p>For example: "Parts in stock at your branch, or there within 48 hours. Field service on site within 24 hours in Greater Cairo and Alexandria." 13 branches across Egypt, with workshops in Alexandria, Giza, 10th of Ramadan, Suez and Aswan.</p>
+        <p class="wf-note query" data-note="1"><span class="wf-note-label">Open question</span><strong>Q:</strong> Which promise can Mantrac measure and keep in Egypt? We would rather publish one modest promise than three general ones (R44).</p>
+      </section>
+
+      <div class="tabs" role="tablist">
+        <button type="button" class="tab active" data-tab="t-branches">Find a branch</button>
+        <button type="button" class="tab" data-tab="t-parts">Parts help</button>
+        <button type="button" class="tab" data-tab="t-my">My Mantrac</button>
+      </div>
+      <div>
+        <!-- Branch finder (R42, R47) -->
+        <section class="tab-panel active" id="t-branches" aria-label="Branch finder">
+          <form class="filter-bar" onsubmit="return false" aria-label="Filter branches">
+            <div class="field"><label for="b-gov">Your governorate</label><select id="b-gov" data-gov-select></select></div>
+            <div class="field"><label for="b-svc">I need</label><select id="b-svc"></select></div>
+            <label class="check" style="margin:0 0 .5rem"><input type="checkbox" id="b-open"> <span>Open now</span></label>
+          </form>
+          <p class="result-count" aria-live="polite" data-bcount></p>
+          <div class="two-col even">
+            <div>
+              <div class="map" data-map role="group" aria-label="Map of branches"><span class="map-label">Map placeholder · Egypt</span><span class="nile" aria-hidden="true"></span></div>
+            </div>
+            <ul class="branch-list" data-blist></ul>
+          </div>
+          <p class="wf-note" data-note="2"><span class="wf-note-label">Behaviour</span>Choosing a governorate puts the nearest branch first and remembers it for the other prototypes. Pins and list are linked: selecting either highlights both. "Open now" uses Cairo time and each branch's hours (R42).</p>
+          <p class="wf-note query" data-note="3"><span class="wf-note-label">Open question</span><strong>Q:</strong> Services are listed for Amerya on the live site. For the other branches we've guessed; Mantrac would need to confirm what each one offers.</p>
+        </section>
+
+        <!-- Parts help (R45) -->
+        <section class="tab-panel" id="t-parts" aria-label="Parts help">
+          <div class="grid grid-3">
+            <div class="card"><h3 class="card-title">Order online</h3><p class="card-text">Genuine Cat parts on the Cat parts store, with your Mantrac account prices. Open 24 hours.</p><a class="card-link" href="https://parts.cat.com/" target="_blank" rel="noopener">Go to the Cat parts store</a></div>
+            <div class="card"><h3 class="card-title">Call or WhatsApp the parts team</h3><p class="card-text">Give us the serial number and part numbers if you have them. Sunday to Thursday, 8:30 to 16:30.</p><p class="card-text"><strong>19266</strong>, then [option to confirm]</p><a class="card-link" href="#" data-parts-wa target="_blank" rel="noopener">WhatsApp the parts team</a></div>
+            <div class="card"><h3 class="card-title">Collect from a parts counter</h3><p class="card-text" data-counters></p><button type="button" class="link-btn card-link" data-show-counters>Show parts counters on the map</button></div>
+          </div>
+          <div class="two-col even" style="margin-top:1.5rem">
+            <div class="panel">
+              <h2>Opening an online parts account</h2>
+              <ol class="review-steps">
+                <li>Ask your branch for a Mantrac customer number, or use the one on your invoices.</li>
+                <li>Register on the Cat parts store and choose Mantrac Egypt as your dealer.</li>
+                <li>We link your account within one working day, so you see your prices and can pay on account.</li>
+              </ol>
+            </div>
+            <form class="panel surface" id="parts-form" novalidate>
+              <h2>Send us a parts list</h2>
+              <div class="field"><label for="p-serial">Machine serial number <span class="req">(optional)</span></label><input type="text" id="p-serial" autocomplete="off"></div>
+              <div class="field"><label for="p-list">Part numbers and quantities</label><textarea id="p-list" rows="4" data-required></textarea><p class="field-hint">One per line, for example 1R-1808 x 4</p><p class="field-error" hidden>Add at least one part number or description.</p></div>
+              <button type="submit" class="btn">Add to my quote</button>
+            </form>
+          </div>
+          <p class="wf-note query" data-note="4"><span class="wf-note-label">Open question</span><strong>Q:</strong> Which Cat parts store should Egyptian customers use? The live "Shop now" link goes to a store set up under another group company. Steps above are a sketch to confirm (R45).</p>
+        </section>
+
+        <!-- My Mantrac (R46) -->
+        <section class="tab-panel" id="t-my" aria-label="My Mantrac">
+          <p class="lead">The online tools Mantrac customers already use, in one place instead of three levels down under Technology.</p>
+          <div class="grid grid-4">
+            <div class="card"><div class="wf-placeholder ratio-16-9">Logo</div><h3 class="card-title">Cat parts store</h3><p class="card-text">Order parts, see your prices and order history.</p><a class="card-link" href="#">Open</a></div>
+            <div class="card"><div class="wf-placeholder ratio-16-9">Logo</div><h3 class="card-title">VisionLink</h3><p class="card-text">Fleet location, hours, fuel and alerts.</p><a class="card-link" href="#">Open</a></div>
+            <div class="card"><div class="wf-placeholder ratio-16-9">Logo</div><h3 class="card-title">SOS results</h3><p class="card-text">Oil sample results from the Mantrac labs.</p><a class="card-link" href="#">Open</a></div>
+            <div class="card"><div class="wf-placeholder ratio-16-9">Logo</div><h3 class="card-title">Service history</h3><p class="card-text">[Proposed] visits, invoices and next service due.</p><a class="card-link" href="../pages/book-service.html">Book a service</a></div>
+          </div>
+          <p class="wf-note" data-note="5"><span class="wf-note-label">Behaviour</span>"My Mantrac" would sit in the main header next to the hotline, linking here. Each tool keeps its own sign-in; single sign-on is a later question (R46).</p>
+        </section>
+      </div>
+
+    </div>
+  </main>
+
+<!-- Previous / next pager (R03) -->
+<nav class="proto-pager" aria-label="Prototype pages">
+  <div class="container" data-pager>
+    <p class="sample-note">Greyscale prototype. Machines, stock, prices, dates and people are sample data for discussion; model names and branch names come from mantracgroup.com.</p>
+  </div>
+</nav>
+<!-- Mobile contact dock (R07, R25 idea 25, R35) -->
+<nav class="contact-dock" aria-label="Contact Mantrac">
+  <a href="tel:19266" data-dock="call"><span class="glyph" aria-hidden="true">T</span>Call 19266</a>
+  <a href="#" data-dock="whatsapp" target="_blank" rel="noopener"><span class="glyph" aria-hidden="true">W</span>WhatsApp</a>
+  <a href="../pages/branches.html" data-dock="branch"><span class="glyph" aria-hidden="true">B</span>Branch</a>
+  <button type="button" data-modal-open="chat-modal"><span class="glyph" aria-hidden="true">C</span>Chat</button>
+</nav>
+<div class="wf-modal" id="chat-modal" role="dialog" aria-modal="true" aria-labelledby="chat-title">
+  <div class="wf-modal-panel">
+    <button type="button" class="wf-modal-close" aria-label="Close">×</button>
+    <h2 id="chat-title">Chat with Mantrac</h2>
+    <p>Live chat opens only when you ask for it. Sunday to Thursday, 8:30 to 16:30.</p>
+    <div class="wf-placeholder embed">Live chat window (Salesforce)</div>
+  </div>
+</div>
+<script src="../js/data.js"></script>
+<script src="../js/wireframe.js"></script>
+<script src="../js/proto.js"></script>
+<script src="../js/pages.js"></script>
+
+</body>
+</html>

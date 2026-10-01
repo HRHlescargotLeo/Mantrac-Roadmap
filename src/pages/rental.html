@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2 · Rent by date – Mantrac prototypes</title>
+  <link rel="stylesheet" href="~/css/base.css">
+  <link rel="stylesheet" href="~/css/components.css">
+  <link rel="stylesheet" href="~/css/proto.css">
+  <link rel="stylesheet" href="~/css/theme.css">
+</head>
+<body data-page="rental" data-wa="Hello Mantrac, I'd like to rent a machine.">
+  <!-- @@include header.html -->
+
+  <main id="main">
+    <div class="container">
+
+      <aside class="proto-why" aria-label="About this prototype">
+        <div>
+          <h2>What we're proposing</h2>
+          <p>Rental that starts with the dates and the place. The visitor says when and where, sees which machines are free, what the hire would cost for that period and whether delivery is possible, then sends a booking request that lands in the same quote as everything else. The wider Cat Rentals range Mantrac already runs is linked rather than hidden.</p>
+        </div>
+        <div>
+          <h2>Why</h2>
+          <ul>
+            <li>The live rental page lists two machines, one built in 2000 and one marked both "Reserved" and "In stock", under a paragraph about having "the widest range of Cat machines readily available".</li>
+            <li>Mantrac has its own storefront on Caterpillar's rental site with telehandlers, compaction and aerial equipment. The rental page doesn't mention it.</li>
+            <li>Rental cards show no dates, rates or minimum hire, so every enquiry starts from scratch.</li>
+          </ul>
+        </div>
+      </aside>
+
+      <!-- Rental search (R23, R25) -->
+      <section aria-labelledby="h1">
+        <h1 id="h1">Rent a Cat machine</h1>
+        <p class="lead">Choose your dates and where the machine will work. We'll show what's free, the hire cost for that period and the branch it would come from. Anything not listed here can usually be arranged from another branch or the wider Cat Rentals fleet.</p>
+        <form class="filter-bar" id="rent-form" onsubmit="return false" aria-label="Rental dates and place">
+          <div class="field"><label for="r-from">From</label><input type="date" id="r-from" min="2026-10-01"></div>
+          <div class="field"><label for="r-to">To</label><input type="date" id="r-to" min="2026-10-01"></div>
+          <div class="field"><label for="r-gov">Site governorate</label><select id="r-gov" data-gov-select></select></div>
+          <div class="field"><label for="r-fam">Machine type</label><select id="r-fam"></select></div>
+          <label class="check" style="margin:0 0 .5rem"><input type="checkbox" id="r-free"> <span>Only show free for all my dates</span></label>
+        </form>
+        <p class="field-error" data-rent-error hidden role="alert">The end date must be after the start date.</p>
+        <p class="result-count" aria-live="polite" data-rsummary></p>
+        <div class="mcards" data-rental></div>
+        <p class="wf-note" data-note="1"><span class="wf-note-label">Behaviour</span>The price is the weekly rate for whole weeks plus the day rate for the rest, before delivery and VAT. Machines booked for part of the period stay visible so the visitor can shift their dates (R23).</p>
+        <p class="wf-note query" data-note="2"><span class="wf-note-label">Open question</span><strong>Q:</strong> Would Mantrac publish rental rates? Rates here are sample figures. If not, the card can show "Ask for a rate" and still take the dates.</p>
+      </section>
+
+      <!-- Cat Rentals link (R24) -->
+      <section class="panel surface" aria-labelledby="cr-h">
+        <h2 id="cr-h">More to rent from Mantrac Cat Rentals</h2>
+        <p>Telehandlers, scissor lifts, compaction equipment and mobile generator sets are listed on the Mantrac Cat Rentals store, run with Caterpillar.</p>
+        <a class="btn btn-secondary" href="https://rent.cat.com/en_EG/mantracgroup" target="_blank" rel="noopener">Browse Mantrac Cat Rentals</a>
+        <p class="wf-note query" data-note="3"><span class="wf-note-label">Open question</span><strong>Q:</strong> The Cat Rentals store currently shows the US number 1-800-RENT-CAT for Egypt. Could Caterpillar show 19266 instead (R24)?</p>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- @@include footer.html -->
+</body>
+</html>

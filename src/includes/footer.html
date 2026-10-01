@@ -1,0 +1,25 @@
+<!-- Previous / next pager (R03) -->
+<nav class="proto-pager" aria-label="Prototype pages">
+  <div class="container" data-pager>
+    <p class="sample-note">Greyscale prototype. Machines, stock, prices, dates and people are sample data for discussion; model names and branch names come from mantracgroup.com.</p>
+  </div>
+</nav>
+<!-- Mobile contact dock (R07, R25 idea 25, R35) -->
+<nav class="contact-dock" aria-label="Contact Mantrac">
+  <a href="tel:19266" data-dock="call"><span class="glyph" aria-hidden="true">T</span>Call 19266</a>
+  <a href="#" data-dock="whatsapp" target="_blank" rel="noopener"><span class="glyph" aria-hidden="true">W</span>WhatsApp</a>
+  <a href="~/pages/branches.html" data-dock="branch"><span class="glyph" aria-hidden="true">B</span>Branch</a>
+  <button type="button" data-modal-open="chat-modal"><span class="glyph" aria-hidden="true">C</span>Chat</button>
+</nav>
+<div class="wf-modal" id="chat-modal" role="dialog" aria-modal="true" aria-labelledby="chat-title">
+  <div class="wf-modal-panel">
+    <button type="button" class="wf-modal-close" aria-label="Close">×</button>
+    <h2 id="chat-title">Chat with Mantrac</h2>
+    <p>Live chat opens only when you ask for it. Sunday to Thursday, 8:30 to 16:30.</p>
+    <div class="wf-placeholder embed">Live chat window (Salesforce)</div>
+  </div>
+</div>
+<script src="~/js/data.js"></script>
+<script src="~/js/wireframe.js"></script>
+<script src="~/js/proto.js"></script>
+<script src="~/js/pages.js"></script>

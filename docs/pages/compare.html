@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1 · Compare models – Mantrac prototypes</title>
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/proto.css">
+  <link rel="stylesheet" href="../css/theme.css">
+</head>
+<body data-page="compare" data-wa="Hello Mantrac, I'm comparing excavators and would like some advice.">
+<a class="sr-only" href="#main">Skip to content</a>
+<!-- Prototype navigator (R01, R02) -->
+<nav class="proto-nav" aria-label="Prototypes">
+  <div class="container">
+    <a class="proto-pack" href="../index.html">Mantrac roadmap <span>· greyscale v0.1</span></a>
+    <ul class="proto-links">
+      <li><a href="../index.html" data-proto="0">Overview</a></li>
+      <li><a href="../pages/machines.html" data-proto="1" title="Find the right Cat machine">1<span class="proto-title">&nbsp;Machines</span></a></li>
+      <li><a href="../pages/used.html" data-proto="2" title="Used and rental">2<span class="proto-title">&nbsp;Used &amp; rental</span></a></li>
+      <li><a href="../pages/enquiry.html" data-proto="3" title="One enquiry">3<span class="proto-title">&nbsp;Enquiry</span></a></li>
+      <li><a href="../pages/offers.html" data-proto="4" title="Offers and finance">4<span class="proto-title">&nbsp;Offers &amp; finance</span></a></li>
+      <li><a href="../pages/branches.html" data-proto="5" title="Mantrac near you">5<span class="proto-title">&nbsp;Near you</span></a></li>
+    </ul>
+    <a class="proto-basket" href="../pages/enquiry.html" data-basket-link>Quote <span class="basket-count" data-basket-count>0</span></a>
+    <button type="button" class="notes-switch" role="switch" aria-checked="false" data-notes-switch hidden>
+      <span class="track" aria-hidden="true"></span><span>Notes</span>
+    </button>
+  </div>
+</nav>
+
+
+  <main id="main">
+    <div class="container">
+
+      <aside class="proto-why" aria-label="About this prototype">
+        <div>
+          <h2>What we're proposing</h2>
+          <p>Up to three models side by side, with the rows that differ highlighted and an option to hide the rest. The compare list follows the visitor from the listing, the finder and product pages through a tray at the bottom of the screen.</p>
+        </div>
+        <div>
+          <h2>Why</h2>
+          <p>The live site already has compare tick boxes and a compare page, which is a good start. What's missing is any sign of what you've picked as you move around, and a quick way to see where two similar machines actually differ.</p>
+        </div>
+      </aside>
+
+      <!-- Compare (R15) -->
+      <section aria-labelledby="h1">
+        <div class="row-between">
+          <h1 id="h1">Compare excavators</h1>
+          <div class="seg" data-units role="group" aria-label="Units"><button type="button" data-value="metric">Metric</button><button type="button" data-value="us">US</button></div>
+        </div>
+        <label class="check"><input type="checkbox" id="diff-only"> <span>Show only rows that differ</span></label>
+        <div data-compare-table></div>
+        <p class="wf-note" data-note="1"><span class="wf-note-label">Behaviour</span>Rows that differ are shaded. The page works from <span class="code">?ids=320-gc,320-gx</span> so a sales person can send a comparison link on WhatsApp (R09, R15).</p>
+        <p style="margin-top:1rem"><a href="../pages/machines.html">← Back to excavators</a></p>
+      </section>
+
+    </div>
+  </main>
+
+  <div class="compare-tray" data-tray hidden></div>
+<!-- Previous / next pager (R03) -->
+<nav class="proto-pager" aria-label="Prototype pages">
+  <div class="container" data-pager>
+    <p class="sample-note">Greyscale prototype. Machines, stock, prices, dates and people are sample data for discussion; model names and branch names come from mantracgroup.com.</p>
+  </div>
+</nav>
+<!-- Mobile contact dock (R07, R25 idea 25, R35) -->
+<nav class="contact-dock" aria-label="Contact Mantrac">
+  <a href="tel:19266" data-dock="call"><span class="glyph" aria-hidden="true">T</span>Call 19266</a>
+  <a href="#" data-dock="whatsapp" target="_blank" rel="noopener"><span class="glyph" aria-hidden="true">W</span>WhatsApp</a>
+  <a href="../pages/branches.html" data-dock="branch"><span class="glyph" aria-hidden="true">B</span>Branch</a>
+  <button type="button" data-modal-open="chat-modal"><span class="glyph" aria-hidden="true">C</span>Chat</button>
+</nav>
+<div class="wf-modal" id="chat-modal" role="dialog" aria-modal="true" aria-labelledby="chat-title">
+  <div class="wf-modal-panel">
+    <button type="button" class="wf-modal-close" aria-label="Close">×</button>
+    <h2 id="chat-title">Chat with Mantrac</h2>
+    <p>Live chat opens only when you ask for it. Sunday to Thursday, 8:30 to 16:30.</p>
+    <div class="wf-placeholder embed">Live chat window (Salesforce)</div>
+  </div>
+</div>
+<script src="../js/data.js"></script>
+<script src="../js/wireframe.js"></script>
+<script src="../js/proto.js"></script>
+<script src="../js/pages.js"></script>
+
+</body>
+</html>

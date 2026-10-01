@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3 · Your quote – Mantrac prototypes</title>
+  <link rel="stylesheet" href="~/css/base.css">
+  <link rel="stylesheet" href="~/css/components.css">
+  <link rel="stylesheet" href="~/css/proto.css">
+  <link rel="stylesheet" href="~/css/theme.css">
+</head>
+<body data-page="enquiry">
+  <!-- @@include header.html -->
+
+  <main id="main">
+    <div class="container">
+
+      <aside class="proto-why" aria-label="About this prototype">
+        <div>
+          <h2>What we're proposing</h2>
+          <p>One enquiry for everything a customer wants priced: new and used machines, rental dates, attachments and service plans, collected in a quote basket as they browse. The form asks five things, with labels, and works out where to send the enquiry from the governorate. The confirmation gives a reference, names the team and says when they'll reply. WhatsApp is offered as an equal alternative, with the basket already written into the message.</p>
+        </div>
+        <div>
+          <h2>Why</h2>
+          <ul>
+            <li>The live contact form has 11 fields, 9 of them required, including Salutation and both Phone and Mobile Phone. The message box is the one thing that is optional.</li>
+            <li>Every field uses its placeholder as its label, so the label disappears as soon as someone starts typing.</li>
+            <li>The quote form loads from a separate marketing domain in a frame. In our checks it didn't appear at all, which is worth confirming quickly.</li>
+            <li>Each quote request covers one product, so a contractor pricing a fleet fills in the same details several times.</li>
+          </ul>
+        </div>
+      </aside>
+
+      <h1>Your quote</h1>
+      <p class="lead">Everything you've added, in one enquiry. We'll send it to the right Mantrac team for where you work and reply with prices and availability.</p>
+
+      <div class="two-col" data-enquiry>
+        <!-- Basket (R29) -->
+        <section aria-labelledby="basket-h">
+          <h2 class="section-title" id="basket-h">In your quote <span class="basket-count" data-basket-count>0</span></h2>
+          <ul class="basket-list" data-basket></ul>
+          <div data-basket-empty hidden class="empty-state">
+            <p><strong>Your quote is empty.</strong></p>
+            <p>Add machines from the listings, or just tell us what you need in the form.</p>
+            <p class="row" style="justify-content:center"><a class="btn btn-secondary btn-sm" href="~/pages/machines.html">New excavators</a><a class="btn btn-secondary btn-sm" href="~/pages/used.html">Used machines</a><a class="btn btn-secondary btn-sm" href="~/pages/rental.html">Rental</a></p>
+          </div>
+          <div class="panel surface" style="margin-top:1rem">
+            <h3>Often added</h3>
+            <div class="row" data-extras>
+              <button type="button" class="btn btn-secondary btn-sm" data-extra="Equipment Protection Plan (EPP)|Service plan">+ Equipment Protection Plan</button>
+              <button type="button" class="btn btn-secondary btn-sm" data-extra="Customer Value Agreement (maintenance)|Service plan">+ Maintenance agreement</button>
+              <button type="button" class="btn btn-secondary btn-sm" data-extra="Hydraulic hammer|Attachment">+ Hammer</button>
+              <button type="button" class="btn btn-secondary btn-sm" data-extra="Heavy-duty rock bucket|Attachment">+ Rock bucket</button>
+              <button type="button" class="btn btn-secondary btn-sm" data-extra="Operator training (2 days)|Training">+ Operator training</button>
+            </div>
+          </div>
+          <p class="wf-note" data-note="1"><span class="wf-note-label">Behaviour</span>The basket keeps new, used and rental items, attachments and services together for this browser session. Quantities can be changed and items removed. Rental items keep their dates (R29).</p>
+        </section>
+
+        <!-- Enquiry form (R30–R35) -->
+        <section aria-labelledby="form-h">
+          <div class="panel" data-form-panel>
+            <h2 id="form-h">Send your enquiry</h2>
+            <form id="enq-form" novalidate>
+              <div class="field"><label for="e-need">What do you need?</label><select id="e-need" data-required></select><p class="field-error" hidden>Choose what you need.</p></div>
+              <div class="field"><label for="e-name">Your name</label><input type="text" id="e-name" autocomplete="name" data-required><p class="field-error" hidden>Enter your name.</p></div>
+              <div class="field"><label for="e-mob">Mobile number</label><input type="tel" id="e-mob" autocomplete="tel" inputmode="tel" data-required data-pattern="^(\+20|0)?1[0125]\d{8}$"><p class="field-hint">We'll reply on WhatsApp if you prefer. For example 0100 123 4567.</p><p class="field-error" hidden>Enter an 11-digit Egyptian mobile number, for example 0100 123 4567.</p></div>
+              <div class="field"><label for="e-co">Company <span class="req">(optional)</span></label><input type="text" id="e-co" autocomplete="organization"></div>
+              <div class="field"><label for="e-msg">Anything else we should know? <span class="req">(optional)</span></label><textarea id="e-msg" rows="3" placeholder=""></textarea><p class="field-hint">For example the project, delivery site or when you need the machine.</p></div>
+              <div class="field"><label for="e-gov">Where will you use it?</label><select id="e-gov" data-gov-select data-required></select><p class="field-hint" data-route-hint>We use this to send your enquiry to the nearest branch.</p><p class="field-error" hidden>Choose a governorate so we can send this to the right team.</p></div>
+              <label class="check" for="e-mkt"><input type="checkbox" id="e-mkt"> <span>Send me Mantrac offers and news by WhatsApp or email. <span class="req">(optional, you can stop at any time)</span></span></label>
+              <p class="muted" style="font-size:.875rem">We'll use your details to answer this enquiry. <a href="#">Privacy notice</a></p>
+              <button type="submit" class="btn btn-block">Send enquiry</button>
+            </form>
+            <p style="margin-top:1rem;text-align:center">or <a href="#" data-wa-basket target="_blank" rel="noopener">send this quote on WhatsApp</a> · call <a href="tel:19266">19266</a></p>
+            <p class="wf-note" data-note="2"><span class="wf-note-label">Behaviour</span>Five questions plus where the machine will work, which is remembered from earlier pages. Labels stay above the fields, errors say how to fix the problem, and the mobile field accepts 010, 011, 012 and 015 numbers with or without +20 (R30).</p>
+            <p class="wf-note" data-note="3"><span class="wf-note-label">Behaviour</span>The form sits on mantracgroup.com and posts to the CRM in the background, replacing the framed form from the marketing domain (R32). Marketing consent is a separate, unticked box (R08).</p>
+            <p class="wf-note query" data-note="4"><span class="wf-note-label">Open question</span><strong>Q:</strong> Does tel:+2019266 connect from Egyptian mobiles? This prototype uses tel:19266 until someone has tested both (R35).</p>
+          </div>
+          <div class="panel surface" data-confirm hidden tabindex="-1" role="status"></div>
+        </section>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- @@include footer.html -->
+</body>
+</html>

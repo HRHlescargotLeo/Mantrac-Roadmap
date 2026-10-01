@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2 · Sell or trade in – Mantrac prototypes</title>
+  <link rel="stylesheet" href="~/css/base.css">
+  <link rel="stylesheet" href="~/css/components.css">
+  <link rel="stylesheet" href="~/css/proto.css">
+  <link rel="stylesheet" href="~/css/theme.css">
+</head>
+<body data-page="sell" data-wa="Hello Mantrac, I'd like a valuation for my machine.">
+  <!-- @@include header.html -->
+
+  <main id="main">
+    <div class="container">
+
+      <aside class="proto-why" aria-label="About this prototype">
+        <div>
+          <h2>What we're proposing</h2>
+          <p>A short valuation request for anyone who wants to sell a machine or trade it in against a new one: make, model, year, hours, where it is and a few photos, then a callback within a stated time. It feeds the used stock this prototype is trying to grow.</p>
+        </div>
+        <div>
+          <h2>Why</h2>
+          <p>The Construction page promises "End-of-lifecycle buyback", and the used tiers depend on machines coming back to Mantrac, but there is no way on the site to offer one. Owners who want to sell are some of the easiest leads Mantrac could get, and at the moment they have to phone.</p>
+        </div>
+      </aside>
+
+      <!-- Valuation form (R26, R08) -->
+      <section class="two-col" aria-labelledby="h1">
+        <div>
+          <h1 id="h1">Sell or trade in your machine</h1>
+          <p class="lead">Tell us about the machine and we'll call you with a valuation, whether you want to sell it or put it toward a new or used Cat machine. Any make considered.</p>
+          <form id="sell-form" novalidate>
+            <fieldset>
+              <legend>The machine</legend>
+              <div class="grid grid-2">
+                <div class="field"><label for="s-make">Make</label><select id="s-make" data-required><option value="">Choose</option><option>Caterpillar</option><option>SEM</option><option>Other make</option></select><p class="field-error" hidden>Choose the make.</p></div>
+                <div class="field"><label for="s-model">Model</label><input type="text" id="s-model" placeholder="" data-required><p class="field-hint">For example 320D or 950H</p><p class="field-error" hidden>Enter the model.</p></div>
+                <div class="field"><label for="s-year">Year</label><input type="number" id="s-year" min="1980" max="2026" inputmode="numeric" data-required><p class="field-error" hidden>Enter the year it was built.</p></div>
+                <div class="field"><label for="s-hrs">Hours</label><input type="number" id="s-hrs" min="0" inputmode="numeric" data-required><p class="field-error" hidden>Enter the hours on the meter.</p></div>
+                <div class="field"><label for="s-gov">Where is it?</label><select id="s-gov" data-gov-select data-required></select><p class="field-error" hidden>Choose the governorate.</p></div>
+                <div class="field"><label for="s-why">You'd like to</label><select id="s-why"><option>Sell it</option><option>Trade it in for a new machine</option><option>Trade it in for a used machine</option><option>Not sure yet</option></select></div>
+              </div>
+              <div class="field"><label for="s-photos">Photos (optional)</label><input type="file" id="s-photos" accept="image/*" multiple><p class="field-hint" data-photo-count>Up to 10 photos: each side, the cab, the hour meter and the serial plate help most.</p></div>
+            </fieldset>
+            <fieldset>
+              <legend>You</legend>
+              <div class="grid grid-2">
+                <div class="field"><label for="s-name">Your name</label><input type="text" id="s-name" autocomplete="name" data-required><p class="field-error" hidden>Enter your name.</p></div>
+                <div class="field"><label for="s-mob">Mobile number</label><input type="tel" id="s-mob" autocomplete="tel" data-required data-pattern="^(\+20|0)?1[0125]\d{8}$"><p class="field-hint">WhatsApp is fine</p><p class="field-error" hidden>Enter an 11-digit Egyptian mobile number, for example 0100 123 4567.</p></div>
+              </div>
+            </fieldset>
+            <p class="muted">We'll use these details to value your machine and contact you about it. <a href="#">Privacy notice</a></p>
+            <button type="submit" class="btn">Request a valuation</button>
+          </form>
+          <div data-sell-done hidden role="status" tabindex="-1" class="panel surface"></div>
+        </div>
+        <aside class="panel surface" aria-label="What happens next">
+          <h2>What happens next</h2>
+          <ol class="review-steps">
+            <li>The used equipment team looks at your details and photos.</li>
+            <li>We call you within two working days with an indicative value.</li>
+            <li>If you'd like to go ahead, a Mantrac technician inspects the machine where it is.</li>
+            <li>You get a firm offer, or a trade-in figure against the machine you're buying.</li>
+          </ol>
+          <p class="wf-note query" data-note="1"><span class="wf-note-label">Open question</span><strong>Q:</strong> Is two working days a response time Mantrac can keep? We'd rather publish a promise that is kept than one that sounds good (R26).</p>
+        </aside>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- @@include footer.html -->
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1 · Cat excavators – Mantrac prototypes</title>
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/proto.css">
+  <link rel="stylesheet" href="../css/theme.css">
+</head>
+<body data-page="machines" data-wa="Hello Mantrac, I'd like help choosing a Cat excavator.">
+<a class="sr-only" href="#main">Skip to content</a>
+<!-- Prototype navigator (R01, R02) -->
+<nav class="proto-nav" aria-label="Prototypes">
+  <div class="container">
+    <a class="proto-pack" href="../index.html">Mantrac roadmap <span>· greyscale v0.1</span></a>
+    <ul class="proto-links">
+      <li><a href="../index.html" data-proto="0">Overview</a></li>
+      <li><a href="../pages/machines.html" data-proto="1" title="Find the right Cat machine">1<span class="proto-title">&nbsp;Machines</span></a></li>
+      <li><a href="../pages/used.html" data-proto="2" title="Used and rental">2<span class="proto-title">&nbsp;Used &amp; rental</span></a></li>
+      <li><a href="../pages/enquiry.html" data-proto="3" title="One enquiry">3<span class="proto-title">&nbsp;Enquiry</span></a></li>
+      <li><a href="../pages/offers.html" data-proto="4" title="Offers and finance">4<span class="proto-title">&nbsp;Offers &amp; finance</span></a></li>
+      <li><a href="../pages/branches.html" data-proto="5" title="Mantrac near you">5<span class="proto-title">&nbsp;Near you</span></a></li>
+    </ul>
+    <a class="proto-basket" href="../pages/enquiry.html" data-basket-link>Quote <span class="basket-count" data-basket-count>0</span></a>
+    <button type="button" class="notes-switch" role="switch" aria-checked="false" data-notes-switch hidden>
+      <span class="track" aria-hidden="true"></span><span>Notes</span>
+    </button>
+  </div>
+</nav>
+
+
+  <main id="main">
+    <div class="container">
+
+      <!-- Proposal panel (R02) -->
+      <aside class="proto-why" aria-label="About this prototype">
+        <div>
+          <h2>What we're proposing</h2>
+          <p>An excavator listing that starts from the job rather than the model number. The current range shows by default, every card uses the same three specs, the filters describe the work (size, dig depth, application, availability) and stock says which branch it is at. A three-question finder narrows the range for people who don't know the difference between a 320 GC and a 320 GX, which is most people.</p>
+        </div>
+        <div>
+          <h2>Why</h2>
+          <ul>
+            <li>The live listing mixes the current range with models like the 320C L and 385C, so a buyer can spend time comparing machines Mantrac no longer sells new.</li>
+            <li>Cards use different labels for the same thing ("Dig Depth", "Maximum Digging Depth") and dotted thousands, so 3.050 kg reads as three kilograms.</li>
+            <li>The filters are Brand (one option), Engine Model (19, with duplicates) and three weight bands. None of them is how a contractor thinks about the job.</li>
+            <li>The listing says "Stock on demand" while the product page says "In stock" for the same machine.</li>
+          </ul>
+        </div>
+      </aside>
+
+      <!-- Listing header (R11, R18, R10) -->
+      <section aria-labelledby="h1">
+        <div class="row-between">
+          <h1 id="h1">Cat excavators</h1>
+          <div class="seg" data-units role="group" aria-label="Units"><button type="button" data-value="metric">Metric</button><button type="button" data-value="us">US</button></div>
+        </div>
+        <p class="lead">From 3-tonne mini excavators for utilities work to 45-tonne machines for quarries. Stock is shown by branch; anything not in stock can be ordered, and we'll tell you the lead time before you ask for a price.</p>
+        <div class="row">
+          <button type="button" class="btn" data-modal-open="finder-modal">Help me choose</button>
+          <label class="sr-only" for="gov">Your governorate</label>
+          <span class="muted">Stock and contacts for</span>
+          <select id="gov" style="width:auto" data-gov-select></select>
+        </div>
+        <p class="wf-note" data-note="1"><span class="wf-note-label">Behaviour</span>The governorate is asked once and remembered across every prototype. It picks the nearest branch for stock, the contact on product pages and where an enquiry is sent (R10).</p>
+      </section>
+
+      <!-- Listing with filters (R12, R13, R15, R16) -->
+      <section class="listing" aria-label="Excavator listing">
+        <form class="filters" id="filters" aria-label="Filter excavators" onsubmit="return false">
+          <div class="sheet-close"><h2>Filters</h2><button type="button" class="btn btn-secondary btn-sm" data-close-filters>Close</button></div>
+          <h2 class="filters-title">Filter</h2>
+          <fieldset data-facet="size"><legend>Size</legend></fieldset>
+          <fieldset data-facet="dig"><legend>Max dig depth</legend></fieldset>
+          <fieldset data-facet="app"><legend>Application</legend></fieldset>
+          <fieldset data-facet="avail"><legend>Availability</legend></fieldset>
+          <fieldset data-facet="tier"><legend>Emissions</legend></fieldset>
+          <button type="button" class="link-btn" data-clear-filters>Clear all filters</button>
+          <div class="sheet-apply"><button type="button" class="btn btn-block" data-close-filters>Show <span data-count-inline>0</span> excavators</button></div>
+          <p class="wf-note" data-note="2"><span class="wf-note-label">Behaviour</span>Counts update as filters change and options with no matches are greyed out. Filters with a single option (Brand: Caterpillar) are not shown. On mobile the filters open as a full-screen sheet.</p>
+        </form>
+
+        <div>
+          <div class="toolbar">
+            <p class="result-count" aria-live="polite" style="margin:0"><strong data-count>0</strong> excavators</p>
+            <div class="row">
+              <button type="button" class="btn btn-secondary btn-sm filter-toggle" data-open-filters>Filters</button>
+              <label class="check" style="margin:0"><input type="checkbox" id="legacy"> <span>Include previous models</span></label>
+              <label for="sort" class="sr-only">Sort by</label>
+              <select id="sort">
+                <option value="size">Sort: size, small to large</option>
+                <option value="size-desc">Sort: size, large to small</option>
+                <option value="stock">Sort: in stock first</option>
+                <option value="price">Sort: indicative price, low to high</option>
+              </select>
+            </div>
+          </div>
+          <div class="chips-active" data-active-chips></div>
+          <p class="wf-note" data-note="3"><span class="wf-note-label">Behaviour</span>Previous models (such as the 320C L) are hidden by default. Ticking "Include previous models" adds them, marked for parts and service rather than sale (R11).</p>
+          <div class="mcards compact-sm" id="results" style="margin-top:1rem"></div>
+          <p class="wf-note" data-note="4"><span class="wf-note-label">Behaviour</span>Every excavator card shows the same three specs with the same labels, commas for thousands and the unit choice from the toggle (R05, R12). "Add to quote" adds the machine to the quote basket in prototype 3 (R16).</p>
+          <p class="wf-note query" data-note="5"><span class="wf-note-label">Open question</span><strong>Q:</strong> Can Mantrac show indicative "from" prices in EGP? If not, the card can show "Ask for today's price" with a prefilled WhatsApp message instead. Both are shown here (R18).</p>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Compare tray (R15) -->
+  <div class="compare-tray" data-tray hidden></div>
+
+  <!-- Machine finder (R14) -->
+  <div class="wf-modal" id="finder-modal" role="dialog" aria-modal="true" aria-labelledby="finder-title">
+    <div class="wf-modal-panel">
+      <button type="button" class="wf-modal-close" aria-label="Close">×</button>
+      <h2 id="finder-title">Help me choose an excavator</h2>
+      <ol class="steps" data-finder-steps><li>The job</li><li>The ground</li><li>The site</li><li>Suggestions</li></ol>
+      <form id="finder" onsubmit="return false">
+        <div data-finder-body></div>
+        <div class="step-actions">
+          <button type="button" class="btn btn-secondary" data-finder-back>Back</button>
+          <button type="button" class="btn" data-finder-next>Next</button>
+        </div>
+      </form>
+      <p class="wf-note" data-note="6"><span class="wf-note-label">Behaviour</span>Three questions, then two or three suggested models with stock and a link to compare. The suggestions are a starting point for a conversation with sales, and say so.</p>
+    </div>
+  </div>
+
+<!-- Previous / next pager (R03) -->
+<nav class="proto-pager" aria-label="Prototype pages">
+  <div class="container" data-pager>
+    <p class="sample-note">Greyscale prototype. Machines, stock, prices, dates and people are sample data for discussion; model names and branch names come from mantracgroup.com.</p>
+  </div>
+</nav>
+<!-- Mobile contact dock (R07, R25 idea 25, R35) -->
+<nav class="contact-dock" aria-label="Contact Mantrac">
+  <a href="tel:19266" data-dock="call"><span class="glyph" aria-hidden="true">T</span>Call 19266</a>
+  <a href="#" data-dock="whatsapp" target="_blank" rel="noopener"><span class="glyph" aria-hidden="true">W</span>WhatsApp</a>
+  <a href="../pages/branches.html" data-dock="branch"><span class="glyph" aria-hidden="true">B</span>Branch</a>
+  <button type="button" data-modal-open="chat-modal"><span class="glyph" aria-hidden="true">C</span>Chat</button>
+</nav>
+<div class="wf-modal" id="chat-modal" role="dialog" aria-modal="true" aria-labelledby="chat-title">
+  <div class="wf-modal-panel">
+    <button type="button" class="wf-modal-close" aria-label="Close">×</button>
+    <h2 id="chat-title">Chat with Mantrac</h2>
+    <p>Live chat opens only when you ask for it. Sunday to Thursday, 8:30 to 16:30.</p>
+    <div class="wf-placeholder embed">Live chat window (Salesforce)</div>
+  </div>
+</div>
+<script src="../js/data.js"></script>
+<script src="../js/wireframe.js"></script>
+<script src="../js/proto.js"></script>
+<script src="../js/pages.js"></script>
+
+</body>
+</html>

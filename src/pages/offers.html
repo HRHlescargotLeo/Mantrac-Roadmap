@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>4 · Offers – Mantrac prototypes</title>
+  <link rel="stylesheet" href="~/css/base.css">
+  <link rel="stylesheet" href="~/css/components.css">
+  <link rel="stylesheet" href="~/css/proto.css">
+  <link rel="stylesheet" href="~/css/theme.css">
+</head>
+<body data-page="offers" data-wa="Hello Mantrac, I'd like to know about your current offers.">
+  <!-- @@include header.html -->
+
+  <main id="main">
+    <div class="container">
+
+      <aside class="proto-why" aria-label="About this prototype">
+        <div>
+          <h2>What we're proposing</h2>
+          <p>A Promotions page that has promotions on it. Each offer has a start and end date, says what it applies to and links to its terms, and drops off the page on its end date without anyone having to remember. When there are no offers in a category the page says so, rather than leaving a blank space under a heading.</p>
+        </div>
+        <div>
+          <h2>Why</h2>
+          <ul>
+            <li>The live Promotions page has an introduction, a panel for an app that no longer exists and contact details. No offers.</li>
+            <li>Every page footer invites visitors to "Get our latest promotions straight to your inbox". The sign-up asks only for an email and has no consent wording, and Egypt's data protection rules require prior consent for marketing from 1 November 2026.</li>
+          </ul>
+        </div>
+      </aside>
+
+      <!-- Offers hub (R36, R37) -->
+      <section aria-labelledby="h1">
+        <h1 id="h1">Current offers</h1>
+        <p class="lead">Offers on Cat machines, parts and service from Mantrac Egypt. Each one shows when it ends; ask us about any of them and we'll confirm the terms for your machine.</p>
+        <div class="row-between" style="margin-bottom:1rem">
+          <div class="seg" role="group" aria-label="Offer type" data-offer-kinds>
+            <button type="button" data-kind="" aria-pressed="true">All</button><button type="button" data-kind="Finance" aria-pressed="false">Finance</button><button type="button" data-kind="Service" aria-pressed="false">Service</button><button type="button" data-kind="Parts" aria-pressed="false">Parts</button><button type="button" data-kind="Rental" aria-pressed="false">Rental</button>
+          </div>
+          <label class="check" style="margin:0"><input type="checkbox" id="o-expired"> <span>Show expired offers</span></label>
+        </div>
+        <div class="grid grid-3" data-offers></div>
+        <p class="wf-note" data-note="1"><span class="wf-note-label">Behaviour</span>Offers are published with start and end dates in the CMS and disappear at midnight on the end date. "Ends in" counts down from the prototype date, 1 October 2026. Expired offers are hidden unless the box is ticked, which is for this review only (R37).</p>
+        <p class="wf-note" data-note="2"><span class="wf-note-label">Behaviour</span>Choose "Rental" to see the empty state: if a category has no offers the page says so and offers an alert (R36).</p>
+        <p class="wf-note query" data-note="3"><span class="wf-note-label">Open question</span><strong>Q:</strong> Who would own the offers calendar at Mantrac, and how far ahead are offers usually agreed with Caterpillar? All offers shown are invented examples.</p>
+      </section>
+
+      <!-- Newsletter with consent (R41) -->
+      <section class="panel surface" aria-labelledby="nl-h">
+        <h2 id="nl-h">Get offers before they're on the website</h2>
+        <p>One message a month with new offers and used machines that have just come in. Choose email or WhatsApp.</p>
+        <form id="nl-form" novalidate>
+          <div class="grid grid-3">
+            <div class="field"><label for="nl-ch">Send by</label><select id="nl-ch"><option>Email</option><option>WhatsApp</option></select></div>
+            <div class="field"><label for="nl-to" data-nl-label>Email address</label><input type="email" id="nl-to" autocomplete="email" data-required><p class="field-error" hidden>Enter where we should send offers.</p></div>
+            <div class="field"><label for="nl-int">Interested in</label><select id="nl-int"><option>Everything</option><option>Construction machines</option><option>Power systems</option><option>Parts and service</option></select></div>
+          </div>
+          <div class="field"><label class="check" for="nl-consent"><input type="checkbox" id="nl-consent" data-required> <span>Yes, send me Mantrac offers. I can unsubscribe at any time. <a href="#">Privacy notice</a></span></label><p class="field-error" hidden>Tick the box to agree before we can send you offers.</p></div>
+          <button type="submit" class="btn">Sign up</button>
+          <p data-nl-done hidden role="status"></p>
+        </form>
+        <p class="wf-note" data-note="4"><span class="wf-note-label">Behaviour</span>Replaces the footer sign-up. Visible label, a consent box that starts unticked, what is sent and how often, and a privacy link (R08, R41).</p>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- @@include footer.html -->
+</body>
+</html>

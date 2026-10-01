@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2 · Used Cat machines – Mantrac prototypes</title>
+  <link rel="stylesheet" href="~/css/base.css">
+  <link rel="stylesheet" href="~/css/components.css">
+  <link rel="stylesheet" href="~/css/proto.css">
+  <link rel="stylesheet" href="~/css/theme.css">
+</head>
+<body data-page="used" data-wa="Hello Mantrac, I'm looking for a used Cat machine.">
+  <!-- @@include header.html -->
+
+  <main id="main">
+    <div class="container">
+
+      <aside class="proto-why" aria-label="About this prototype">
+        <div>
+          <h2>What we're proposing</h2>
+          <p>Used stock that can be browsed properly: a photo count, the year, hours, branch, certification tier and a price band on every card, filters by family, tier and branch, and a short explanation of what each tier covers. When there is nothing that fits, the visitor can ask to be told when something does, or offer their own machine.</p>
+        </div>
+        <div>
+          <h2>Why</h2>
+          <ul>
+            <li>The live page lists four used machines, all track excavators, with no branch and no price. Stock this thin needs every machine to be shown well.</li>
+            <li>The tiers are named three different ways ("Mantrac Certified Used" is described as "Dealer Certified Used (DCU)"), and the warranty is called both "Extension Protect Plans" and "Equipment Protection Plans".</li>
+            <li>Used, Rental and Promotions all promote a Used &amp; Rental app whose links return "not found" on both app stores. This page leaves it out until there is an app to send people to.</li>
+          </ul>
+        </div>
+      </aside>
+
+      <!-- Used intro (R25, R28) -->
+      <section aria-labelledby="h1">
+        <h1 id="h1">Used Cat machines</h1>
+        <p class="lead">Machines that have come back to Mantrac, inspected in our workshops and graded into three tiers. Stock changes every week, so if nothing here fits, set an alert and we'll message you when it does.</p>
+        <div class="row"><a href="~/pages/rental.html">Looking to rent instead?</a><span class="muted">·</span><a href="~/pages/sell.html">Sell or trade in your machine</a></div>
+      </section>
+
+      <!-- Tier explainer (R21) -->
+      <section aria-labelledby="tiers-h">
+        <h2 class="section-title" id="tiers-h">Three tiers of used machine</h2>
+        <div class="grid grid-3" data-tiers></div>
+        <p class="wf-note" data-note="1"><span class="wf-note-label">Behaviour</span>One name for each tier everywhere, with the same badge on each machine. The badge links back to this explanation (R21).</p>
+      </section>
+
+      <!-- Used listing (R20) -->
+      <section aria-labelledby="list-h">
+        <h2 class="section-title" id="list-h">Machines available now</h2>
+        <form class="filter-bar" onsubmit="return false" aria-label="Filter used machines">
+          <div class="field"><label for="u-fam">Machine type</label><select id="u-fam" data-uf="fam"></select></div>
+          <div class="field"><label for="u-tier">Tier</label><select id="u-tier" data-uf="tier"></select></div>
+          <div class="field"><label for="u-branch">Branch</label><select id="u-branch" data-uf="branch"></select></div>
+          <div class="field"><label for="u-sort">Sort</label><select id="u-sort" data-uf="sort"><option value="new">Newest first</option><option value="hrs">Fewest hours</option><option value="price">Lowest price</option></select></div>
+          <label class="check" style="margin:0 0 .5rem"><input type="checkbox" id="u-sold" data-uf="sold"> <span>Show recently sold</span></label>
+        </form>
+        <p class="result-count" aria-live="polite"><strong data-ucount>0</strong> machines</p>
+        <div class="mcards" data-used></div>
+        <p class="wf-note" data-note="2"><span class="wf-note-label">Behaviour</span>Price bands in EGP are sample figures. Reserved machines stay visible with a badge. Recently sold machines can be shown to give a sense of turnover and price, then drop off after 30 days.</p>
+        <p class="wf-note query" data-note="3"><span class="wf-note-label">Open question</span><strong>Q:</strong> Where does used stock live today, and could it feed the site with photos, hours and branch? Would Mantrac publish price bands, or prefer "Ask for price"?</p>
+      </section>
+
+      <!-- Stock alert (R27, R08) -->
+      <section aria-labelledby="alert-h" class="panel surface">
+        <h2 id="alert-h">Tell me when a machine like this arrives</h2>
+        <form id="alert-form" novalidate>
+          <div class="grid grid-3">
+            <div class="field"><label for="a-fam">Machine type</label><select id="a-fam" data-required><option value="">Choose</option><option>Excavators</option><option>Wheel loaders</option><option>Backhoe loaders</option><option>Dozers</option><option>Motor graders</option></select><p class="field-error" hidden>Choose a machine type.</p></div>
+            <div class="field"><label for="a-budget">Budget, up to</label><select id="a-budget"><option>Any budget</option><option>EGP 3m</option><option>EGP 6m</option><option>EGP 10m</option><option>EGP 15m</option></select></div>
+            <div class="field"><label for="a-ch">Send alerts by</label><select id="a-ch"><option>WhatsApp</option><option>Email</option></select></div>
+            <div class="field"><label for="a-contact">Mobile number or email</label><input type="text" id="a-contact" autocomplete="tel" data-required><p class="field-error" hidden>Enter a mobile number or email address.</p></div>
+          </div>
+          <div class="field"><label class="check" for="a-consent"><input type="checkbox" id="a-consent" data-required> <span>Send me alerts about used machines that match. I can stop them at any time. <a href="#">Privacy notice</a></span></label><p class="field-error" hidden>Tick to agree before we can send alerts.</p></div>
+          <button type="submit" class="btn">Set up alert</button>
+          <p data-alert-done hidden role="status"></p>
+        </form>
+        <p class="wf-note" data-note="4"><span class="wf-note-label">Behaviour</span>Alerts need an explicit, unticked consent box and a way to stop them, in line with Egypt's data protection rules for electronic marketing (R08, R27).</p>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- @@include footer.html -->
+</body>
+</html>

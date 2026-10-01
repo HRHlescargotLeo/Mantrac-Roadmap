@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1 · Compare models – Mantrac prototypes</title>
+  <link rel="stylesheet" href="~/css/base.css">
+  <link rel="stylesheet" href="~/css/components.css">
+  <link rel="stylesheet" href="~/css/proto.css">
+  <link rel="stylesheet" href="~/css/theme.css">
+</head>
+<body data-page="compare" data-wa="Hello Mantrac, I'm comparing excavators and would like some advice.">
+  <!-- @@include header.html -->
+
+  <main id="main">
+    <div class="container">
+
+      <aside class="proto-why" aria-label="About this prototype">
+        <div>
+          <h2>What we're proposing</h2>
+          <p>Up to three models side by side, with the rows that differ highlighted and an option to hide the rest. The compare list follows the visitor from the listing, the finder and product pages through a tray at the bottom of the screen.</p>
+        </div>
+        <div>
+          <h2>Why</h2>
+          <p>The live site already has compare tick boxes and a compare page, which is a good start. What's missing is any sign of what you've picked as you move around, and a quick way to see where two similar machines actually differ.</p>
+        </div>
+      </aside>
+
+      <!-- Compare (R15) -->
+      <section aria-labelledby="h1">
+        <div class="row-between">
+          <h1 id="h1">Compare excavators</h1>
+          <div class="seg" data-units role="group" aria-label="Units"><button type="button" data-value="metric">Metric</button><button type="button" data-value="us">US</button></div>
+        </div>
+        <label class="check"><input type="checkbox" id="diff-only"> <span>Show only rows that differ</span></label>
+        <div data-compare-table></div>
+        <p class="wf-note" data-note="1"><span class="wf-note-label">Behaviour</span>Rows that differ are shaded. The page works from <span class="code">?ids=320-gc,320-gx</span> so a sales person can send a comparison link on WhatsApp (R09, R15).</p>
+        <p style="margin-top:1rem"><a href="~/pages/machines.html">← Back to excavators</a></p>
+      </section>
+
+    </div>
+  </main>
+
+  <div class="compare-tray" data-tray hidden></div>
+  <!-- @@include footer.html -->
+</body>
+</html>

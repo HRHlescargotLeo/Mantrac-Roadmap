@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2 · Used machine – Mantrac prototypes</title>
+  <link rel="stylesheet" href="~/css/base.css">
+  <link rel="stylesheet" href="~/css/components.css">
+  <link rel="stylesheet" href="~/css/proto.css">
+  <link rel="stylesheet" href="~/css/theme.css">
+</head>
+<body data-page="used-machine">
+  <!-- @@include header.html -->
+
+  <main id="main">
+    <div class="container">
+
+      <aside class="proto-why" aria-label="About this prototype">
+        <div>
+          <h2>What we're proposing</h2>
+          <p>A page for each used machine with its photos, the facts a buyer checks first (year, hours, serial, branch), what the tier covers, a summary of the workshop inspection and a price band. The buyer can add it to a quote, ask on WhatsApp with the machine already named, or book a viewing at the branch.</p>
+        </div>
+        <div>
+          <h2>Why</h2>
+          <p>The used machines on the live site have no page of their own that we could find, and the 140-point inspection is mentioned on the listing but never shown. For a buyer spending several million pounds on a second-hand machine, the inspection is most of the argument.</p>
+        </div>
+      </aside>
+
+      <p><a href="~/pages/used.html">← All used machines</a></p>
+
+      <!-- Used machine (R22) -->
+      <section class="two-col even" aria-labelledby="uname">
+        <div>
+          <div class="carousel gallery" aria-label="Photos" data-ugallery></div>
+          <div class="thumbs" data-uthumbs aria-hidden="true"></div>
+        </div>
+        <div class="stack">
+          <span class="muted" data-u="fam"></span>
+          <h1 id="uname" data-u="name">Used machine</h1>
+          <div class="row" data-u="badges"></div>
+          <dl class="kv" data-u="facts"></dl>
+          <p class="price-line" data-u="price"></p>
+          <div class="row">
+            <button type="button" class="btn" data-u="add">Add to quote</button>
+            <a class="btn btn-secondary" data-u="wa" href="#" target="_blank" rel="noopener">Ask on WhatsApp</a>
+            <button type="button" class="btn btn-secondary" data-modal-open="view-modal">Book a viewing</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="two-col even" aria-label="Cover and inspection">
+        <div class="panel surface" data-u="cover"></div>
+        <div class="panel">
+          <h2>Inspection summary</h2>
+          <p class="muted">140-point TA1 inspection at the Mantrac workshop. <a href="#">Download full report (PDF)</a></p>
+          <div class="table-wrap"><table class="data"><thead><tr><th scope="col">System</th><th scope="col">Condition</th><th scope="col">Note</th></tr></thead><tbody data-u="inspection"></tbody></table></div>
+          <p class="wf-note" data-note="1"><span class="wf-note-label">Behaviour</span>Condition is shown in words, not colour alone. Sample results; the real ones would come from the inspection system.</p>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Viewing request -->
+  <div class="wf-modal" id="view-modal" role="dialog" aria-modal="true" aria-labelledby="view-title">
+    <div class="wf-modal-panel">
+      <button type="button" class="wf-modal-close" aria-label="Close">×</button>
+      <h2 id="view-title">Book a viewing</h2>
+      <form id="view-form" novalidate>
+        <p data-u="view-where" class="muted"></p>
+        <div class="field"><label for="v-name">Your name</label><input type="text" id="v-name" autocomplete="name" data-required><p class="field-error" hidden>Enter your name.</p></div>
+        <div class="field"><label for="v-mob">Mobile number</label><input type="tel" id="v-mob" autocomplete="tel" data-required data-pattern="^(\+20|0)?1[0125]\d{8}$"><p class="field-hint">For example 0100 123 4567</p><p class="field-error" hidden>Enter an 11-digit Egyptian mobile number, for example 0100 123 4567.</p></div>
+        <div class="field"><label for="v-date">Preferred day</label><input type="date" id="v-date" min="2026-10-02" data-required><p class="field-error" hidden>Choose a day.</p></div>
+        <button type="submit" class="btn">Request viewing</button>
+        <p data-view-done hidden role="status"></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- @@include footer.html -->
+</body>
+</html>

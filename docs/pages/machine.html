@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1 · Machine page – Mantrac prototypes</title>
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/proto.css">
+  <link rel="stylesheet" href="../css/theme.css">
+</head>
+<body data-page="machine">
+<a class="sr-only" href="#main">Skip to content</a>
+<!-- Prototype navigator (R01, R02) -->
+<nav class="proto-nav" aria-label="Prototypes">
+  <div class="container">
+    <a class="proto-pack" href="../index.html">Mantrac roadmap <span>· greyscale v0.1</span></a>
+    <ul class="proto-links">
+      <li><a href="../index.html" data-proto="0">Overview</a></li>
+      <li><a href="../pages/machines.html" data-proto="1" title="Find the right Cat machine">1<span class="proto-title">&nbsp;Machines</span></a></li>
+      <li><a href="../pages/used.html" data-proto="2" title="Used and rental">2<span class="proto-title">&nbsp;Used &amp; rental</span></a></li>
+      <li><a href="../pages/enquiry.html" data-proto="3" title="One enquiry">3<span class="proto-title">&nbsp;Enquiry</span></a></li>
+      <li><a href="../pages/offers.html" data-proto="4" title="Offers and finance">4<span class="proto-title">&nbsp;Offers &amp; finance</span></a></li>
+      <li><a href="../pages/branches.html" data-proto="5" title="Mantrac near you">5<span class="proto-title">&nbsp;Near you</span></a></li>
+    </ul>
+    <a class="proto-basket" href="../pages/enquiry.html" data-basket-link>Quote <span class="basket-count" data-basket-count>0</span></a>
+    <button type="button" class="notes-switch" role="switch" aria-checked="false" data-notes-switch hidden>
+      <span class="track" aria-hidden="true"></span><span>Notes</span>
+    </button>
+  </div>
+</nav>
+
+
+  <main id="main">
+    <div class="container">
+
+      <aside class="proto-why" aria-label="About this prototype">
+        <div>
+          <h2>What we're proposing</h2>
+          <p>A product page that answers the three things a buyer asks before they ask anything else: is it here, roughly what does it cost, and who do I talk to. Stock names a branch, the price is a "from" figure or a monthly finance figure, and the contact is the sales team for the visitor's governorate rather than the same Alexandria branch for everyone.</p>
+        </div>
+        <div>
+          <h2>Why</h2>
+          <ul>
+            <li>The live 302.7 CR page and its quote page both show Mantrac Amerya in Alexandria, wherever the visitor is.</li>
+            <li>Every product says "Price on request". That may be the right policy, but it leaves the WhatsApp and hotline teams answering the same first question all day.</li>
+            <li>Product addresses sit under /en-eg/api/new-products/, outside the excavators section the listing lives in.</li>
+          </ul>
+        </div>
+      </aside>
+
+      <!-- Product summary (R12, R16, R17, R18) -->
+      <!-- Clean product URL (R17) -->
+      <p class="wf-note" data-note="1"><span class="wf-note-label">Behaviour</span>Proposed address: <span class="code" data-m="url"></span>, with the old /api/new-products/ addresses redirected permanently (R17).</p>
+      <section class="two-col even" aria-labelledby="mname">
+        <div>
+          <div class="carousel gallery" aria-label="Photos">
+            <div class="carousel-track">
+              <div class="carousel-item"><div class="wf-placeholder">Product photo 1 of 4 · studio</div></div>
+              <div class="carousel-item"><div class="wf-placeholder">Product photo 2 of 4 · at work</div></div>
+              <div class="carousel-item"><div class="wf-placeholder">Product photo 3 of 4 · cab</div></div>
+              <div class="carousel-item"><div class="wf-placeholder">Video · walkaround</div></div>
+            </div>
+            <div class="carousel-controls"><button type="button" class="carousel-arrow" data-dir="prev" aria-label="Previous photo">‹</button><button type="button" class="carousel-arrow" data-dir="next" aria-label="Next photo">›</button></div>
+            <div class="carousel-indicators" style="padding-top:.75rem"></div>
+          </div>
+        </div>
+        <div class="stack">
+          <span class="muted" data-m="size"></span>
+          <h1 id="mname" data-m="name">Cat excavator</h1>
+          <div class="row-between"><span data-m="stock"></span><div class="seg" data-units role="group" aria-label="Units"><button type="button" data-value="metric">Metric</button><button type="button" data-value="us">US</button></div></div>
+          <dl class="specs" data-m="specs"></dl>
+          <p class="price-line" data-m="price"></p>
+          <div class="row">
+            <button type="button" class="btn" data-m="add">Add to quote</button>
+            <a class="btn btn-secondary" data-m="wa" href="#" target="_blank" rel="noopener">Ask for today's price on WhatsApp</a>
+          </div>
+          <div class="row">
+            <button type="button" class="link-btn" data-m="compare">Add to compare</button>
+            <a data-m="finance" href="../pages/finance.html">Estimate monthly finance</a>
+            <a href="#">Download spec sheet (PDF, 2.2 MB)</a>
+          </div>
+          <p class="wf-note query" data-note="2"><span class="wf-note-label">Open question</span><strong>Q:</strong> Is a monthly finance figure easier for Mantrac to publish than a cash price? It is calculated from the sample rates in prototype 4 (R18).</p>
+        </div>
+      </section>
+
+      <!-- Local expert (R19) -->
+      <section class="two-col" aria-label="Details and local contact">
+        <div>
+          <div class="tabs" role="tablist">
+            <button type="button" class="tab active" data-tab="t-benefits">Benefits</button>
+            <button type="button" class="tab" data-tab="t-specs">Full specification</button>
+            <button type="button" class="tab" data-tab="t-support">Support and warranty</button>
+          </div>
+          <div>
+            <div class="tab-panel active" id="t-benefits">
+              <h3>Lower running costs</h3>
+              <p>Auto idle and auto engine shutdown cut fuel use on sites where the machine waits for trucks. Ground-level service points shorten daily checks.</p>
+              <h3>Easy to operate</h3>
+              <p>Joystick controls and a touchscreen monitor with operator profiles, so several operators can share the machine without resetting it.</p>
+              <p class="muted">Benefit copy from Caterpillar, edited to three or four points per machine.</p>
+            </div>
+            <div class="tab-panel" id="t-specs">
+              <div class="accordion" data-single>
+                <div class="accordion-item open"><button type="button" class="accordion-title">Engine <span class="accordion-icon" aria-hidden="true">▾</span></button><div class="accordion-content"><p>Engine model, net power (ISO 9249), displacement, emissions standard.</p></div></div>
+                <div class="accordion-item"><button type="button" class="accordion-title">Weights <span class="accordion-icon" aria-hidden="true">▾</span></button><div class="accordion-content"><p>Operating weight by configuration, counterweight options.</p></div></div>
+                <div class="accordion-item"><button type="button" class="accordion-title">Dimensions and working ranges <span class="accordion-icon" aria-hidden="true">▾</span></button><div class="accordion-content"><div class="wf-placeholder ratio-16-9">Working range diagram</div></div></div>
+                <div class="accordion-item"><button type="button" class="accordion-title">Service refill capacities <span class="accordion-icon" aria-hidden="true">▾</span></button><div class="accordion-content"><p>Fuel tank, DEF tank where fitted, hydraulic system, engine oil.</p></div></div>
+              </div>
+            </div>
+            <div class="tab-panel" id="t-support">
+              <p>Every new Cat machine from Mantrac comes with the manufacturer's warranty. An Equipment Protection Plan (EPP) extends cover on the power train and hydraulics.</p>
+              <p><a href="../pages/book-service.html">Book a service visit</a> · <a href="../pages/branches.html">Find a workshop</a></p>
+            </div>
+          </div>
+        </div>
+        <aside class="panel surface" data-m="expert" aria-label="Your local contact"></aside>
+      </section>
+      <p class="wf-note" data-note="3"><span class="wf-note-label">Behaviour</span>The local contact panel uses the remembered governorate to show the nearest branch and the product line team, with WhatsApp going to that team's number (R19).</p>
+
+      <section aria-labelledby="sim-h">
+        <h2 class="section-title" id="sim-h">Similar excavators</h2>
+        <div class="mcards" data-m="similar"></div>
+      </section>
+
+    </div>
+  </main>
+
+  <div class="compare-tray" data-tray hidden></div>
+<!-- Previous / next pager (R03) -->
+<nav class="proto-pager" aria-label="Prototype pages">
+  <div class="container" data-pager>
+    <p class="sample-note">Greyscale prototype. Machines, stock, prices, dates and people are sample data for discussion; model names and branch names come from mantracgroup.com.</p>
+  </div>
+</nav>
+<!-- Mobile contact dock (R07, R25 idea 25, R35) -->
+<nav class="contact-dock" aria-label="Contact Mantrac">
+  <a href="tel:19266" data-dock="call"><span class="glyph" aria-hidden="true">T</span>Call 19266</a>
+  <a href="#" data-dock="whatsapp" target="_blank" rel="noopener"><span class="glyph" aria-hidden="true">W</span>WhatsApp</a>
+  <a href="../pages/branches.html" data-dock="branch"><span class="glyph" aria-hidden="true">B</span>Branch</a>
+  <button type="button" data-modal-open="chat-modal"><span class="glyph" aria-hidden="true">C</span>Chat</button>
+</nav>
+<div class="wf-modal" id="chat-modal" role="dialog" aria-modal="true" aria-labelledby="chat-title">
+  <div class="wf-modal-panel">
+    <button type="button" class="wf-modal-close" aria-label="Close">×</button>
+    <h2 id="chat-title">Chat with Mantrac</h2>
+    <p>Live chat opens only when you ask for it. Sunday to Thursday, 8:30 to 16:30.</p>
+    <div class="wf-placeholder embed">Live chat window (Salesforce)</div>
+  </div>
+</div>
+<script src="../js/data.js"></script>
+<script src="../js/wireframe.js"></script>
+<script src="../js/proto.js"></script>
+<script src="../js/pages.js"></script>
+
+</body>
+</html>
