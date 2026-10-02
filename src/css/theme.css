@@ -1,18 +1,358 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap");
 /* ==========================================================================
-   theme.css — the design layer, deliberately empty at wireframe stage.
+   theme.css — the Mantrac design layer (phase 3).
 
-   Loaded last, after base.css and components.css. Nothing here during the
-   structure phase. When the project moves to design, brand colour, typography
-   and imagery treatment go in this file ONLY — so the design layer can be
-   applied, reviewed and reverted without touching a single page file or any
-   structural CSS.
+   Everything visual about the designed prototypes lives here. Delete this
+   file and the pack returns to the greyscale wireframes, and photos.js stops
+   loading photography (it checks --mt-theme).
 
-   When you do fill it in, prefer overriding the custom properties in :root
-   over rewriting component rules:
-
-     :root {
-       --wf-action: #e8590c;
-       --wf-text:   #1a1a1a;
-     }
-
+   Tokens come from the phase 1 design system, measured from
+   mantracgroup.com/en-eg on 1 October 2026. Univers LT Std is a licensed
+   face; Roboto is the labelled stand-in until Mantrac supplies a web licence.
    ========================================================================== */
+
+:root {
+  --mt-theme: 1;
+
+  /* Brand */
+  --mt-yellow: #FEC70B;
+  --mt-yellow-btn: #FFD11A;
+  --mt-black: #000000;
+  --mt-ink: #1A1A1A;
+  --mt-night: #121212;
+  --mt-night-2: #1C1C1C;
+  --mt-charcoal: #262626;
+  --mt-grey-65: #595959;
+  --mt-grey-65-aa: #4D4D4D;
+
+  /* Surfaces and lines */
+  --mt-page: #EFF3F6;
+  --mt-section: #F2F2F2;
+  --mt-white: #FFFFFF;
+  --mt-line: #DDDDDD;
+  --mt-line-strong: #B3B3B3;
+  --mt-line-input: #CED4DA;
+  --mt-cream: #FFF8DB;
+
+  /* Status (added for the prototypes) */
+  --mt-ok: #1E7A3C;      --mt-ok-bg: #E3F2E8;
+  --mt-warn: #8A5A00;    --mt-warn-bg: #FFF3D6;
+  --mt-alert: #B42318;   --mt-alert-bg: #FDE7E5;
+
+  /* Type */
+  --mt-font: "Univers LT Std", "UniversLTStd", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --mt-radius: 3px;
+  --mt-angle: 50px;
+  --mt-shadow-btn: 0 3px 6px rgba(0, 0, 0, 0.16);
+  --mt-shadow-nav: 0 3px 6px rgba(0, 0, 0, 0.12);
+
+  /* Map the wireframe variables onto the brand */
+  --wf-page: var(--mt-white);
+  --wf-surface: var(--mt-section);
+  --wf-placeholder: var(--mt-charcoal);
+  --wf-border: var(--mt-line);
+  --wf-border-strong: var(--mt-line-strong);
+  --wf-text: var(--mt-ink);
+  --wf-text-muted: var(--mt-grey-65);
+  --wf-action: var(--mt-ink);
+  --wf-action-hover: var(--mt-black);
+  --wf-note-bg: var(--mt-cream);
+  --wf-note-border: #B38A00;
+  --wf-note-query-bg: var(--mt-alert-bg);
+  --wf-note-query-border: var(--mt-alert);
+  --wf-radius: var(--mt-radius);
+  --wf-max-width: 1170px;
+}
+
+/* --- Base ---------------------------------------------------------------- */
+body {
+  font-family: var(--mt-font);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--mt-ink);
+  background: var(--mt-page);
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, h4, h5, h6 { font-weight: 700; letter-spacing: -0.005em; }
+h1 { font-size: clamp(2rem, 1.2rem + 2.6vw, 3.375rem); line-height: 1.33; }
+h2 { font-size: clamp(1.375rem, 1.1rem + 0.8vw, 1.625rem); line-height: 1.5; }
+h3 { font-size: 1.1875rem; line-height: 1.4; }
+a { color: var(--mt-ink); text-decoration: underline; text-decoration-color: var(--mt-yellow); text-decoration-thickness: 2px; text-underline-offset: 0.2em; }
+a:hover { color: var(--mt-black); text-decoration-color: var(--mt-black); }
+:focus-visible { outline: 3px solid var(--mt-black); outline-offset: 2px; box-shadow: 0 0 0 5px var(--mt-yellow); }
+::selection { background: var(--mt-yellow); color: var(--mt-black); }
+.muted, small, .wf-meta { color: var(--mt-grey-65); }
+.lead { color: #333; font-size: 1.125rem; line-height: 1.6; }
+main { padding-top: 0; }
+.container { max-width: calc(1170px + 2 * var(--wf-gutter)); }
+
+/* --- Prototype navigator (furniture, styled as the Mantrac top bar) ------ */
+.proto-nav { background: var(--mt-black); border-bottom: 0; box-shadow: var(--mt-shadow-nav); }
+.proto-pack { color: var(--mt-white); font-weight: 900; letter-spacing: 0.02em; }
+.proto-pack span { color: var(--mt-yellow); font-weight: 500; }
+.proto-pack, .proto-pack:hover { text-decoration: none; }
+@media (min-width: 1024px) { .btn.filter-toggle { display: none; } }
+@media (min-width: 1340px) and (max-width: 1499px) { .proto-links .proto-title { display: none; } }
+.proto-links a { border-color: #3A3A3A; color: var(--mt-white); background: transparent; text-decoration: none; font-weight: 500; }
+.proto-links a:hover { border-color: var(--mt-yellow); color: var(--mt-yellow); }
+.proto-links a[aria-current="page"] { background: var(--mt-yellow); border-color: var(--mt-yellow); color: var(--mt-black); font-weight: 700; }
+.proto-links a.is-parent { background: transparent; border-color: var(--mt-yellow); color: var(--mt-yellow); }
+.proto-basket { border-color: #3A3A3A; color: var(--mt-white); text-decoration: none; font-weight: 500; }
+.proto-basket:hover { border-color: var(--mt-yellow); color: var(--mt-yellow); }
+.basket-count { background: var(--mt-yellow); color: var(--mt-black); }
+.notes-switch { color: var(--mt-white); }
+.notes-switch .track { background: #4D4D4D; }
+.notes-switch[aria-checked="true"] .track { background: var(--mt-yellow); }
+.notes-switch[aria-checked="true"] .track::after { background: var(--mt-black); }
+
+/* --- Page head: dark photo band with the angled edge -------------------- */
+.page-head {
+  position: relative;
+  margin: 0 calc(50% - 50vw) 2rem;
+  padding: clamp(2.5rem, 5vw, 4.5rem) calc(50vw - 50%) calc(clamp(2.5rem, 5vw, 4.5rem) + var(--mt-angle));
+  background-color: var(--mt-night);
+  background-image:
+    linear-gradient(90deg, rgba(18, 18, 18, 0.94) 0%, rgba(18, 18, 18, 0.8) 42%, rgba(18, 18, 18, 0.25) 100%),
+    linear-gradient(135deg, transparent 0 70%, rgba(254, 199, 11, 0.16) 70% 74%, transparent 74%);
+  background-size: cover;
+  color: var(--mt-white);
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--mt-angle)), 64% 100%, 0 calc(100% - var(--mt-angle)));
+}
+.page-head.has-photo {
+  background-image:
+    linear-gradient(90deg, rgba(18, 18, 18, 0.94) 0%, rgba(18, 18, 18, 0.78) 45%, rgba(18, 18, 18, 0.2) 100%),
+    var(--photo);
+  background-position: center, center;
+}
+.page-head::before {
+  content: attr(data-eyebrow);
+  display: block;
+  color: var(--mt-yellow);
+  font-weight: 700;
+  font-size: clamp(1.125rem, 0.9rem + 0.8vw, 1.75rem);
+  line-height: 1.6;
+  margin-bottom: 0.25rem;
+}
+.page-head h1 { color: var(--mt-white); max-width: 20ch; margin-bottom: 1rem; }
+.page-head .lead { color: #E6E6E6; max-width: 60ch; }
+.page-head .muted, .page-head .wf-meta { color: #CFCFCF; }
+.page-head a { color: var(--mt-white); }
+.page-head .row-between { align-items: flex-start; }
+.page-head select { max-width: 100%; }
+.page-head .btn-secondary { color: var(--mt-white); border-color: var(--mt-white); }
+.page-head--home { padding-bottom: calc(clamp(3rem, 6vw, 6rem) + var(--mt-angle)); padding-top: clamp(3rem, 6vw, 6rem); }
+.page-head--home h1 { max-width: 18ch; }
+@media (max-width: 768px) {
+  .page-head { --mt-angle: 28px; }
+  .page-head.has-photo { background-image: linear-gradient(180deg, rgba(18, 18, 18, 0.72) 0%, rgba(18, 18, 18, 0.9) 70%), var(--photo); }
+}
+
+/* --- Proposal panel and notes (reviewer furniture) ---------------------- */
+.proto-why { background: var(--mt-cream); border: 0; border-left: 6px solid var(--mt-yellow); border-radius: var(--mt-radius); box-shadow: 0 1px 0 var(--mt-line); }
+.proto-why h2 { font-size: 0.8125rem; letter-spacing: 0.08em; color: var(--mt-ink); }
+.wf-note { background: var(--mt-cream); border-left-color: #B38A00; }
+.wf-note::before { background: var(--mt-black); color: var(--mt-yellow); }
+.wf-note.query::before { background: var(--mt-alert); color: var(--mt-white); }
+.page-head .wf-note { color: var(--mt-ink); }
+
+/* --- Section titles ----------------------------------------------------- */
+.section-title {
+  border-bottom: 0;
+  padding-bottom: 0.875rem;
+  background: linear-gradient(var(--mt-yellow), var(--mt-yellow)) left bottom / 56px 4px no-repeat;
+}
+
+/* --- Buttons ------------------------------------------------------------ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  background: var(--mt-yellow-btn);
+  color: var(--mt-black);
+  border: 1px solid var(--mt-yellow-btn);
+  border-radius: var(--mt-radius);
+  font-weight: 700;
+  font-size: 0.8125rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0.8125rem 1.375rem 0.75rem;
+  box-shadow: var(--mt-shadow-btn);
+  line-height: 1.3;
+}
+.btn:not(.btn-sm)::after { content: ""; width: 6px; height: 6px; border-right: 2px solid currentColor; border-top: 2px solid currentColor; transform: rotate(45deg); flex: none; }
+.btn:hover { background: var(--mt-black); color: var(--mt-yellow); border-color: var(--mt-black); text-decoration: none; }
+.btn-secondary { background: transparent; color: var(--mt-ink); border-color: var(--mt-ink); box-shadow: none; }
+.btn-secondary:hover { background: var(--mt-black); color: var(--mt-yellow); }
+.btn-sm { padding: 0.5625rem 0.875rem 0.5rem; font-size: 0.75rem; }
+.btn[disabled], .btn[disabled]:hover { background: var(--mt-section); border-color: var(--mt-line); color: var(--mt-grey-65); box-shadow: none; opacity: 1; }
+.btn-block { display: flex; width: 100%; }
+.link-btn { color: var(--mt-ink); text-decoration-color: var(--mt-yellow); text-decoration-thickness: 2px; text-underline-offset: 0.2em; font-weight: 500; }
+
+/* --- Segmented toggles: the live US/Metric pill -------------------------- */
+.seg { border: 0; background: var(--mt-black); padding: 3px; gap: 2px; }
+.seg button { background: transparent; color: var(--mt-white); font-weight: 700; border-radius: 999px; padding: 0.4375rem 0.875rem; }
+.seg button:hover { color: var(--mt-yellow); }
+.seg button[aria-pressed="true"] { background: var(--mt-yellow); color: var(--mt-black); }
+.chip-x { background: var(--mt-black); color: var(--mt-white); border-color: var(--mt-black); font-weight: 700; }
+.chip-x:hover { background: var(--mt-yellow); color: var(--mt-black); border-color: var(--mt-yellow); }
+
+/* --- Forms --------------------------------------------------------------- */
+label, legend { font-weight: 700; font-size: 0.9375rem; }
+input[type="text"], input[type="email"], input[type="search"], input[type="number"], input[type="date"], input[type="tel"], select, textarea {
+  border: 1px solid var(--mt-line-input);
+  border-radius: 3.75px;
+  min-height: 44px;
+  background-color: var(--mt-white);
+}
+input:focus-visible, select:focus-visible, textarea:focus-visible { border-color: var(--mt-black); }
+input[type="checkbox"], input[type="radio"], input[type="range"] { accent-color: var(--mt-yellow); }
+.check { font-weight: 400; }
+.field-hint { color: var(--mt-grey-65); }
+.field-error { color: var(--mt-alert); font-weight: 700; }
+.field.has-error input, .field.has-error select, .field.has-error textarea { border-color: var(--mt-alert); box-shadow: 0 0 0 1px var(--mt-alert); }
+.filter-bar { background: var(--mt-white); border-color: var(--mt-line); border-top: 4px solid var(--mt-yellow); }
+
+/* --- Panels, cards, tabs, accordions ------------------------------------ */
+.panel { background: var(--mt-white); border-color: var(--mt-line); }
+.panel.surface { background: var(--mt-section); border-color: transparent; }
+.card { background: var(--mt-white); border-color: var(--mt-line); }
+.card-title { font-size: 1.1875rem; }
+.card-text { color: #333; }
+.card-link { font-weight: 700; }
+.empty-state { background: var(--mt-white); border-color: var(--mt-line-strong); }
+.tabs { border-bottom: 1px solid var(--mt-line); gap: 0.5rem; }
+.tab { font-weight: 700; color: var(--mt-grey-65); border: 0; border-bottom: 4px solid transparent; border-radius: 0; padding: 0.75rem 0.25rem; margin-right: 1rem; background: none; }
+.tab:hover { color: var(--mt-ink); }
+.tab.active { color: var(--mt-ink); background: none; border: 0; border-bottom: 4px solid var(--mt-yellow); margin-bottom: -1px; }
+.accordion { border-color: var(--mt-line); background: var(--mt-white); }
+.accordion-title { background: var(--mt-white); }
+.accordion-item.open { box-shadow: inset 4px 0 0 var(--mt-yellow); }
+.kv dt { color: var(--mt-grey-65); }
+.disclaimer { border-left-color: var(--mt-yellow); }
+.result-big { font-size: clamp(2rem, 1.4rem + 1.6vw, 2.75rem); }
+table.data thead th { border-bottom-color: var(--mt-black); }
+table.data tr.diff td { background: var(--mt-cream); }
+.code { background: var(--mt-section); border-color: var(--mt-line); }
+
+/* --- Illustrated placeholder, replaced by photography when it loads ----- */
+.wf-placeholder {
+  background-color: var(--mt-charcoal);
+  background-image:
+    linear-gradient(160deg, transparent 0 58%, var(--mt-yellow) 58% 63%, transparent 63%),
+    linear-gradient(160deg, transparent 0 66%, rgba(254, 199, 11, 0.35) 66% 69%, transparent 69%);
+  border: 0;
+  color: #BDBDBD;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+.wf-placeholder.has-photo { position: relative; padding: 0; font-size: 0; color: transparent; background: var(--mt-night); overflow: hidden; }
+.wf-placeholder.has-photo .photo { display: block; width: 100%; height: 100%; object-fit: cover; }
+.wf-placeholder.is-product { background: var(--mt-white); }
+.wf-placeholder.is-product .photo { object-fit: contain; padding: 4%; }
+.map .wf-placeholder, .map { background-image: none; }
+
+/* --- Machine, used, rental and offer cards ------------------------------- */
+.mcard { background: var(--mt-white); border-color: var(--mt-line-strong); border-radius: var(--mt-radius); overflow: hidden; transition: box-shadow 0.15s, border-color 0.15s; }
+.mcard:hover { border-color: var(--mt-ink); box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1); }
+.mcard .wf-placeholder { border-bottom: 1px solid var(--mt-line); }
+.mcard-cat { color: #333; font-size: 0.875rem; }
+.mcard h3 { font-size: 1.1875rem; }
+.mcard h3 a { text-decoration: none; }
+.mcard h3 a:hover { text-decoration: underline; text-decoration-color: var(--mt-yellow); }
+.specs div { border-bottom: 1px solid var(--mt-section); }
+.specs dt { color: var(--mt-grey-65); }
+.price-line strong { font-size: 1.0625rem; }
+.mcard-actions { padding-top: 0.25rem; }
+.cmp { font-weight: 700; }
+.offer { background: var(--mt-white); border-color: var(--mt-line); border-radius: var(--mt-radius); overflow: hidden; }
+.offer-dates { color: var(--mt-ink); }
+.offer .badge.tier { justify-self: start; }
+
+/* --- Badges -------------------------------------------------------------- */
+.badge { border: 0; font-weight: 700; padding: 0.3125rem 0.625rem; background: var(--mt-section); color: var(--mt-ink); }
+.badge.s-in { background: var(--mt-ok-bg); color: var(--mt-ok); }
+.badge.s-order, .badge.s-reserved, .badge.s-booked { background: var(--mt-warn-bg); color: var(--mt-warn); }
+.badge.s-sold { background: var(--mt-section); color: var(--mt-grey-65); }
+.badge.tier { background: var(--mt-black); color: var(--mt-yellow); text-decoration: none; text-transform: uppercase; letter-spacing: 0.04em; font-size: 0.6875rem; }
+a.badge.tier:hover { background: var(--mt-yellow); color: var(--mt-black); }
+.badge.sample { background: transparent; border: 1px dashed var(--mt-line-strong); color: var(--mt-grey-65); font-weight: 500; }
+
+/* --- Filters ------------------------------------------------------------- */
+.filters { background: var(--mt-white); border-color: var(--mt-line); border-top: 4px solid var(--mt-yellow); }
+.filters fieldset { border-top-color: var(--mt-section); }
+.result-count strong { font-size: 1.125rem; }
+
+/* --- Compare tray, steps, choices ---------------------------------------- */
+.compare-tray { background: var(--mt-black); color: var(--mt-white); border-top: 3px solid var(--mt-yellow); }
+.compare-tray strong { color: var(--mt-yellow); }
+.compare-tray li { border-color: #3A3A3A; }
+.compare-tray li button { color: #BDBDBD; }
+.compare-tray .link-btn { color: var(--mt-white); }
+.steps li { border-top-color: var(--mt-line); }
+.steps li.done, .steps li.current { border-top-color: var(--mt-yellow); }
+.choice label { background: var(--mt-white); border-color: var(--mt-line-strong); }
+.choice label:hover { border-color: var(--mt-ink); }
+.choice input:checked + label { border-color: var(--mt-black); background: var(--mt-cream); box-shadow: inset 4px 0 0 var(--mt-yellow); }
+
+/* --- Basket -------------------------------------------------------------- */
+.basket-item { background: var(--mt-white); border-color: var(--mt-line); }
+.basket-item .wf-placeholder { font-size: 0.5rem; }
+
+/* --- Branch map ---------------------------------------------------------- */
+.map {
+  border: 0;
+  background-color: var(--mt-charcoal);
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+.map .map-label { color: #9A9A9A; }
+.map .nile { background: #5A7A99; width: 4px; }
+.pin { background: var(--mt-yellow); border-color: var(--mt-black); color: var(--mt-black); box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4); }
+.pin.dim { opacity: 0.35; }
+.pin.active { background: var(--mt-black); color: var(--mt-yellow); border-color: var(--mt-yellow); }
+.branch { background: var(--mt-white); border-color: var(--mt-line); border-radius: var(--mt-radius); }
+.branch.active { border: 2px solid var(--mt-black); box-shadow: inset 6px 0 0 var(--mt-yellow); }
+.svc-tags span { background: var(--mt-section); border-color: transparent; font-weight: 500; }
+
+@media (min-width: 1024px) { .map { position: sticky; top: 4.5rem; } }
+#promise-h { margin-bottom: 0.5rem; }
+section.panel.surface[aria-labelledby="promise-h"] { background: var(--mt-white); border-left: 6px solid var(--mt-yellow); }
+
+/* --- Landing cards ------------------------------------------------------- */
+.proto-card { background: var(--mt-white); border-color: var(--mt-line); overflow: hidden; position: relative; transition: border-color 0.15s, box-shadow 0.15s; }
+.proto-card:hover { border-color: var(--mt-ink); box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1); }
+.proto-card > .wf-placeholder { margin: -1.25rem -1.25rem 0.5rem; border-radius: 0; }
+.proto-card .n { position: absolute; top: 1rem; left: 1rem; width: 2.75rem; height: 2.75rem; display: flex; align-items: center; justify-content: center; background: var(--mt-yellow); color: var(--mt-black); font-size: 1.375rem; border-radius: var(--mt-radius); }
+.proto-card .try { border-left-color: var(--mt-yellow); color: #333; }
+
+/* --- Contact dock -------------------------------------------------------- */
+.contact-dock { background: var(--mt-black); border-top: 3px solid var(--mt-yellow); }
+.contact-dock a, .contact-dock button { color: var(--mt-white); border-left-color: #2A2A2A; text-decoration: none; }
+.contact-dock a:hover, .contact-dock button:hover { background: #1F1F1F; color: var(--mt-yellow); }
+.contact-dock .glyph { border-color: var(--mt-yellow); color: var(--mt-yellow); }
+.contact-dock > :first-child { background: var(--mt-yellow); color: var(--mt-black); }
+.contact-dock > :first-child .glyph { border-color: var(--mt-black); color: var(--mt-black); }
+.contact-dock > :first-child:hover { background: var(--mt-yellow-btn); color: var(--mt-black); }
+@media (min-width: 769px) { .contact-dock { border: 0; border-radius: var(--mt-radius); overflow: hidden; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3); } }
+
+/* --- Toast, modal -------------------------------------------------------- */
+.toast { background: var(--mt-black); border-left: 4px solid var(--mt-yellow); }
+.toast a { color: var(--mt-yellow); }
+.wf-modal { background: rgba(18, 18, 18, 0.7); }
+.wf-modal-panel { border-radius: var(--mt-radius); border-top: 4px solid var(--mt-yellow); }
+
+/* --- Pager: styled as the Mantrac footer --------------------------------- */
+.proto-pager { background: var(--mt-night); border-top: 0; color: #D9D9D9; }
+.proto-pager a { background: var(--mt-night-2); border-color: #2E2E2E; color: var(--mt-white); text-decoration: none; }
+.proto-pager a:hover { border-color: var(--mt-yellow); }
+.proto-pager small { color: var(--mt-yellow); }
+.proto-pager strong { color: var(--mt-white); }
+.proto-pager .sample-note { color: #BDBDBD; }
+.proto-pager .sample-note::after { content: " Photography © Mantrac Group. Product images © Caterpillar Inc., as shown on mantracgroup.com."; }
+
+@media (prefers-reduced-motion: reduce) { .mcard, .proto-card { transition: none; } }

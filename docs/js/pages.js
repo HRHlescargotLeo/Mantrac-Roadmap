@@ -37,7 +37,7 @@
         '<label class="cmp"><input type="checkbox" data-compare="' + m.id + '"' + checked + '> Compare</label></div>' +
         '<a href="' + MT.wa('Hello Mantrac, please send me today\'s price for the Cat ' + m.name + ' excavator.') + '" target="_blank" rel="noopener">Ask for today\'s price on WhatsApp</a>';
     return '<article class="mcard">' +
-      '<div class="wf-placeholder">Product photo ' + esc(m.name) + '</div>' +
+      '<div class="wf-placeholder" data-photo="model:' + m.id + '">Product photo ' + esc(m.name) + '</div>' +
       '<div class="mcard-body"><span class="mcard-cat">' + m.size + ' excavator</span>' +
       '<h3><a href="' + href + '">Cat ' + esc(m.name) + '</a></h3>' +
       '<dl class="specs"><div><dt>Net power</dt><dd>' + MT.spec('kw', m.kw) + '</dd></div>' +
@@ -165,7 +165,7 @@
         var s = suggestions();
         MT.set('finder', answers);
         body.innerHTML = '<p>Based on your answers, these are the excavators we\'d start with. A Mantrac specialist can confirm the right size and attachments.</p>' +
-          '<ul class="basket-list">' + s.map(function (m) { return '<li class="basket-item"><div class="wf-placeholder">Photo</div><div><strong><a href="' + MT.rel('pages/machine.html') + '?model=' + m.id + '">Cat ' + m.name + '</a></strong><br><small>' + m.size + ' · ' + MT.spec('kg', m.kg) + ' · dig ' + MT.spec('mm', m.dig) + '</small><br>' + MT.badge(m.stock) + '</div><label class="cmp"><input type="checkbox" data-compare="' + m.id + '"' + (MT.compare().indexOf(m.id) > -1 ? ' checked' : '') + '> Compare</label></li>'; }).join('') + '</ul>' +
+          '<ul class="basket-list">' + s.map(function (m) { return '<li class="basket-item"><div class="wf-placeholder" data-photo="model:' + m.id + '">Photo</div><div><strong><a href="' + MT.rel('pages/machine.html') + '?model=' + m.id + '">Cat ' + m.name + '</a></strong><br><small>' + m.size + ' · ' + MT.spec('kg', m.kg) + ' · dig ' + MT.spec('mm', m.dig) + '</small><br>' + MT.badge(m.stock) + '</div><label class="cmp"><input type="checkbox" data-compare="' + m.id + '"' + (MT.compare().indexOf(m.id) > -1 ? ' checked' : '') + '> Compare</label></li>'; }).join('') + '</ul>' +
           '<p style="margin-top:1rem"><a class="btn" href="' + MT.rel('pages/compare.html') + '?ids=' + s.map(function (m) { return m.id; }).join(',') + '">Compare these 3</a> <button type="button" class="btn btn-secondary" data-finder-restart>Start again</button></p>';
         next.hidden = true;
       }
@@ -193,6 +193,9 @@
     MT.remember('model', m.id);
     document.title = 'Cat ' + m.name + ' – Mantrac prototypes';
     MT.setDockText('Hello Mantrac, I\'d like a price for the Cat ' + m.name + ' excavator.');
+    var slides = $$('.gallery .carousel-item .wf-placeholder');
+    if (slides[0]) slides[0].setAttribute('data-photo', 'model:' + m.id);
+    if (slides[1]) slides[1].setAttribute('data-photo', 'scene:' + (m.id === '320-gx' ? '320gx' : 'Excavators'));
     function draw() {
       $$('[data-m="name"]').forEach(function (el) { el.textContent = 'Cat ' + m.name; });
       $('[data-m="size"]').textContent = m.size + ' excavator';
@@ -268,7 +271,7 @@
     var t = MT.tiers[u.tier], b = MT.branch(u.branch);
     var href = MT.rel('pages/used-machine.html') + '?id=' + u.id;
     return '<article class="mcard">' +
-      '<div class="wf-placeholder">Photo · ' + u.photos + ' photos</div>' +
+      '<div class="wf-placeholder" data-photo="used:' + u.id + '">Photo · ' + u.photos + ' photos</div>' +
       '<div class="mcard-body"><span class="mcard-cat">' + esc(u.fam) + '</span>' +
       '<h3><a href="' + href + '">Cat ' + esc(u.name) + ', ' + u.year + '</a></h3>' +
       '<dl class="specs"><div><dt>Hours</dt><dd>' + MT.num(u.hrs) + '</dd></div><div><dt>Branch</dt><dd>' + esc(b.city) + '</dd></div></dl>' +
@@ -318,7 +321,7 @@
     document.title = 'Used Cat ' + u.name + ' ' + u.year + ' – Mantrac prototypes';
     MT.setDockText('Hello Mantrac, I\'m interested in the used Cat ' + u.name + ' (' + u.year + ', ' + MT.num(u.hrs) + ' hours) at ' + b.city + '.');
     var shots = ['Left side', 'Right side', 'Front and bucket', 'Cab interior', 'Hour meter', 'Undercarriage'];
-    $('[data-ugallery]').innerHTML = '<div class="carousel-track">' + shots.map(function (s, i) { return '<div class="carousel-item"><div class="wf-placeholder">Photo ' + (i + 1) + ' of ' + u.photos + ' · ' + s + '</div></div>'; }).join('') + '</div>' +
+    $('[data-ugallery]').innerHTML = '<div class="carousel-track">' + shots.map(function (s, i) { return '<div class="carousel-item"><div class="wf-placeholder"' + (i === 0 ? ' data-photo="used:' + u.id + '"' : i === 1 ? ' data-photo="scene:' + u.fam + '"' : '') + '>Photo ' + (i + 1) + ' of ' + u.photos + ' · ' + s + '</div></div>'; }).join('') + '</div>' +
       '<div class="carousel-controls"><button type="button" class="carousel-arrow" data-dir="prev" aria-label="Previous photo">‹</button><button type="button" class="carousel-arrow" data-dir="next" aria-label="Next photo">›</button></div><div class="carousel-indicators" style="padding-top:.75rem"></div>';
     if (window.WF) window.WF.initCarousels();
     $('[data-uthumbs]').innerHTML = shots.map(function (s) { return '<div class="wf-placeholder">' + s + '</div>'; }).join('') + '<div class="wf-placeholder">+' + (u.photos - shots.length) + ' more</div>';
@@ -362,7 +365,7 @@
       $('[data-rental]').innerHTML = list.length ? list.map(function (r) {
         var busy = overlaps(r, a, c), cost = weeks * r.week + Math.min(rest * r.day, r.week), b = MT.branch(r.branch);
         var bk = r.booked.map(function (x) { return MT.date(x[0]).replace(/ 2026/, '') + ' to ' + MT.date(x[1]).replace(/ 2026/, ''); }).join('; ');
-        return '<article class="mcard"><div class="wf-placeholder">Photo ' + esc(r.name) + '</div><div class="mcard-body"><span class="mcard-cat">' + esc(r.fam) + ' · built ' + r.year + '</span><h3>Cat ' + esc(r.name) + '</h3>' +
+        return '<article class="mcard"><div class="wf-placeholder" data-photo="rent:' + r.id + '">Photo ' + esc(r.name) + '</div><div class="mcard-body"><span class="mcard-cat">' + esc(r.fam) + ' · built ' + r.year + '</span><h3>Cat ' + esc(r.name) + '</h3>' +
           MT.badge({ s: busy ? 'booked' : 'free' }) + (busy ? '<small>Booked ' + bk + '</small>' : '') +
           '<dl class="specs"><div><dt>Day rate</dt><dd>' + MT.egp(r.day) + '</dd></div><div><dt>Week rate</dt><dd>' + MT.egp(r.week) + '</dd></div><div><dt>Your ' + days + ' days</dt><dd>' + MT.egp(cost) + '</dd></div><div><dt>From</dt><dd>' + esc(b.city) + '</dd></div></dl>' +
           '<span class="badge sample">sample rates, before delivery and VAT</span></div><div class="mcard-actions">' +
@@ -429,7 +432,7 @@
       var items = MT.basket();
       $('[data-basket-empty]').hidden = items.length > 0;
       list.innerHTML = items.map(function (i, n) {
-        return '<li class="basket-item"><div class="wf-placeholder">' + esc(i.type) + '</div><div><strong>' + esc(i.name) + '</strong><br><small>' + esc(i.type) + (i.detail ? ' · ' + esc(i.detail) : '') + '</small></div>' +
+        return '<li class="basket-item"><div class="wf-placeholder"' + (i.id ? ' data-photo="' + (i.type === 'Used machine' ? 'used:' : i.type === 'Rental' ? 'rent:' : 'model:') + i.id + '"' : '') + '>' + esc(i.type) + '</div><div><strong>' + esc(i.name) + '</strong><br><small>' + esc(i.type) + (i.detail ? ' · ' + esc(i.detail) : '') + '</small></div>' +
           '<div class="row" style="flex-wrap:nowrap"><label class="sr-only" for="q' + n + '">Quantity of ' + esc(i.name) + '</label><input class="qty" type="number" min="1" max="20" id="q' + n + '" value="' + (i.qty || 1) + '" data-qty="' + n + '"' + (i.type === 'Used machine' ? ' disabled' : '') + '>' +
           '<button type="button" class="link-btn" data-remove="' + n + '" aria-label="Remove ' + esc(i.name) + '">Remove</button></div></li>';
       }).join('');
@@ -483,7 +486,7 @@
       list.sort(function (a, b) { return a.end < b.end ? -1 : 1; });
       $('[data-offers]').innerHTML = list.length ? list.map(function (o) {
         var d = daysLeft(o), exp = d < 0;
-        return '<article class="offer' + (exp ? ' expired' : '') + '"><div class="wf-placeholder">Offer image</div><div class="offer-body"><span class="badge tier" style="justify-self:start">' + o.kind + '</span>' +
+        return '<article class="offer' + (exp ? ' expired' : '') + '"><div class="wf-placeholder" data-photo="offer:' + o.id + '">Offer image</div><div class="offer-body"><span class="badge tier" style="justify-self:start">' + o.kind + '</span>' +
           '<h3 class="card-title">' + esc(o.title) + '</h3><p class="offer-dates">' + MT.date(o.start) + ' to ' + MT.date(o.end) + ' · ' + (exp ? 'Ended' : d === 0 ? 'Ends today' : 'Ends in ' + d + ' day' + (d === 1 ? '' : 's')) + '</p>' +
           '<p class="card-text">' + esc(o.detail) + '</p><p class="card-text"><strong>Applies to:</strong> ' + esc(o.applies) + '</p>' +
           '<p class="row" style="margin:0">' + (exp ? '' : '<button type="button" class="btn btn-sm" data-offer="' + o.id + '">Ask about this offer</button>') + '<a href="#">Terms</a></p></div></article>';

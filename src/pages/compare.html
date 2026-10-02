@@ -15,6 +15,15 @@
   <main id="main">
     <div class="container">
 
+      <!-- Page head (design hook: theme.css + photos.js) -->
+      <header class="page-head" data-photo="hero:new" data-eyebrow="New equipment">
+        <div class="row-between">
+          <h1 id="h1">Compare excavators</h1>
+          <div class="seg" data-units role="group" aria-label="Units"><button type="button" data-value="metric">Metric</button><button type="button" data-value="us">US</button></div>
+        </div>
+        <p class="lead">Up to three models side by side. Shaded rows are where they differ.</p>
+      </header>
+
       <aside class="proto-why" aria-label="About this prototype">
         <div>
           <h2>What we're proposing</h2>
@@ -27,11 +36,7 @@
       </aside>
 
       <!-- Compare (R15) -->
-      <section aria-labelledby="h1">
-        <div class="row-between">
-          <h1 id="h1">Compare excavators</h1>
-          <div class="seg" data-units role="group" aria-label="Units"><button type="button" data-value="metric">Metric</button><button type="button" data-value="us">US</button></div>
-        </div>
+      <section aria-label="Comparison">
         <label class="check"><input type="checkbox" id="diff-only"> <span>Show only rows that differ</span></label>
         <div data-compare-table></div>
         <p class="wf-note" data-note="1"><span class="wf-note-label">Behaviour</span>Rows that differ are shaded. The page works from <span class="code">?ids=320-gc,320-gx</span> so a sales person can send a comparison link on WhatsApp (R09, R15).</p>

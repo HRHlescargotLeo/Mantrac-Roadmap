@@ -101,8 +101,8 @@ MT.used = [
   { id: 'u-336-19', name: '336', fam: 'Excavators', year: 2019, hrs: 5905, tier: 'ccu', branch: '10th-ramadan', band: [9.4, 10.2], photos: 18, s: 'in' },
   { id: 'u-950gc-20', name: '950 GC', fam: 'Wheel loaders', year: 2020, hrs: 6210, tier: 'mcu', branch: 'abu-rawash', band: [7.2, 7.9], photos: 20, s: 'in' },
   { id: 'u-426f2-19', name: '426F2', fam: 'Backhoe loaders', year: 2019, hrs: 4105, tier: 'mcu', branch: 'tanta', band: [2.9, 3.3], photos: 16, s: 'in' },
-  { id: 'u-d6r-15', name: 'D6R', fam: 'Dozers', year: 2015, hrs: 9820, tier: 'fair', branch: 'aswan', band: [5.1, 5.8], photos: 9, s: 'in' },
-  { id: 'u-140k-17', name: '140K', fam: 'Motor graders', year: 2017, hrs: 7480, tier: 'mcu', branch: 'sohag', band: [5.6, 6.2], photos: 14, s: 'sold' }
+  { id: 'u-d6r-15', name: 'D6R2', fam: 'Dozers', year: 2015, hrs: 9820, tier: 'fair', branch: 'aswan', band: [5.1, 5.8], photos: 9, s: 'in' },
+  { id: 'u-140k-17', name: '140 GC', fam: 'Motor graders', year: 2017, hrs: 7480, tier: 'mcu', branch: 'sohag', band: [5.6, 6.2], photos: 14, s: 'sold' }
 ];
 MT.tiers = {
   ccu: { name: 'Cat Certified Used', short: 'Cat Certified', cover: 'Equipment Protection Plan (EPP) on power train and hydraulics: 6 months or 1,500 hours, whichever comes first.', limits: 'Up to 5 years old. Up to 3,500 hours (building construction) or 7,500 hours (construction and infrastructure).' },
@@ -116,7 +116,7 @@ MT.rental = [
   { id: 'r-988f', name: '988F wheel loader', fam: 'Wheel loaders', year: 2000, day: 19800, week: 112000, branch: 'amreya', booked: [] },
   { id: 'r-320gc', name: '320 GC excavator', fam: 'Excavators', year: 2023, day: 12800, week: 72000, branch: 'abu-rawash', booked: [['2026-10-01', '2026-10-09']] },
   { id: 'r-302-7', name: '302.7 CR mini excavator', fam: 'Excavators', year: 2024, day: 4200, week: 23500, branch: 'amreya', booked: [] },
-  { id: 'r-cb2-7', name: 'CB2.7 tandem roller', fam: 'Compactors', year: 2022, day: 3600, week: 20000, branch: '10th-ramadan', booked: [['2026-10-12', '2026-10-30']] },
+  { id: 'r-cb2-7', name: 'CB2.7 GC tandem roller', fam: 'Compactors', year: 2022, day: 3600, week: 20000, branch: '10th-ramadan', booked: [['2026-10-12', '2026-10-30']] },
   { id: 'r-th357', name: 'TH357D telehandler', fam: 'Telehandlers', year: 2021, day: 6900, week: 38500, branch: 'abu-rawash', booked: [] },
   { id: 'r-xq230', name: 'XQ230 mobile generator set', fam: 'Generators', year: 2023, day: 5200, week: 29000, branch: 'hurghada', booked: [['2026-10-02', '2026-10-06']] },
   { id: 'r-216b3', name: '216B3 skid steer loader', fam: 'Skid steers', year: 2020, day: 3900, week: 21500, branch: 'tanta', booked: [] }

@@ -14,7 +14,7 @@
 <!-- Prototype navigator (R01, R02) -->
 <nav class="proto-nav" aria-label="Prototypes">
   <div class="container">
-    <a class="proto-pack" href="../index.html">Mantrac roadmap <span>· greyscale v0.1</span></a>
+    <a class="proto-pack" href="../index.html">Mantrac roadmap <span>· v0.2</span></a>
     <ul class="proto-links">
       <li><a href="../index.html" data-proto="0">Overview</a></li>
       <li><a href="../pages/machines.html" data-proto="1" title="Find the right Cat machine">1<span class="proto-title">&nbsp;Machines</span></a></li>
@@ -34,6 +34,12 @@
   <main id="main">
     <div class="container">
 
+      <!-- Page head (design hook: theme.css + photos.js) -->
+      <header class="page-head" data-photo="hero:offers" data-eyebrow="Promotions">
+        <h1 id="h1">Current offers</h1>
+        <p class="lead">Offers on Cat machines, parts and service from Mantrac Egypt. Each one shows when it ends; ask us about any of them and we'll confirm the terms for your machine.</p>
+      </header>
+
       <aside class="proto-why" aria-label="About this prototype">
         <div>
           <h2>What we're proposing</h2>
@@ -49,9 +55,7 @@
       </aside>
 
       <!-- Offers hub (R36, R37) -->
-      <section aria-labelledby="h1">
-        <h1 id="h1">Current offers</h1>
-        <p class="lead">Offers on Cat machines, parts and service from Mantrac Egypt. Each one shows when it ends; ask us about any of them and we'll confirm the terms for your machine.</p>
+      <section aria-label="Main content">
         <div class="row-between" style="margin-bottom:1rem">
           <div class="seg" role="group" aria-label="Offer type" data-offer-kinds>
             <button type="button" data-kind="" aria-pressed="true">All</button><button type="button" data-kind="Finance" aria-pressed="false">Finance</button><button type="button" data-kind="Service" aria-pressed="false">Service</button><button type="button" data-kind="Parts" aria-pressed="false">Parts</button><button type="button" data-kind="Rental" aria-pressed="false">Rental</button>
@@ -87,7 +91,7 @@
 <!-- Previous / next pager (R03) -->
 <nav class="proto-pager" aria-label="Prototype pages">
   <div class="container" data-pager>
-    <p class="sample-note">Greyscale prototype. Machines, stock, prices, dates and people are sample data for discussion; model names and branch names come from mantracgroup.com.</p>
+    <p class="sample-note">Prototype for discussion. Machines, stock, prices, dates and people are sample data for discussion; model names and branch names come from mantracgroup.com.</p>
   </div>
 </nav>
 <!-- Mobile contact dock (R07, R25 idea 25, R35) -->
@@ -109,6 +113,7 @@
 <script src="../js/wireframe.js"></script>
 <script src="../js/proto.js"></script>
 <script src="../js/pages.js"></script>
+<script src="../js/photos.js"></script>
 
 </body>
 </html>

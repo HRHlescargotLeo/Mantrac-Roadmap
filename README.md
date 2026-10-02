@@ -2,7 +2,7 @@
 
 Clickable prototypes for five improvements to mantracgroup.com/en-eg, prepared by ClerksWell.
 
-**Phase:** 2, greyscale prototypes · **Version:** 0.1 · **Date:** 1 October 2026
+**Phase:** 3, designed prototypes · **Version:** 0.2 · **Date:** 2 October 2026
 
 Live site (once GitHub Pages is on): https://hrhlescargotleo.github.io/Mantrac-Roadmap/
 
@@ -38,6 +38,8 @@ node build-includes.js && node validate.js
 ```
 
 - `src/` is the source. `src/includes/` holds the prototype navigator (`header.html`) and pager and contact dock (`footer.html`), pulled into every page.
-- `src/css/base.css`, `components.css` and `proto.css` are structural and greyscale. `theme.css` is the design layer and is empty at this phase; phase 3 applies the Mantrac look there only.
+- `src/css/base.css`, `components.css` and `proto.css` are structural and greyscale. `theme.css` is the Mantrac design layer (tokens from the phase 1 design system, Roboto as a stand-in for the licensed Univers). Delete it to get the greyscale version back.
+- `src/js/photos.js` hotlinks Mantrac photography from mantracgroup.com and Caterpillar product shots as served there. Each image is applied only after it loads; otherwise the illustrated placeholder stays. It only runs when `theme.css` is loaded. Photography © Mantrac Group; product images © Caterpillar Inc.
+- Page heads are `<header class="page-head" data-photo="hero:…" data-eyebrow="…">`; cards carry `data-photo` keys that photos.js maps to images.
 - `src/js/data.js` is the sample data, `proto.js` the shared behaviour (Notes switch, quote basket, compare tray, units, governorate) and `pages.js` the page behaviour. `wireframe.js` provides tabs, accordions, carousels and modals.
 - `requirements/requirements.md` lists requirements R01–R47 and T01–T03, each mapped to the idea numbers in the phase 1 opportunities review. Sections in `src/` carry `<!-- Module (Rnn) -->` comments.
