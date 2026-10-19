@@ -157,7 +157,8 @@
     { f: 'offers.html', p: 4, t: '4 · Offers' },
     { f: 'finance.html', p: 4, t: '4 · Finance and running costs' },
     { f: 'branches.html', p: 5, t: '5 · Branches and parts' },
-    { f: 'book-service.html', p: 5, t: '5 · Book a service visit' }
+    { f: 'book-service.html', p: 5, t: '5 · Book a service visit' },
+    { f: 'quick-wins.html', p: 6, t: 'Quick wins' }
   ];
   function current() {
     var f = window.location.pathname.split('/').pop() || 'index.html';

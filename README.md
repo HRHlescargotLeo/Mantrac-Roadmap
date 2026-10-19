@@ -1,8 +1,8 @@
 # Mantrac roadmap prototypes
 
-Clickable prototypes for five improvements to mantracgroup.com/en-eg, prepared by ClerksWell.
+Clickable prototypes for five improvements to mantracgroup.com/en-eg, plus 27 smaller quick wins shown one at a time, prepared by ClerksWell.
 
-**Phase:** 3, designed prototypes · **Version:** 0.2 · **Date:** 2 October 2026
+**Phase:** 3, designed prototypes · **Version:** 0.3 · **Date:** 19 October 2026
 
 Live site (once GitHub Pages is on): https://hrhlescargotleo.github.io/Mantrac-Roadmap/
 
@@ -15,8 +15,9 @@ Live site (once GitHub Pages is on): https://hrhlescargotleo.github.io/Mantrac-R
 | 3 | One enquiry, routed to the right person | `enquiry.html` |
 | 4 | Offers and finance in EGP | `offers.html`, `finance.html` |
 | 5 | Mantrac near you | `branches.html`, `book-service.html` |
+| — | Quick wins: 27 small, self-contained changes, each with Today and Proposed side by side | `quick-wins.html` |
 
-Start at `index.html`. The Notes switch in the top bar shows what each prototype proposes and why, with numbered behaviour notes (yellow) and open questions (red). It is off by default and remembered for the browser session.
+Start at `index.html`. Its two tabs separate the bigger improvements (the five prototypes) from the quick wins. `index.html?tab=quick-wins` opens the second tab, and `pages/quick-wins.html?item=consent` opens a single quick win. The quick wins carry no estimates by design. The Notes switch in the top bar shows what each prototype proposes and why, with numbered behaviour notes (yellow) and open questions (red). It is off by default and remembered for the browser session.
 
 Machines, stock, prices, rates, dates and people are sample data. Model names and branch names come from mantracgroup.com.
 
@@ -41,5 +42,5 @@ node build-includes.js && node validate.js
 - `src/css/base.css`, `components.css` and `proto.css` are structural and greyscale. `theme.css` is the Mantrac design layer (tokens from the phase 1 design system, Roboto as a stand-in for the licensed Univers). Delete it to get the greyscale version back.
 - `src/js/photos.js` hotlinks Mantrac photography from mantracgroup.com and Caterpillar product shots as served there. Each image is applied only after it loads; otherwise the illustrated placeholder stays. It only runs when `theme.css` is loaded. Photography © Mantrac Group; product images © Caterpillar Inc.
 - Page heads are `<header class="page-head" data-photo="hero:…" data-eyebrow="…">`; cards carry `data-photo` keys that photos.js maps to images.
-- `src/js/data.js` is the sample data, `proto.js` the shared behaviour (Notes switch, quote basket, compare tray, units, governorate) and `pages.js` the page behaviour. `wireframe.js` provides tabs, accordions, carousels and modals.
+- `src/js/data.js` is the sample data, `proto.js` the shared behaviour (Notes switch, quote basket, compare tray, units, governorate) `pages.js` the page behaviour and `quickwins.js` the Quick wins tab (its list of 27 and every demo). `wireframe.js` provides tabs, accordions, carousels and modals.
 - `requirements/requirements.md` lists requirements R01–R47 and T01–T03, each mapped to the idea numbers in the phase 1 opportunities review. Sections in `src/` carry `<!-- Module (Rnn) -->` comments.
