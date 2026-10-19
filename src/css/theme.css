@@ -356,3 +356,55 @@ section.panel.surface[aria-labelledby="promise-h"] { background: var(--mt-white)
 .proto-pager .sample-note::after { content: " Photography © Mantrac Group. Product images © Caterpillar Inc., as shown on mantracgroup.com."; }
 
 @media (prefers-reduced-motion: reduce) { .mcard, .proto-card { transition: none; } }
+
+/* --- Quick wins tab (v0.3) ---------------------------------------------- */
+.proto-links .proto-qw { border-color: var(--mt-yellow); color: var(--mt-yellow); }
+.proto-links .proto-qw[aria-current="page"] { background: var(--mt-yellow); color: var(--mt-black); }
+@media (min-width: 769px) { .proto-qw-item { border-left-color: #3A3A3A; } }
+.landing-tabs { border-bottom: 1px solid var(--mt-line-strong); }
+.landing-tabs .tab { color: var(--mt-grey-65); font-size: 1.1875rem; padding-bottom: 0.875rem; }
+.landing-tabs .tab.active { color: var(--mt-ink); }
+.landing-tabs .tab-count { color: var(--mt-grey-65); }
+.try-line { border-left-color: var(--mt-yellow); color: #333; }
+.qw-group h3 { display: flex; align-items: center; gap: 0.625rem; }
+.qw-group h3::before { content: ""; width: 28px; height: 4px; background: var(--mt-yellow); }
+.qw-card { background: var(--mt-white); border-color: var(--mt-line); transition: border-color 0.15s, box-shadow 0.15s; }
+.qw-card:hover { border-color: var(--mt-ink); box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1); }
+.qw-card strong { color: var(--mt-ink); }
+.qw-card span:not(.qw-n) { color: #333; }
+.qw-n { background: var(--mt-yellow); color: var(--mt-black); }
+.qw-bar { background: var(--mt-white); border-color: var(--mt-line); border-top: 4px solid var(--mt-yellow); }
+.qw-text h3 { color: var(--mt-grey-65); }
+.qw-stage { background: var(--mt-white); border-color: var(--mt-line); }
+.qw-today { background: var(--mt-section); border-color: var(--mt-line-strong); }
+.qw-proposed { border-top: 4px solid var(--mt-yellow); box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06); }
+.qw-label { background: var(--mt-white); border-color: var(--mt-line-strong); color: var(--mt-grey-65); }
+.qw-proposed .qw-label { background: var(--mt-black); border-color: var(--mt-black); color: var(--mt-yellow); }
+body.qw-all .qw { border-bottom-color: var(--mt-line-strong); }
+.mock-card { background: var(--mt-white); border-color: var(--mt-line); }
+.qw-today .mock-card, .qw-today .mock-names li, .qw-today .mock-form span { background: #FAFAFA; }
+.mock-card--accent { border-left: 6px solid var(--mt-yellow); }
+.qw-proposed .mock-names li { background: var(--mt-white); }
+.qw-proposed .mock-names.is-current li { border-color: var(--mt-ink); font-weight: 700; }
+.chip-links a { background: var(--mt-black); color: var(--mt-white); border-color: var(--mt-black); text-decoration: none; font-weight: 700; }
+.chip-links a:hover { background: var(--mt-yellow); color: var(--mt-black); border-color: var(--mt-yellow); }
+.mock-groups li { background: var(--mt-white); border-left: 4px solid var(--mt-yellow); }
+.mock-header, .mock-foot, .ph-dock { background: var(--mt-black); }
+.mock-logo { color: var(--mt-yellow); }
+.ph-dock > :first-child { background: var(--mt-yellow); color: var(--mt-black); }
+.mm-menu { border-top: 3px solid var(--mt-yellow); }
+.mm-menu a { text-decoration: none; }
+.mm-menu a:hover, .mm-menu a:focus-visible { background: var(--mt-cream); }
+mark { background: var(--mt-yellow); }
+mark.ok { background: var(--mt-ok-bg); color: var(--mt-ok); }
+.ck-banner { border: 0; border-top: 4px solid var(--mt-yellow); background: var(--mt-night); color: var(--mt-white); }
+.ck-banner a, .ck-banner .link-btn { color: var(--mt-white); }
+.ck-banner .btn-secondary { color: var(--mt-white); border-color: var(--mt-white); }
+.ck-banner .seg { background: #2A2A2A; }
+.tag-list li.on .tag-state { color: var(--mt-ok); }
+.qw-step .btn-secondary { background: var(--mt-white); }
+.ph-dock a { text-decoration: none; color: inherit; }
+.ph-dock a, .ph-dock button { color: var(--mt-white); }
+.ph-dock > :first-child { color: var(--mt-black); }
+.qw-card, .qw-card:hover { text-decoration: none; }
+.qw-card:hover strong { text-decoration: underline; text-decoration-color: var(--mt-yellow); text-decoration-thickness: 2px; text-underline-offset: 0.2em; }

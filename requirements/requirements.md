@@ -81,6 +81,30 @@ Each requirement maps to the idea numbers it delivers. Sections in `src/` carry 
 | R46 | "My Mantrac" entry point for customer tools | 37 |
 | R47 | Correct branch names (Abu Simbel, Marsa Alam) | 38 |
 
+## Quick wins tab (v0.3)
+
+Every idea from phase 1 sized as small effort, each demonstrated on its own on `pages/quick-wins.html`. No effort, cost or time estimates appear in the tab.
+
+| ID | Requirement | Ideas |
+|----|-------------|-------|
+| R48 | Landing page tabs: Bigger improvements (the five prototypes) and Quick wins (cards for all 27, grouped by theme); navigator link; tab remembered for the session and openable with `?tab=quick-wins` | — |
+| R49 | Quick wins page: one at a time (jump list, previous/next, arrow keys, `?item=`) or all 27 on one page; Today and Proposed side by side from 1024px, switchable below | — |
+| R50 | Numbers formatted by language and units from one function; Arabic or Western digits | 3 |
+| R51 | Visible compare tray, up to three, links to the comparison | 6 |
+| R52 | "Add to quote" adds to the shared quote basket | 8 |
+| R53 | Links to Mantrac's Cat Rentals store by category | 15 |
+| R54 | Five-field contact form with visible labels, validation and a reference on success | 20 |
+| R55 | WhatsApp message prefilled from the page | 25 |
+| R56 | Single labelled contact bar on mobile | 26 |
+| R57 | Promotions page, menu link and footer promise shown only while an offer is live | 28 |
+| R58 | "My Mantrac" header menu; Escape and outside click close it | 37 |
+| R59 | Copyright year from the visitor's clock | 45 |
+| R60 | Consent banner in English and Arabic; tags held until consent, per category; settings can be reopened | 47 |
+| R61 | Newsletter sign-up with label, unticked required consent and privacy link | 48 |
+| R62 | Share image, title and description per template | 54 |
+
+Also demonstrated without new behaviour: ideas 1, 7, 12, 14, 17, 21, 27, 31, 36, 38, 39, 40, 41, 52 (all small effort).
+
 ## Technical
 
 | ID | Requirement | Ideas |

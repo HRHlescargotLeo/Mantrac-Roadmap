@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quick wins – Mantrac prototypes</title>
+  <link rel="stylesheet" href="~/css/base.css">
+  <link rel="stylesheet" href="~/css/components.css">
+  <link rel="stylesheet" href="~/css/proto.css">
+  <link rel="stylesheet" href="~/css/theme.css">
+</head>
+<body data-page="quick-wins" data-wa="Hello Mantrac, I have a question.">
+  <!-- @@include header.html -->
+
+  <main id="main">
+    <div class="container">
+
+      <!-- Page head (R48) -->
+      <header class="page-head" data-photo="hero:service" data-eyebrow="Quick wins">
+        <h1>Smaller changes, each one on its own</h1>
+        <p class="lead">The five prototypes combine several improvements into larger pieces of work. These are the smaller ones from the same review: 27 changes that each stand alone, so any of them can be picked up without committing to the rest.</p>
+        <p class="lead">Each one shows what mantracgroup.com/en-eg does today, recreated from what we saw on 1 October 2026, next to how it would work instead.</p>
+      </header>
+
+      <aside class="proto-why" aria-label="About the quick wins">
+        <div>
+          <h2>What we're proposing</h2>
+          <p>A set of changes that can be made one at a time and in any order, without a redesign. Most are about getting facts and wording right. A few deal with things that are broken or out of date, and two concern Egypt's data protection rules, which are enforced from 1 November 2026.</p>
+        </div>
+        <div>
+          <h2>Why</h2>
+          <ul>
+            <li>Some of the most visible problems on the site are a wrong word, a dead link or a figure that disagrees with itself. None of those needs a project to fix.</li>
+            <li>Several of these also appear inside a prototype, where they are one part of something larger. They are shown here separately so each can be judged on its own.</li>
+          </ul>
+        </div>
+      </aside>
+
+      <!-- Controls (R49) -->
+      <div class="qw-bar" role="region" aria-label="Choose a quick win">
+        <div class="field qw-jump">
+          <label for="qw-jump">Quick win</label>
+          <select id="qw-jump"></select>
+        </div>
+        <div class="qw-move">
+          <button type="button" class="btn btn-secondary btn-sm" data-qw-prev aria-label="Previous quick win">←</button>
+          <span class="qw-pos" data-qw-pos aria-live="polite">1 of 27</span>
+          <button type="button" class="btn btn-secondary btn-sm" data-qw-next aria-label="Next quick win">→</button>
+        </div>
+        <div class="seg" role="group" aria-label="View" data-qw-mode>
+          <button type="button" data-mode="one" aria-pressed="true">One at a time</button><button type="button" data-mode="all" aria-pressed="false">All 27</button>
+        </div>
+      </div>
+      <p class="wf-note" data-note="1"><span class="wf-note-label">Behaviour</span>Pick a quick win from the list, or use the arrows (and the arrow keys) to step through them. "All 27" shows every one on a single page, for reading through or printing. Below 1024px each demo has a Today and Proposed switch; on wider screens they sit side by side (R49).</p>
+
+      <div class="qw-list">
+
+        <!-- 1 Current range first (idea 1) -->
+        <article class="qw" id="qw-range">
+          <header class="qw-head"><p class="qw-kicker"></p><h2>Current range first</h2></header>
+          <div class="qw-text">
+            <div><h3>Today</h3><p>The excavator listing has 27 results. Next to the 320 GX and 336 GC sit the 315C L, 320C L, 345B L Series II UHD, 365C, 385C and "318D2 L (2017)", which are older models a buyer can no longer order new.</p></div>
+            <div><h3>The change</h3><p>List the current range by default and move older models to a short "Previous models: parts and service" list underneath, so the comparison is between machines Mantrac can actually supply.</p></div>
+          </div>
+          <div class="seg qw-switch" role="group" aria-label="Show"><button type="button" data-v="today" aria-pressed="false">Today</button><button type="button" data-v="proposed" aria-pressed="true">Proposed</button></div>
+          <div class="qw-demo">
+            <figure class="qw-stage qw-today">
+              <figcaption><span class="qw-label">Today</span> Excavators (27 results), first 12 in page order</figcaption>
+              <ul class="mock-names">
+                <li>302.7 CR</li><li>315C L</li><li>320 GX</li><li>320C L</li><li>303 CR</li><li>345B L Series II UHD</li><li>336 GC</li><li>365C</li><li>318D2 L (2017)</li><li>320 GC</li><li>385C</li><li>305 CR</li>
+              </ul>
+            </figure>
+            <figure class="qw-stage qw-proposed">
+              <figcaption><span class="qw-label">Proposed</span> Excavators: current range</figcaption>
+              <ul class="mock-names is-current">
+                <li>302.7 CR</li><li>303 CR</li><li>305 CR</li><li>313 GC</li><li>320 GC</li><li>320 GX</li><li>323 GX</li><li>330 GC</li><li>336 GC</li><li>345 GC</li>
+              </ul>
+              <button type="button" class="btn btn-secondary btn-sm" data-range-toggle aria-expanded="false" aria-controls="range-prev">Previous models: parts and service (6)</button>
+              <div id="range-prev" data-range-prev hidden>
+                <p class="muted small-print">No longer sold new. Mantrac still supplies parts and service for these.</p>
+                <ul class="mock-names is-legacy"><li>315C L</li><li>318D2 L</li><li>320C L</li><li>345B L Series II UHD</li><li>365C</li><li>385C</li></ul>
+              </div>
+            </figure>
+          </div>
+          <p class="wf-note query" data-note="2"><span class="wf-note-label">Open question</span><strong>Q:</strong> Which models does Mantrac consider current for Egypt? The proposed list uses the models in the prototype data; the order on the live page is shown as we found it.</p>
+          <p class="qw-also">Also part of <a href="~/pages/machines.html">prototype 1</a>.</p>
+        </article>
+
+        <!-- 2 Commas for thousands (idea 3) -->
+        <article class="qw" id="qw-commas">
+          <header class="qw-head"><p class="qw-kicker"></p><h2>Commas for thousands</h2></header>
+          <div class="qw-text">
+            <div><h3>Today</h3><p>Product cards show "3.050 kg" and "2.710 mm", and "6.725 lb" in US units. To an English reader that is three kilograms. The request-a-quote page shows the same machine as "3050 kg".</p></div>
+            <div><h3>The change</h3><p>Format every number from one function that knows the language: 3,050 kg in English, and Arabic numbers on the Arabic site, in whichever digits Mantrac prefers.</p></div>
+          </div>
+          <div class="seg qw-switch" role="group" aria-label="Show"><button type="button" data-v="today" aria-pressed="false">Today</button><button type="button" data-v="proposed" aria-pressed="true">Proposed</button></div>
+          <div class="qw-demo">
+            <figure class="qw-stage qw-today">
+              <figcaption><span class="qw-label">Today</span> 302.7 CR product card</figcaption>
+              <div class="mock-card">
+                <strong>302.7 CR Mini Hydraulic Excavator</strong>
+                <dl class="specs"><div><dt>Operating Weight - With Cab</dt><dd>3.050 kg</dd></div><div><dt>Dig Depth</dt><dd>2.710 mm</dd></div><div><dt>Operating Weight (US)</dt><dd>6.725 lb</dd></div></dl>
+              </div>
+            </figure>
+            <figure class="qw-stage qw-proposed" data-commas>
+              <figcaption><span class="qw-label">Proposed</span> The same card, any language and units</figcaption>
+              <div class="row qw-controls">
+                <div class="seg" role="group" aria-label="Language"><button type="button" data-set="lang" data-value="en" aria-pressed="true">English</button><button type="button" data-set="lang" data-value="ar" aria-pressed="false" lang="ar">العربية</button></div>
+                <div class="seg" role="group" aria-label="Units"><button type="button" data-set="units" data-value="metric" aria-pressed="true">Metric</button><button type="button" data-set="units" data-value="us" aria-pressed="false">US</button></div>
+              </div>
+              <label class="check" data-commas-digits hidden><input type="checkbox" id="cm-western"> <span>Use Western digits (0–9) on the Arabic site</span></label>
+              <div class="mock-card">
+                <strong>Cat 302.7 CR</strong>
+                <dl class="specs" data-commas-out></dl>
+              </div>
+            </figure>
+          </div>
+          <p class="wf-note" data-note="3"><span class="wf-note-label">Behaviour</span>The browser's own number formatting does the work, so commas, Arabic digits and unit conversions come from one place rather than being typed into each product (R50).</p>
+          <p class="wf-note query" data-note="4"><span class="wf-note-label">Open question</span><strong>Q:</strong> Does Mantrac want Arabic-Indic digits (٣٬٠٥٠) or Western digits (3,050) on the Arabic site? The Arabic labels here are a draft for Mantrac's translators to check.</p>
+          <p class="qw-also">Also part of <a href="~/pages/machines.html">prototype 1</a>.</p>
+        </article>
+
+        <!-- 3 Compare tray (idea 6) -->
+        <article class="qw" id="qw-compare">
+          <header class="qw-head"><p class="qw-kicker"></p><h2>A compare tray you can see</h2></header>
+          <div class="qw-text">
+            <div><h3>Today</h3><p>Each card has a "Compare model" tick box. Ticking it changes nothing else on the page, so there is no way to see what has been picked or where to go next.</p></div>
+            <div><h3>The change</h3><p>A tray appears once something is ticked, with the chosen models, a count and a "Compare" button that only becomes active with two or more.</p></div>
+          </div>
+          <div class="seg qw-switch" role="group" aria-label="Show"><button type="button" data-v="today" aria-pressed="false">Today</button><button type="button" data-v="proposed" aria-pressed="true">Proposed</button></div>
+          <div class="qw-demo">
+            <figure class="qw-stage qw-today">
+              <figcaption><span class="qw-label">Today</span> Tick boxes with nothing to show for it</figcaption>
+              <ul class="mock-ticks">
+                <li><label class="check"><input type="checkbox"> <span>320 GC · Compare model</span></label></li>
+                <li><label class="check"><input type="checkbox"> <span>320 GX · Compare model</span></label></li>
+                <li><label class="check"><input type="checkbox"> <span>323 GX · Compare model</span></label></li>
+                <li><label class="check"><input type="checkbox"> <span>330 GC · Compare model</span></label></li>
+              </ul>
+            </figure>
+            <figure class="qw-stage qw-proposed">
+              <figcaption><span class="qw-label">Proposed</span> Tick two or three</figcaption>
+              <ul class="mock-ticks" data-cmp>
+                <li><label class="check"><input type="checkbox" value="320-gc" data-name="320 GC"> <span>320 GC · Compare</span></label></li>
+                <li><label class="check"><input type="checkbox" value="320-gx" data-name="320 GX"> <span>320 GX · Compare</span></label></li>
+                <li><label class="check"><input type="checkbox" value="323-gx" data-name="323 GX"> <span>323 GX · Compare</span></label></li>
+                <li><label class="check"><input type="checkbox" value="330-gc" data-name="330 GC"> <span>330 GC · Compare</span></label></li>
+              </ul>
+              <div class="mock-tray" data-cmp-tray hidden>
+                <strong>Compare</strong>
+                <ul data-cmp-list></ul>
+                <a class="btn btn-sm" href="~/pages/compare.html" data-cmp-go>Compare</a>
+                <button type="button" class="link-btn" data-cmp-clear>Clear</button>
+                <p class="small-print" data-cmp-hint hidden>Pick one more to compare.</p>
+              </div>
+            </figure>
+          </div>
+          <p class="wf-note" data-note="5"><span class="wf-note-label">Behaviour</span>Up to three models. On the live site the tray would stay at the bottom of the screen and follow the visitor between pages; the Compare button opens the comparison from prototype 1 (R51).</p>
+          <p class="qw-also">Also part of <a href="~/pages/machines.html">prototype 1</a>.</p>
+        </article>
+
+        <!-- 4 Stock status (idea 7) -->
+        <article class="qw" id="qw-stock">
+          <header class="qw-head"><p class="qw-kicker"></p><h2>Stock status that agrees</h2></header>
+          <div class="qw-text">
+            <div><h3>Today</h3><p>The 302.7 CR card says "Stock on demand". Its product page says "In stock". A rental card says both "Availability Reserved" and "In stock". A buyer can't tell which to believe.</p></div>
+            <div><h3>The change</h3><p>Four stock words, taken from one field and shown identically wherever the machine appears: in stock at a named branch, on order with a lead time, reserved, sold.</p></div>
+          </div>
+          <div class="seg qw-switch" role="group" aria-label="Show"><button type="button" data-v="today" aria-pressed="false">Today</button><button type="button" data-v="proposed" aria-pressed="true">Proposed</button></div>
+          <div class="qw-demo">
+            <figure class="qw-stage qw-today">
+              <figcaption><span class="qw-label">Today</span> One machine, two answers</figcaption>
+              <div class="mock-pair">
+                <div class="mock-card"><small>Listing card</small><strong>302.7 CR</strong><span class="mock-flag">Stock on demand</span></div>
+                <div class="mock-card"><small>Product page</small><strong>302.7 CR</strong><span class="mock-flag">In stock</span></div>
+              </div>
+            </figure>
+            <figure class="qw-stage qw-proposed">
+              <figcaption><span class="qw-label">Proposed</span> Set the status once</figcaption>
+              <div class="seg" role="group" aria-label="Stock status" data-stock>
+                <button type="button" data-s="in" aria-pressed="true">In stock</button><button type="button" data-s="order" aria-pressed="false">On order</button><button type="button" data-s="reserved" aria-pressed="false">Reserved</button><button type="button" data-s="sold" aria-pressed="false">Sold</button>
+              </div>
+              <div class="mock-pair">
+                <div class="mock-card"><small>Listing card</small><strong>Cat 302.7 CR</strong><span data-stock-badge></span></div>
+                <div class="mock-card"><small>Product page</small><strong>Cat 302.7 CR</strong><span data-stock-badge></span></div>
+              </div>
+            </figure>
+          </div>
+          <p class="wf-note query" data-note="6"><span class="wf-note-label">Open question</span><strong>Q:</strong> Where does stock status come from today, and could branch and lead time come from the same place? Branch and lead time here are sample data.</p>
+          <p class="qw-also">Also part of <a href="~/pages/machines.html">prototype 1</a> and <a href="~/pages/used.html">prototype 2</a>.</p>
+        </article>
+
+        <!-- 5 Add to quote (idea 8) -->
+        <article class="qw" id="qw-cart">
+          <header class="qw-head"><p class="qw-kicker"></p><h2>Add to quote, not add to cart</h2></header>
+          <div class="qw-text">
+            <div><h3>Today</h3><p>Each product card has a cart icon titled "Add to cart". It doesn't add anything to a cart: it opens the request-a-quote page for that one product.</p></div>
+            <div><h3>The change</h3><p>Label it "Add to quote" and let it collect machines, so a contractor pricing three of them sends one request. If a basket is a step too far for now, the label alone is still worth changing.</p></div>
+          </div>
+          <div class="seg qw-switch" role="group" aria-label="Show"><button type="button" data-v="today" aria-pressed="false">Today</button><button type="button" data-v="proposed" aria-pressed="true">Proposed</button></div>
+          <div class="qw-demo">
+            <figure class="qw-stage qw-today">
+              <figcaption><span class="qw-label">Today</span> Product card footer</figcaption>
+              <div class="mock-card">
+                <strong>320 GC Hydraulic Excavator</strong>
+                <div class="row-between"><span>Price on request</span><button type="button" class="mock-icon" title="Add to cart" aria-label="Add to cart" data-today-cart><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M3 4h2l2.4 10.2a1 1 0 0 0 1 .8h8.9a1 1 0 0 0 1-.8L20 8H6.2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="9" cy="19" r="1.6" fill="currentColor"/><circle cx="17" cy="19" r="1.6" fill="currentColor"/></svg></button></div>
+                <p class="small-print" data-today-cart-msg hidden>Opens "Request a quote" for the 320 GC only. Nothing is added to a cart.</p>
+              </div>
+            </figure>
+            <figure class="qw-stage qw-proposed">
+              <figcaption><span class="qw-label">Proposed</span> Collect several, send once</figcaption>
+              <div class="mock-pair">
+                <div class="mock-card"><strong>Cat 320 GC</strong><span>Price on request</span><button type="button" class="btn btn-sm" data-qw-add="320-gc" data-name="320 GC">Add to quote</button></div>
+                <div class="mock-card"><strong>Cat 336 GC</strong><span>Price on request</span><button type="button" class="btn btn-sm" data-qw-add="336-gc" data-name="336 GC">Add to quote</button></div>
+              </div>
+            </figure>
+          </div>
+          <p class="wf-note" data-note="7"><span class="wf-note-label">Behaviour</span>Adds to the same quote as the prototypes; watch the Quote count in the top bar. The quote itself is <a href="~/pages/enquiry.html">prototype 3</a> (R52).</p>
+          <p class="qw-also">Also part of <a href="~/pages/machines.html">prototype 1</a> and <a href="~/pages/enquiry.html">prototype 3</a>.</p>
+        </article>
+
+        <!-- 6 App panel (idea 12) -->
+        <article class="qw" id="qw-app">
+          <header class="qw-head"><p class="qw-kicker"></p><h2>Retire the app panel</h2></header>
+          <div class="qw-text">
+            <div><h3>Today</h3><p>The Used, Rental and Promotions pages all promote the "Mantrac Used&amp;Rental Equipment app". Both the App Store and Google Play links return "not found", and did so when we checked them twice.</p></div>
+            <div><h3>The change</h3><p>Take the panel down. In its place, point to the used and rental listings on the website, which is where the same stock would be found anyway.</p></div>
+          </div>
+          <div class="seg qw-switch" role="group" aria-label="Show"><button type="button" data-v="today" aria-pressed="false">Today</button><button type="button" data-v="proposed" aria-pressed="true">Proposed</button></div>
+          <div class="qw-demo">
+            <figure class="qw-stage qw-today">
+              <figcaption><span class="qw-label">Today</span> On three pages</figcaption>
+              <div class="mock-card">
+                <strong>Mantrac Used&amp;Rental Equipment app</strong>
+                <span>Browse used and rental equipment on your phone.</span>
+                <div class="row"><button type="button" class="mock-store" data-store="App Store">App Store</button><button type="button" class="mock-store" data-store="Google Play">Google Play</button></div>
+                <p class="mock-error" data-store-msg hidden role="status"><strong>App Store</strong>: this app is not available (not found).</p>
+              </div>
+            </figure>
+            <figure class="qw-stage qw-proposed">
+              <figcaption><span class="qw-label">Proposed</span> The same space, pointing somewhere that works</figcaption>
+              <div class="mock-card">
+                <strong>Looking for used or rental machines?</strong>
+                <span>Everything we have available in Egypt is on the website, with photos, hours and the branch it is at.</span>
+                <div class="row"><a class="btn btn-sm" href="~/pages/used.html">Used machines</a><a class="btn btn-secondary btn-sm" href="~/pages/rental.html">Rental</a></div>
+              </div>
+            </figure>
+          </div>
+          <p class="wf-note query" data-note="8"><span class="wf-note-label">Open question</span><strong>Q:</strong> Has the app been retired, or moved to a new store listing? If it is coming back, the panel can return with working links.</p>
+        </article>
+
+        <!-- 7 Certification names (idea 14) -->
+        <article class="qw" id="qw-cert">
+          <header class="qw-head"><p class="qw-kicker"></p><h2>One name for each used tier</h2></header>
+          <div class="qw-text">
+            <div><h3>Today</h3><p>The tier headed "Mantrac Certified Used" is described as "Dealer Certified Used (DCU)". The tier descriptions mention "Extension Protect Plans (EPP)" while the menu calls them "Equipment Protection Plans". One 336 GC is listed with certification "None".</p></div>
+            <div><h3>The change</h3><p>One name for each tier and one for EPP, used everywhere, and a badge on each machine that opens a short explanation of what the tier covers.</p></div>
+          </div>
+          <div class="seg qw-switch" role="group" aria-label="Show"><button type="button" data-v="today" aria-pressed="false">Today</button><button type="button" data-v="proposed" aria-pressed="true">Proposed</button></div>
+          <div class="qw-demo">
+            <figure class="qw-stage qw-today">
+              <figcaption><span class="qw-label">Today</span> Names as they appear</figcaption>
+              <ul class="mock-lines">
+                <li><strong>Mantrac Certified Used</strong> … "Dealer Certified Used (DCU)"</li>
+                <li>"Extension Protect Plans (EPP)" <span class="muted">in the tier text</span></li>
+                <li>"Equipment Protection Plans" <span class="muted">in the menu</span></li>
+                <li>336 GC · Certification: None</li>
+              </ul>
+            </figure>
+            <figure class="qw-stage qw-proposed">
+              <figcaption><span class="qw-label">Proposed</span> Badges that explain themselves</figcaption>
+              <div class="row" data-certs>
+                <button type="button" class="badge tier" data-cert="ccu" aria-expanded="true" aria-controls="cert-ccu">Cat Certified Used</button>
+                <button type="button" class="badge tier" data-cert="mcu" aria-expanded="false" aria-controls="cert-mcu">Mantrac Certified Used</button>
+                <button type="button" class="badge tier" data-cert="fair" aria-expanded="false" aria-controls="cert-fair">Fair Value Used</button>
+              </div>
+              <div class="mock-card" id="cert-ccu" data-cert-panel="ccu"><strong>Cat Certified Used</strong><span>The highest tier. [Age and hours limits], 140-point TA1 inspection, and eligible for an Equipment Protection Plan (EPP).</span></div>
+              <div class="mock-card" id="cert-mcu" data-cert-panel="mcu" hidden><strong>Mantrac Certified Used</strong><span>[Age and hours limits], inspected by Mantrac to the same 140-point TA1 standard. [What is covered.]</span></div>
+              <div class="mock-card" id="cert-fair" data-cert-panel="fair" hidden><strong>Fair Value Used</strong><span>Older or higher-hours machines, inspected and sold with the inspection report. [What is and isn't covered.]</span></div>
+            </figure>
+          </div>
+          <p class="wf-note query" data-note="9"><span class="wf-note-label">Open question</span><strong>Q:</strong> Which names should stay: "Mantrac Certified Used" or "Dealer Certified Used", and "Equipment Protection Plan" or "Extension Protect Plan"? Bracketed text is for Mantrac to supply.</p>
+          <p class="qw-also">Also part of <a href="~/pages/used.html">prototype 2</a>.</p>
+        </article>
+
+        <!-- 8 Cat Rentals store (idea 15) -->
+        <article class="qw" id="qw-rentcat">
+          <header class="qw-head"><p class="qw-kicker"></p><h2>Link the Cat Rentals store</h2></header>
+          <div class="qw-text">
+            <div><h3>Today</h3><p>Mantrac has a Cat Rentals storefront at rent.cat.com/en_EG/mantracgroup, covering earthmoving, compaction, aerial work platforms, telehandlers and generators. The Rental page doesn't link to it, and lists two machines.</p></div>
+            <div><h3>The change</h3><p>Link the store from the Rental page and the menu. Separately, ask Caterpillar to replace the US number 1-800-RENT-CAT on the store with 19266.</p></div>
+          </div>
+          <div class="seg qw-switch" role="group" aria-label="Show"><button type="button" data-v="today" aria-pressed="false">Today</button><button type="button" data-v="proposed" aria-pressed="true">Proposed</button></div>
+          <div class="qw-demo">
+            <figure class="qw-stage qw-today">
+              <figcaption><span class="qw-label">Today</span> Rental Products</figcaption>
+              <div class="mock-card"><strong>Rental Products (2 results)</strong>
+                <ul class="mock-lines"><li>966H wheel loader · Availability Reserved</li><li>988F wheel loader · 2000</li></ul>
+              </div>
+            </figure>
+            <figure class="qw-stage qw-proposed">
+              <figcaption><span class="qw-label">Proposed</span> Added to the Rental page</figcaption>
+              <div class="mock-card mock-card--accent">
+                <strong>More to rent from Mantrac Cat Rentals</strong>
+                <span>Browse and book online from Mantrac's Cat Rentals store, or call 19266.</span>
+                <ul class="chip-links">
+                  <li><a href="https://rent.cat.com/en_EG/mantracgroup" target="_blank" rel="noopener">Earthmoving</a></li>
+                  <li><a href="https://rent.cat.com/en_EG/mantracgroup" target="_blank" rel="noopener">Compaction</a></li>
+                  <li><a href="https://rent.cat.com/en_EG/mantracgroup" target="_blank" rel="noopener">Aerial work platforms</a></li>
+                  <li><a href="https://rent.cat.com/en_EG/mantracgroup" target="_blank" rel="noopener">Telehandlers</a></li>
+                  <li><a href="https://rent.cat.com/en_EG/mantracgroup" target="_blank" rel="noopener">Generators</a></li>
+                </ul>
+                <a class="btn btn-sm" href="https://rent.cat.com/en_EG/mantracgroup" target="_blank" rel="noopener">Open the rental store</a>
+              </div>
+            </figure>
+          </div>
+          <p class="wf-note" data-note="10"><span class="wf-note-label">Behaviour</span>The links open Mantrac's real store on rent.cat.com in a new tab. On the live site each would go to its own category in the store (R53).</p>
+          <p class="wf-note query" data-note="11"><span class="wf-note-label">Open question</span><strong>Q:</strong> Is the Cat Rentals store meant for Egyptian customers, and who at Mantrac manages it?</p>
+          <p class="qw-also">Also part of <a href="~/pages/rental.html">prototype 2</a>.</p>
+        </article>
+
+        <!-- 9 Rental claims (idea 17) -->
+        <article class="qw" id="qw-claims">
+          <header class="qw-head"><p class="qw-kicker"></p><h2>Rental copy that matches the stock</h2></header>
+          <div class="qw-text">
+            <div><h3>Today</h3><p>"We have the widest range of Cat machines readily available" sits directly above "Rental Products (2 results)", one of which was built in 2000.</p></div>
+            <div><h3>The change</h3><p>Rewrite the introduction to describe what Mantrac can arrange, rather than what is on the page, until the listing is large enough to back the original claim.</p></div>
+          </div>
+          <div class="seg qw-switch" role="group" aria-label="Show"><button type="button" data-v="today" aria-pressed="false">Today</button><button type="button" data-v="proposed" aria-pressed="true">Proposed</button></div>
+          <div class="qw-demo">
+            <figure class="qw-stage qw-today">
+              <figcaption><span class="qw-label">Today</span> Rental page introduction</figcaption>
+              <div class="mock-card"><span>"We have the widest range of Cat machines readily available…"</span><strong>Rental Products (2 results)</strong></div>
+            </figure>
+            <figure class="qw-stage qw-proposed">
+              <figcaption><span class="qw-label">Proposed</span> Draft introduction</figcaption>
+              <div class="mock-card"><span>Need a machine for a few days or a few months? Tell us what the job is, where and when. We'll offer what we have in Egypt, and if it isn't here we'll look across the Mantrac network and the Cat Rentals store.</span><strong>Available to rent now</strong></div>
+            </figure>
+          </div>
+          <p class="wf-note query" data-note="12"><span class="wf-note-label">Open question</span><strong>Q:</strong> Can Mantrac source rental machines from its other countries for Egyptian customers? The draft assumes so and should be changed if not.</p>
+        </article>
+
+        <!-- 10 Five-field form (idea 20) -->
+        <article class="qw" id="qw-form">
+          <header class="qw-head"><p class="qw-kicker"></p><h2>A five-field contact form</h2></header>
+          <div class="qw-text">
+            <div><h3>Today</h3><p>The contact form has 11 fields and 9 are required, including Salutation and both Phone and Mobile Phone. The message box is optional. Every field uses its placeholder as its label, which disappears as soon as someone starts typing, and Email is a plain text field.</p></div>
+            <div><h3>The change</h3><p>Five fields with visible labels: what you need, name, mobile, company and message. Job title and industry can be asked later, by the person who replies.</p></div>
+          </div>
+          <div class="seg qw-switch" role="group" aria-label="Show"><button type="button" data-v="today" aria-pressed="false">Today</button><button type="button" data-v="proposed" aria-pressed="true">Proposed</button></div>
+          <div class="qw-demo">
+            <figure class="qw-stage qw-today">
+              <figcaption><span class="qw-label">Today</span> 11 fields, 9 required, placeholders as labels</figcaption>
+              <div class="mock-form" aria-hidden="true">
+                <span>Salutation *</span><span>First Name *</span><span>Last Name *</span><span>Email *</span><span>Phone *</span><span>Mobile Phone *</span><span>Company *</span><span>Job Title</span><span>Industry *</span><span>Country *</span><span class="tall">Comment</span>
+              </div>
+              <p class="small-print">Field count, required fields, Salutation, both phones, Industry and the optional Comment are as we found them. The other field names and the order are approximate.</p>
+            </figure>
+            <figure class="qw-stage qw-proposed">
+              <figcaption><span class="qw-label">Proposed</span> Five fields, labelled</figcaption>
+              <form id="qw-cf" novalidate>
+                <div class="field"><label for="cf-need">What do you need?</label><select id="cf-need" data-required><option value="">Choose one</option><option>Price for a machine</option><option>Parts</option><option>Service or repair</option><option>Rental</option><option>Something else</option></select><p class="field-error" hidden>Choose what you need, so it reaches the right team.</p></div>
+                <div class="field"><label for="cf-name">Your name</label><input type="text" id="cf-name" autocomplete="name" data-required><p class="field-error" hidden>Enter your name.</p></div>
+                <div class="field"><label for="cf-mob">Mobile <span class="req">(WhatsApp is fine)</span></label><input type="tel" id="cf-mob" autocomplete="tel" inputmode="tel" data-required data-pattern="^\+?[0-9]{8,14}$"><p class="field-error" hidden>Enter a mobile number, for example 01001234567.</p></div>
+                <div class="field"><label for="cf-co">Company <span class="req">(optional)</span></label><input type="text" id="cf-co" autocomplete="organization"></div>
+                <div class="field"><label for="cf-msg">Message</label><textarea id="cf-msg" rows="3" data-required></textarea><p class="field-error" hidden>Tell us a little about what you need.</p></div>
+                <button type="submit" class="btn">Send</button>
+              </form>
+              <div data-cf-done hidden tabindex="-1" role="status"></div>
+            </figure>
+          </div>
+          <p class="wf-note" data-note="13"><span class="wf-note-label">Behaviour</span>Try sending it empty: each field says what is missing. On success the visitor gets a reference and is told who will reply and when. The reply time is sample (R54).</p>
+          <p class="qw-also">Also part of <a href="~/pages/enquiry.html">prototype 3</a>.</p>
+        </article>
+
+        <!-- 11 Clean dropdowns (idea 21) -->
+        <article class="qw" id="qw-lists">
+          <header class="qw-head"><p class="qw-kicker"></p><h2>Clean dropdown lists</h2></header>
+          <div class="qw-text">
+            <div><h3>Today</h3><p>The Industry list includes "Governmental" twice and "Sureface Trasportation Services / Rail". Application Type lists "Service and Maintenance" and "Service" as separate options.</p></div>
+            <div><h3>The change</h3><p>Rebuild the lists from the CRM's own picklists, without duplicates and spell-checked, in the same order in English and Arabic so reports add up across both.</p></div>
+          </div>
+          <div class="seg qw-switch" role="group" aria-label="Show"><button type="button" data-v="today" aria-pressed="false">Today</button><button type="button" data-v="proposed" aria-pressed="true">Proposed</button></div>
+          <div class="qw-demo">
+            <figure class="qw-stage qw-today">
+              <figcaption><span class="qw-label">Today</span> Options we noticed</figcaption>
+              <ul class="mock-options"><li>Governmental</li><li>Governmental</li><li>Sureface Trasportation Services / Rail</li><li>Service and Maintenance</li><li>Service</li></ul>
+            </figure>
+            <figure class="qw-stage qw-proposed">
+              <figcaption><span class="qw-label">Proposed</span> Industry, in both languages</figcaption>
+              <div class="table-wrap">
+                <table class="data">
+                  <thead><tr><th scope="col">English</th><th scope="col" lang="ar" dir="rtl">العربية</th></tr></thead>
+                  <tbody>
+                    <tr><td>Construction</td><td lang="ar" dir="rtl">البناء والتشييد</td></tr>
+                    <tr><td>Government</td><td lang="ar" dir="rtl">القطاع الحكومي</td></tr>
+                    <tr><td>Quarrying and aggregates</td><td lang="ar" dir="rtl">المحاجر والركام</td></tr>
+                    <tr><td>Mining</td><td lang="ar" dir="rtl">التعدين</td></tr>
+                    <tr><td>Oil and gas</td><td lang="ar" dir="rtl">النفط والغاز</td></tr>
+                    <tr><td>Power generation</td><td lang="ar" dir="rtl">توليد الطاقة</td></tr>
+                    <tr><td>Surface transportation and rail</td><td lang="ar" dir="rtl">النقل البري والسكك الحديدية</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="field"><label for="ls-try">Try it</label><select id="ls-try"><option>Construction</option><option>Government</option><option>Quarrying and aggregates</option><option>Mining</option><option>Oil and gas</option><option>Power generation</option><option>Surface transportation and rail</option><option>Other</option></select></div>
+            </figure>
+          </div>
+          <p class="wf-note query" data-note="14"><span class="wf-note-label">Open question</span><strong>Q:</strong> Which picklists does Mantrac's CRM hold? Apart from the corrected entries, the industries listed are a sample, and the Arabic is a draft for Mantrac's translators.</p>
+        </article>
+
+        <!-- 12 WhatsApp (idea 25) -->
+        <article class="qw" id="qw-wa">
+          <header class="qw-head"><p class="qw-kicker"></p><h2>WhatsApp that knows the page</h2></header>
+          <div class="qw-text">
+            <div><h3>Today</h3><p>The WhatsApp button opens wa.me/+201103917720 with an empty message, from every page. Whoever answers has to ask which machine the customer was looking at.</p></div>
+            <div><h3>The change</h3><p>Fill in the message from the page the visitor is on, with a link back to it. If used, rental or parts have their own WhatsApp numbers, send those pages to them.</p></div>
+          </div>
+          <div class="seg qw-switch" role="group" aria-label="Show"><button type="button" data-v="today" aria-pressed="false">Today</button><button type="button" data-v="proposed" aria-pressed="true">Proposed</button></div>
+          <div class="qw-demo">
+            <figure class="qw-stage qw-today">
+              <figcaption><span class="qw-label">Today</span> From any page</figcaption>
+              <div class="wa-chat"><div class="wa-top">Mantrac Egypt · +20 110 391 7720</div><div class="wa-body"></div><div class="wa-compose"><span class="muted">Message</span></div></div>
+            </figure>
+            <figure class="qw-stage qw-proposed">
+              <figcaption><span class="qw-label">Proposed</span> Choose where the visitor is</figcaption>
+              <div class="field"><label for="wa-page">Visitor is on</label>
+                <select id="wa-page">
+                  <option data-to="Construction sales" data-text="Hello Mantrac, I'd like a price for the Cat 320 GX. https://www.mantracgroup.com/en-eg/products/new-equipment/excavators/320-gx">Cat 320 GX product page</option>
+                  <option data-to="Used equipment" data-text="Hello Mantrac, is the used Cat 336 GC (2019, 3,400 hours) still available? Reference U-336GC-19.">Used 336 GC</option>
+                  <option data-to="Rental" data-text="Hello Mantrac, I'd like to rent a Cat 302.7 CR mini excavator. Where and when: ">Rental: 302.7 CR</option>
+                  <option data-to="Mantrac Aswan" data-text="Hello Mantrac Aswan, I'd like to ask about parts for my machine. Serial number: ">Branch page: Aswan</option>
+                </select>
+              </div>
+              <div class="wa-chat"><div class="wa-top">Mantrac Egypt · <span data-wa-to></span></div><div class="wa-body"></div><div class="wa-compose"><span data-wa-msg></span></div></div>
+              <a class="btn btn-sm" href="#" target="_blank" rel="noopener" data-wa-open>Open in WhatsApp</a>
+            </figure>
+          </div>
+          <p class="wf-note" data-note="15"><span class="wf-note-label">Behaviour</span>"Open in WhatsApp" opens a real WhatsApp message to Mantrac's published number with the text filled in; nothing is sent until the visitor presses send. The team names and reference are sample (R55).</p>
+          <p class="qw-also">Also part of every prototype, through the contact bar.</p>
+        </article>
+
+        <!-- 13 Contact dock (idea 26) -->
+        <article class="qw" id="qw-dock">
+          <header class="qw-head"><p class="qw-kicker"></p><h2>One contact bar on mobile</h2></header>
+          <div class="qw-text">
+            <div><h3>Today</h3><p>On a 390px phone, four fixed widgets sit over the page: a contact rail of unlabelled icons, a 276 by 162 pixel chat invitation, a chat button and a feedback tab. The invitation covers the product cards. Around two thirds of web visits in Egypt are on mobile.</p></div>
+            <div><h3>The change</h3><p>One labelled bar at the bottom of the screen: Call 19266, WhatsApp, Branch and Chat. Chat opens when someone asks for it, and feedback moves to the footer.</p></div>
+          </div>
+          <div class="seg qw-switch" role="group" aria-label="Show"><button type="button" data-v="today" aria-pressed="false">Today</button><button type="button" data-v="proposed" aria-pressed="true">Proposed</button></div>
+          <div class="qw-demo qw-demo--phones">
+            <figure class="qw-stage qw-today">
+              <figcaption><span class="qw-label">Today</span> 390px, excavator listing</figcaption>
+              <div class="phone">
+                <div class="phone-page"><span class="ph-card"></span><span class="ph-card"></span><span class="ph-card"></span></div>
+                <div class="ph-rail" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+                <div class="ph-invite">Chat invitation<br><small>276 × 162px</small></div>
+                <div class="ph-chat" aria-hidden="true">Chat</div>
+                <div class="ph-feedback" aria-hidden="true">Feedback</div>
+              </div>
+            </figure>
+            <figure class="qw-stage qw-proposed">
+              <figcaption><span class="qw-label">Proposed</span> 390px, the same listing</figcaption>
+              <div class="phone">
+                <div class="phone-page"><span class="ph-card"></span><span class="ph-card"></span><span class="ph-card"></span></div>
+                <div class="ph-dock">
+                  <a href="tel:19266">Call 19266</a><a href="#qw-wa" data-go="wa">WhatsApp</a><a href="~/pages/branches.html">Branch</a><button type="button" data-modal-open="chat-modal">Chat</button>
+                </div>
+              </div>
+            </figure>
+          </div>
+          <p class="wf-note" data-note="16"><span class="wf-note-label">Behaviour</span>The bar is the same one at the bottom of every prototype on a phone. Chat opens the chat panel only when tapped (R56).</p>
+          <p class="qw-also">Also part of every prototype.</p>
+        </article>
+
+        <!-- 14 Hotline link (idea 27) -->
+        <article class="qw" id="qw-tel">
+          <header class="qw-head"><p class="qw-kicker"></p><h2>A hotline link that dials</h2></header>
+          <div class="qw-text">
+            <div><h3>Today</h3><p>The hotline in the header links to tel:+2019266. Short-code hotlines in Egypt are normally dialled as the short code alone, so the country code may stop the call connecting from a mobile.</p></div>
+            <div><h3>The change</h3><p>Test the link on Egyptian networks, and link to tel:19266 if that is what works. Show a landline alongside it for anyone calling from abroad, who can't reach a short code at all.</p></div>
+          </div>
+          <div class="seg qw-switch" role="group" aria-label="Show"><button type="button" data-v="today" aria-pressed="false">Today</button><button type="button" data-v="proposed" aria-pressed="true">Proposed</button></div>
+          <div class="qw-demo">
+            <figure class="qw-stage qw-today">
+              <figcaption><span class="qw-label">Today</span> Header hotline</figcaption>
+              <div class="mock-card"><strong>Hotline 19266</strong><span>Dials <code class="code">+2019266</code></span></div>
+            </figure>
+            <figure class="qw-stage qw-proposed">
+              <figcaption><span class="qw-label">Proposed</span> Header hotline</figcaption>
+              <div class="mock-card"><a class="btn btn-sm" href="tel:19266">Call 19266</a><span>Dials <code class="code">19266</code></span><span class="small-print">Calling from outside Egypt? [International landline]</span></div>
+            </figure>
+          </div>
+          <p class="wf-note query" data-note="17"><span class="wf-note-label">Open question</span><strong>Q:</strong> Has anyone at Mantrac tried the website's hotline link from an Egyptian mobile? And which landline should callers abroad use?</p>
+        </article>
+
+        <!-- 15 Promotions (idea 28) -->
+        <article class="qw" id="qw-promo">
+          <header class="qw-head"><p class="qw-kicker"></p><h2>Promotions only when there are some</h2></header>
+          <div class="qw-text">
+            <div><h3>Today</h3><p>The Promotions page has an introduction, the app panel and contact details. No promotions. Meanwhile every footer offers to send "our latest promotions straight to your inbox".</p></div>
+            <div><h3>The change</h3><p>Show the page, its menu link and the footer promise only while there is at least one live offer. When the last one ends, all three disappear on their own and come back with the next.</p></div>
+          </div>
+          <div class="seg qw-switch" role="group" aria-label="Show"><button type="button" data-v="today" aria-pressed="false">Today</button><button type="button" data-v="proposed" aria-pressed="true">Proposed</button></div>
+          <div class="qw-demo">
+            <figure class="qw-stage qw-today">
+              <figcaption><span class="qw-label">Today</span> Promotions page</figcaption>
+              <div class="mock-nav"><span>New</span><span>Used</span><span>Rental</span><span>Parts</span><span>Service</span><span class="on">Promotions</span></div>
+              <div class="mock-card"><strong>Promotions</strong><span class="muted">[Introduction]</span><span class="muted">[App panel]</span><span class="muted">[Contact details]</span></div>
+              <div class="mock-foot">Get our latest promotions straight to your inbox</div>
+            </figure>
+            <figure class="qw-stage qw-proposed">
+              <figcaption><span class="qw-label">Proposed</span> Driven by the offers themselves</figcaption>
+              <div class="seg" role="group" aria-label="Live offers in the CMS" data-promo><button type="button" data-v="on" aria-pressed="true">Offers live</button><button type="button" data-v="off" aria-pressed="false">No live offers</button></div>
+              <div class="mock-nav"><span>New</span><span>Used</span><span>Rental</span><span>Parts</span><span>Service</span><span class="on" data-promo-on>Promotions</span></div>
+              <div class="mock-card" data-promo-on><strong>Current offers</strong><ul class="mock-offers" data-promo-list></ul></div>
+              <div class="mock-card" data-promo-off hidden><span class="muted">The Promotions page is unpublished. Anyone with an old link is taken to the used machines page instead.</span></div>
+              <div class="mock-foot" data-promo-on>Get new offers by email or WhatsApp</div>
+              <div class="mock-foot" data-promo-off hidden>Tell me when a used machine arrives</div>
+            </figure>
+          </div>
+          <p class="wf-note" data-note="18"><span class="wf-note-label">Behaviour</span>The offers are sample data from <a href="~/pages/offers.html">prototype 4</a>, filtered to those running on 1 October 2026 (R57).</p>
+          <p class="qw-also">Also part of <a href="~/pages/offers.html">prototype 4</a>.</p>
+        </article>
+
+        <!-- 16 Finance options (idea 31) -->
+        <article class="qw" id="qw-finfacts">
+          <header class="qw-head"><p class="qw-kicker"></p><h2>A finance page that names the options</h2></header>
+          <div class="qw-text">
+            <div><h3>Today</h3><p>The Financing page mentions "5+ options", "100% in-house teams" and a "360° cost-benefit analysis" without naming any of the options. It lists "Investment sourcing" (to "attract angel investors") and, under financing, "Rental inventory" described as pre-owned machines.</p></div>
+            <div><h3>The change</h3><p>Name each way to pay, who it suits and what to have ready, and drop the items that aren't finance. A buyer should be able to tell from the page whether it is worth calling.</p></div>
+          </div>
+          <div class="seg qw-switch" role="group" aria-label="Show"><button type="button" data-v="today" aria-pressed="false">Today</button><button type="button" data-v="proposed" aria-pressed="true">Proposed</button></div>
+          <div class="qw-demo">
+            <figure class="qw-stage qw-today">
+              <figcaption><span class="qw-label">Today</span> Financing page</figcaption>
+              <ul class="mock-lines"><li>"5+ options"</li><li>"100% in-house teams"</li><li>"360° cost-benefit analysis"</li><li>Investment sourcing: "attract angel investors"</li><li>Rental inventory: pre-owned machines</li></ul>
+            </figure>
+            <figure class="qw-stage qw-proposed">
+              <figcaption><span class="qw-label">Proposed</span> Ways to pay</figcaption>
+              <div class="accordion">
+                <div class="accordion-item open"><button type="button" class="accordion-title" aria-expanded="true">Instalments<span class="accordion-icon" aria-hidden="true">+</span></button><div class="accordion-content"><p><strong>Suits:</strong> [who qualifies]. <strong>Have ready:</strong> [documents]. <strong>Terms:</strong> [deposit and term range].</p></div></div>
+                <div class="accordion-item"><button type="button" class="accordion-title" aria-expanded="false">Leasing<span class="accordion-icon" aria-hidden="true">+</span></button><div class="accordion-content"><p><strong>Suits:</strong> [who qualifies]. <strong>Have ready:</strong> [documents]. <strong>Terms:</strong> [term range].</p></div></div>
+                <div class="accordion-item"><button type="button" class="accordion-title" aria-expanded="false">Power purchase agreements<span class="accordion-icon" aria-hidden="true">+</span></button><div class="accordion-content"><p><strong>Suits:</strong> sites that need power but would rather pay for what they use than own the generator. [Details.]</p></div></div>
+                <div class="accordion-item"><button type="button" class="accordion-title" aria-expanded="false">Cat Financial [if offered in Egypt]<span class="accordion-icon" aria-hidden="true">+</span></button><div class="accordion-content"><p>[Details.]</p></div></div>
+              </div>
+              <a class="btn btn-sm" href="~/pages/finance.html">Talk to the finance team</a>
+            </figure>
+          </div>
+          <p class="wf-note query" data-note="19"><span class="wf-note-label">Open question</span><strong>Q:</strong> Which of these does Mantrac offer in Egypt, and what are the "5+ options"? Bracketed text is for Mantrac to supply; the options listed are a starting point, not a claim.</p>
+          <p class="qw-also">Also part of <a href="~/pages/finance.html">prototype 4</a>.</p>
+        </article>
+
+        <!-- 17 Parts (idea 36) -->
+        <article class="qw" id="qw-parts">
+          <header class="qw-head"><p class="qw-kicker"></p><h2>Parts: the right store, fewer groups</h2></header>
+          <div class="qw-text">
+            <div><h3>Today</h3><p>"Shop now" on the Parts page goes to parts.cat.com/en/unatrac, carrying referral tags for Unatrac, another company in the group. The menu lists 29 parts categories.</p></div>
+            <div><h3>The change</h3><p>Confirm which store Egyptian customers should use and how to open an account there, group the menu into about eight headings, and list the three ways to buy parts: online, by phone and at a parts counter.</p></div>
+          </div>
+          <div class="seg qw-switch" role="group" aria-label="Show"><button type="button" data-v="today" aria-pressed="false">Today</button><button type="button" data-v="proposed" aria-pressed="true">Proposed</button></div>
+          <div class="qw-demo">
+            <figure class="qw-stage qw-today">
+              <figcaption><span class="qw-label">Today</span> Parts menu: 29 categories, and "Shop now"</figcaption>
+              <div class="mock-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+              <div class="mock-card"><span>Shop now → <code class="code">parts.cat.com/en/unatrac</code></span></div>
+            </figure>
+            <figure class="qw-stage qw-proposed">
+              <figcaption><span class="qw-label">Proposed</span> Parts menu</figcaption>
+              <ul class="mock-groups">
+                <li>Filters and fluids</li><li>Ground engaging tools</li><li>Undercarriage</li><li>Engine and powertrain</li><li>Hydraulics and hoses</li><li>Electrical and batteries</li><li>Cab and operator</li><li>Attachments</li>
+              </ul>
+              <div class="grid grid-3 mock-ways">
+                <div class="mock-card"><strong>Online</strong><span>[Cat parts store for Egypt]. Open an account in one working day.</span></div>
+                <div class="mock-card"><strong>By phone</strong><span>Call 19266 and choose [parts].</span></div>
+                <div class="mock-card"><strong>In person</strong><span><a href="~/pages/branches.html">Parts counters near you</a></span></div>
+              </div>
+            </figure>
+          </div>
+          <p class="wf-note query" data-note="20"><span class="wf-note-label">Open question</span><strong>Q:</strong> Which Cat parts store should Egyptian customers use, how long does an account take, and is there a parts option on the hotline? The eight groups are a suggestion for Mantrac's parts team to adjust.</p>
+          <p class="qw-also">Also part of <a href="~/pages/branches.html">prototype 5</a>.</p>
+        </article>
+
+        <!-- 18 My Mantrac (idea 37) -->
+        <article class="qw" id="qw-portal">
+          <header class="qw-head"><p class="qw-kicker"></p><h2>My Mantrac in the header</h2></header>
+          <div class="qw-text">
+            <div><h3>Today</h3><p>My.Cat.Com, VisionLink and the Cat App sit three levels down the menu, under Technology and then Link. A customer who uses them every week has to remember where they were filed.</p></div>
+            <div><h3>The change</h3><p>A "My Mantrac" link in the header on every page, opening a short list of the customer tools.</p></div>
+          </div>
+          <div class="seg qw-switch" role="group" aria-label="Show"><button type="button" data-v="today" aria-pressed="false">Today</button><button type="button" data-v="proposed" aria-pressed="true">Proposed</button></div>
+          <div class="qw-demo">
+            <figure class="qw-stage qw-today">
+              <figcaption><span class="qw-label">Today</span> Where the tools are</figcaption>
+              <ol class="mock-path"><li>Technology</li><li>Link</li><li>My.Cat.Com · VisionLink · Cat App</li></ol>
+            </figure>
+            <figure class="qw-stage qw-proposed">
+              <figcaption><span class="qw-label">Proposed</span> Header</figcaption>
+              <div class="mock-header">
+                <span class="mock-logo">MANTRAC</span>
+                <span class="mock-hot">19266</span>
+                <div class="mm-wrap">
+                  <button type="button" class="btn btn-sm" data-mm aria-expanded="false" aria-controls="mm-menu">My Mantrac</button>
+                  <ul class="mm-menu" id="mm-menu" hidden>
+                    <li><a href="#">Buy parts <small>Cat parts store</small></a></li>
+                    <li><a href="#">Fleet and machine data <small>VisionLink</small></a></li>
+                    <li><a href="#">Account and machines <small>My.Cat.Com</small></a></li>
+                    <li><a href="#">Cat App <small>iPhone and Android</small></a></li>
+                    <li><a href="#">Fluid analysis results <small>[if available]</small></a></li>
+                  </ul>
+                </div>
+              </div>
+            </figure>
+          </div>
+          <p class="wf-note" data-note="21"><span class="wf-note-label">Behaviour</span>Opens a list of tools; Escape or a click elsewhere closes it. The links are placeholders here and would go to each tool's sign-in (R58).</p>
+          <p class="qw-also">Also part of <a href="~/pages/branches.html">prototype 5</a>.</p>
+        </article>
+
+        <!-- 19 Branch names (idea 38) -->
+        <article class="qw" id="qw-names">
+          <header class="qw-head"><p class="qw-kicker"></p><h2>Branch names spelt correctly</h2></header>
+          <div class="qw-text">
+            <div><h3>Today</h3><p>The branch list includes "Mantrac Abu Simble" and "Mantrac Marsa Allam".</p></div>
+            <div><h3>The change</h3><p>Abu Simbel and Marsa Alam, in English and Arabic. A small thing, but these are place names Egyptian customers will know how to spell.</p></div>
+          </div>
+          <div class="seg qw-switch" role="group" aria-label="Show"><button type="button" data-v="today" aria-pressed="false">Today</button><button type="button" data-v="proposed" aria-pressed="true">Proposed</button></div>
+          <div class="qw-demo">
+            <figure class="qw-stage qw-today">
+              <figcaption><span class="qw-label">Today</span> Branch list</figcaption>
+              <ul class="mock-lines"><li>Mantrac Abu Simble</li><li>Mantrac Marsa Allam</li></ul>
+            </figure>
+            <figure class="qw-stage qw-proposed">
+              <figcaption><span class="qw-label">Proposed</span> Branch list</figcaption>
+              <ul class="mock-lines mock-bilingual"><li><span>Mantrac Abu Simbel</span><span lang="ar" dir="rtl">مانتراك أبو سمبل</span></li><li><span>Mantrac Marsa Alam</span><span lang="ar" dir="rtl">مانتراك مرسى علم</span></li></ul>
+            </figure>
+          </div>
+          <p class="qw-also">Already corrected throughout the prototypes.</p>
+        </article>
+
+        <!-- 20 One set of facts (idea 39) -->
+        <article class="qw" id="qw-facts">
+          <header class="qw-head"><p class="qw-kicker"></p><h2>One set of facts</h2></header>
+          <div class="qw-text">
+            <div><h3>Today</h3><p>The English homepage says Mantrac is a Caterpillar distributor "across 11 countries"; the Arabic homepage says 12, and the Construction page says both "11+ countries" and "ten countries". The homepage has "61 branches" and "866 services techs"; Construction has "44 branches" and "1,000 Caterpillar-certified technicians".</p></div>
+            <div><h3>The change</h3><p>Agree each figure once, keep it as a single value in the CMS and have every page in both languages read from it. Change it in one place and it changes everywhere.</p></div>
+          </div>
+          <div class="seg qw-switch" role="group" aria-label="Show"><button type="button" data-v="today" aria-pressed="false">Today</button><button type="button" data-v="proposed" aria-pressed="true">Proposed</button></div>
+          <div class="qw-demo">
+            <figure class="qw-stage qw-today">
+              <figcaption><span class="qw-label">Today</span> The same facts on four pages</figcaption>
+              <ul class="mock-lines">
+                <li><small>English homepage</small> across <mark>11</mark> countries · <mark>61</mark> branches · <mark>866</mark> services techs</li>
+                <li><small>Arabic homepage</small> <mark>12</mark> countries</li>
+                <li><small>Construction</small> <mark>11+</mark> countries · <mark>ten</mark> countries</li>
+                <li><small>Construction</small> <mark>44</mark> branches · <mark>1,000</mark> Caterpillar-certified technicians</li>
+              </ul>
+            </figure>
+            <figure class="qw-stage qw-proposed">
+              <figcaption><span class="qw-label">Proposed</span> Edit a value, watch every page change</figcaption>
+              <div class="grid grid-3 mock-fields" data-facts>
+                <div class="field"><label for="f-countries">Countries</label><input type="number" id="f-countries" name="countries" value="11" min="1"></div>
+                <div class="field"><label for="f-branches">Branches</label><input type="number" id="f-branches" name="branches" value="61" min="1"></div>
+                <div class="field"><label for="f-techs">Technicians</label><input type="number" id="f-techs" name="techs" value="1000" min="1"></div>
+              </div>
+              <ul class="mock-lines">
+                <li><small>English homepage</small> Caterpillar distributor across <b data-fact="countries"></b> countries, with <b data-fact="branches"></b> branches and <b data-fact="techs"></b> technicians.</li>
+                <li lang="ar" dir="rtl"><small>الصفحة الرئيسية</small> موزع كاتربيلر في <b data-fact="countries" data-lang="ar"></b>، مع <b data-fact="branches" data-lang="ar"></b> فرعًا.</li>
+                <li><small>Construction</small> <b data-fact="techs"></b> Caterpillar-certified technicians in <b data-fact="countries"></b> countries.</li>
+              </ul>
+            </figure>
+          </div>
+          <p class="wf-note query" data-note="22"><span class="wf-note-label">Open question</span><strong>Q:</strong> Which figures are current? The starting values are placeholders taken from the live site, not a recommendation, and the Arabic is a draft.</p>
+        </article>
+
+        <!-- 21 Unatrac (idea 40) -->
+        <article class="qw" id="qw-unatrac">
+          <header class="qw-head"><p class="qw-kicker"></p><h2>Mantrac Egypt, not Unatrac</h2></header>
+          <div class="qw-text">
+            <div><h3>Today</h3><p>The Construction page says "Unatrac has Caterpillar mini excavators…" and "Find the right equipment… from Unatrac's inventory". Unatrac is the group's export company. The copy appears to have come across from another site.</p></div>
+            <div><h3>The change</h3><p>Replace the name with Mantrac Egypt, and check the other industry pages for the same borrowed copy while someone is in there.</p></div>
+          </div>
+          <div class="seg qw-switch" role="group" aria-label="Show"><button type="button" data-v="today" aria-pressed="false">Today</button><button type="button" data-v="proposed" aria-pressed="true">Proposed</button></div>
+          <div class="qw-demo">
+            <figure class="qw-stage qw-today">
+              <figcaption><span class="qw-label">Today</span> Construction page</figcaption>
+              <div class="mock-card"><span>"<mark>Unatrac</mark> has Caterpillar mini excavators…"</span><span>"Find the right equipment… from <mark>Unatrac's</mark> inventory"</span></div>
+            </figure>
+            <figure class="qw-stage qw-proposed">
+              <figcaption><span class="qw-label">Proposed</span> Construction page</figcaption>
+              <div class="mock-card"><span>"<mark class="ok">Mantrac Egypt</mark> has Caterpillar mini excavators…"</span><span>"Find the right equipment… from <mark class="ok">Mantrac Egypt's</mark> stock"</span></div>
+            </figure>
+          </div>
+          <p class="small-print">Ellipses mark where we have shortened the quotations.</p>
+        </article>
+
+        <!-- 22 Real dates (idea 41) -->
+        <article class="qw" id="qw-dates">
+          <header class="qw-head"><p class="qw-kicker"></p><h2>Real dates on news</h2></header>
+          <div class="qw-text">
+            <div><h3>Today</h3><p>Every item on the first Media page is dated 09 June 2025, including a story about keeping a factory running during the pandemic and the Ever Given rescue from 2021. "Sort by: Most recent" can't do anything useful when every date is the same.</p></div>
+            <div><h3>The change</h3><p>Restore the original publication dates from the old site or the articles themselves, and hide the date where it genuinely can't be found rather than showing a wrong one.</p></div>
+          </div>
+          <div class="seg qw-switch" role="group" aria-label="Show"><button type="button" data-v="today" aria-pressed="false">Today</button><button type="button" data-v="proposed" aria-pressed="true">Proposed</button></div>
+          <div class="qw-demo">
+            <figure class="qw-stage qw-today">
+              <figcaption><span class="qw-label">Today</span> Media · Sort by: Most recent</figcaption>
+              <ul class="mock-news">
+                <li><small>09 June 2025</small>Keeping the factory running in a pandemic</li>
+                <li><small>09 June 2025</small>[Ever Given rescue, Suez Canal]</li>
+                <li><small>09 June 2025</small>[Story from Kenya]</li>
+                <li><small>09 June 2025</small>[Story from Nigeria]</li>
+              </ul>
+            </figure>
+            <figure class="qw-stage qw-proposed">
+              <figcaption><span class="qw-label">Proposed</span> Original dates, sorting that works</figcaption>
+              <div class="field"><label for="news-sort">Sort by</label><select id="news-sort"><option value="new">Newest first</option><option value="old">Oldest first</option></select></div>
+              <ul class="mock-news" data-news>
+                <li data-date="2020-05"><small>May 2020</small>Keeping the factory running in a pandemic</li>
+                <li data-date="2021-03"><small>March 2021</small>[Ever Given rescue, Suez Canal]</li>
+                <li data-date="2024-11"><small>November 2024</small>[Story from Kenya]</li>
+                <li data-date="2023-06"><small>June 2023</small>[Story from Nigeria]</li>
+              </ul>
+            </figure>
+          </div>
+          <p class="wf-note query" data-note="23"><span class="wf-note-label">Open question</span><strong>Q:</strong> Can the original dates be recovered from the previous site? The Ever Given was freed in March 2021; the other dates are sample, and story titles are shortened or in brackets.</p>
+        </article>
+
+        <!-- 23 Proofreading (idea 45) -->
+        <article class="qw" id="qw-proof">
+          <header class="qw-head"><p class="qw-kicker"></p><h2>A proofreading pass</h2></header>
+          <div class="qw-text">
+            <div><h3>Today</h3><p>"ciritical tests" on Parts, "ALL EQUIPMENTS" and "Your trusting partner" on Construction, "S.O.SSM" in search results, Media titles cut off mid-word, and "Copyright © 2025" in the footer.</p></div>
+            <div><h3>The change</h3><p>One spelling and style pass across the site, a copyright year that updates itself, and titles that wrap onto a second line instead of being cut.</p></div>
+          </div>
+          <div class="seg qw-switch" role="group" aria-label="Show"><button type="button" data-v="today" aria-pressed="false">Today</button><button type="button" data-v="proposed" aria-pressed="true">Proposed</button></div>
+          <div class="qw-demo">
+            <figure class="qw-stage qw-today">
+              <figcaption><span class="qw-label">Today</span> As found</figcaption>
+              <ul class="mock-lines">
+                <li><small>Parts</small> ciritical tests</li>
+                <li><small>Construction</small> ALL EQUIPMENTS</li>
+                <li><small>Construction</small> Your trusting partner</li>
+                <li><small>Search</small> S.O.SSM</li>
+                <li><small>Media</small> <span class="mock-trunc">…moving with technolog</span></li>
+                <li><small>Footer</small> Copyright © 2025</li>
+              </ul>
+            </figure>
+            <figure class="qw-stage qw-proposed" data-proof>
+              <figcaption><span class="qw-label">Proposed</span> Corrected</figcaption>
+              <label class="check"><input type="checkbox" id="pf-show"> <span>Highlight what changed</span></label>
+              <ul class="mock-lines">
+                <li><small>Parts</small> <mark>critical</mark> tests</li>
+                <li><small>Construction</small> <mark>All equipment</mark></li>
+                <li><small>Construction</small> Your <mark>trusted</mark> partner</li>
+                <li><small>Search</small> <mark>S·O·S℠</mark></li>
+                <li><small>Media</small> …moving with <mark>technology</mark></li>
+                <li><small>Footer</small> Copyright © <mark data-year>2026</mark></li>
+              </ul>
+            </figure>
+          </div>
+          <p class="wf-note" data-note="24"><span class="wf-note-label">Behaviour</span>The year is read from the visitor's clock, so the footer never needs editing again (R59).</p>
+          <p class="wf-note query" data-note="25"><span class="wf-note-label">Open question</span><strong>Q:</strong> These are the ones we happened to see. A full pass would cover both languages, and Mantrac may have a house style for Caterpillar trademarks such as S·O·S.</p>
+        </article>
+
+        <!-- 24 Consent (idea 47) -->
+        <article class="qw" id="qw-consent">
+          <header class="qw-head"><p class="qw-kicker"></p><h2>Consent before tracking</h2></header>
+          <div class="qw-text">
+            <div><h3>Today</h3><p>The homepage loads Google Ads, LinkedIn, Facebook, Eloqua, Pardot and Qualtrics as soon as it opens. We saw no cookie banner or consent tool. The executive regulations of Egypt's Personal Data Protection Law are enforced from 1 November 2026.</p></div>
+            <div><h3>The change</h3><p>A consent tool, in English and Arabic, that holds back everything non-essential until the visitor agrees, with a cookie policy behind it. Mantrac's own counsel should confirm exactly what the law requires.</p></div>
+          </div>
+          <div class="seg qw-switch" role="group" aria-label="Show"><button type="button" data-v="today" aria-pressed="false">Today</button><button type="button" data-v="proposed" aria-pressed="true">Proposed</button></div>
+          <div class="qw-demo">
+            <figure class="qw-stage qw-today">
+              <figcaption><span class="qw-label">Today</span> On arrival at the homepage</figcaption>
+              <ul class="tag-list">
+                <li class="on"><span>Google Ads</span><span class="tag-state">Loaded</span></li>
+                <li class="on"><span>LinkedIn</span><span class="tag-state">Loaded</span></li>
+                <li class="on"><span>Facebook</span><span class="tag-state">Loaded</span></li>
+                <li class="on"><span>Eloqua</span><span class="tag-state">Loaded</span></li>
+                <li class="on"><span>Pardot</span><span class="tag-state">Loaded</span></li>
+                <li class="on"><span>Qualtrics</span><span class="tag-state">Loaded</span></li>
+              </ul>
+            </figure>
+            <figure class="qw-stage qw-proposed" data-consent>
+              <figcaption><span class="qw-label">Proposed</span> Nothing loads until the visitor decides</figcaption>
+              <div class="ck-banner" data-ck-banner>
+                <div class="seg" role="group" aria-label="Banner language" data-ck-lang><button type="button" data-lang="en" aria-pressed="true">English</button><button type="button" data-lang="ar" aria-pressed="false" lang="ar">العربية</button></div>
+                <div data-ck-text="en">
+                  <strong>Cookies on mantracgroup.com</strong>
+                  <p>We use necessary cookies to make the site work. With your permission we'd also use cookies to measure our advertising and to ask for feedback. <a href="#">Cookie policy</a></p>
+                </div>
+                <div data-ck-text="ar" lang="ar" dir="rtl" hidden>
+                  <strong>ملفات تعريف الارتباط على موقع مانتراك</strong>
+                  <p>نستخدم ملفات تعريف الارتباط الضرورية لتشغيل الموقع. وبموافقتك نستخدم أيضًا ملفات أخرى لقياس إعلاناتنا وطلب آرائكم. <a href="#">سياسة ملفات تعريف الارتباط</a></p>
+                </div>
+                <div class="row">
+                  <button type="button" class="btn btn-sm" data-ck="all">Accept all</button>
+                  <button type="button" class="btn btn-secondary btn-sm" data-ck="none">Necessary only</button>
+                  <button type="button" class="link-btn" data-ck="choose">Choose</button>
+                </div>
+                <div data-ck-choices hidden>
+                  <label class="check"><input type="checkbox" checked disabled> <span>Necessary: always on</span></label>
+                  <label class="check"><input type="checkbox" id="ck-marketing"> <span>Advertising and marketing (Google Ads, LinkedIn, Facebook, Eloqua, Pardot)</span></label>
+                  <label class="check"><input type="checkbox" id="ck-surveys"> <span>Feedback surveys (Qualtrics)</span></label>
+                  <button type="button" class="btn btn-sm" data-ck="save">Save my choices</button>
+                </div>
+              </div>
+              <p class="row"><span data-ck-status role="status"></span> <button type="button" class="link-btn" data-ck-reopen hidden>Cookie settings</button></p>
+              <ul class="tag-list">
+                <li data-tag="marketing"><span>Google Ads</span><span class="tag-state"></span></li>
+                <li data-tag="marketing"><span>LinkedIn</span><span class="tag-state"></span></li>
+                <li data-tag="marketing"><span>Facebook</span><span class="tag-state"></span></li>
+                <li data-tag="marketing"><span>Eloqua</span><span class="tag-state"></span></li>
+                <li data-tag="marketing"><span>Pardot</span><span class="tag-state"></span></li>
+                <li data-tag="surveys"><span>Qualtrics</span><span class="tag-state"></span></li>
+              </ul>
+            </figure>
+          </div>
+          <p class="wf-note" data-note="26"><span class="wf-note-label">Behaviour</span>The list shows which tags would load after each choice. "Cookie settings" reopens the banner, as a footer link would on the live site (R60).</p>
+          <p class="wf-note query" data-note="27"><span class="wf-note-label">Open question</span><strong>Q:</strong> Where is Mantrac with the data protection law: a consent tool, a licence for electronic direct marketing, a data protection officer? This is a summary of published legal commentary, not legal advice. The Arabic is a draft.</p>
+        </article>
+
+        <!-- 25 Newsletter (idea 48) -->
+        <article class="qw" id="qw-newsletter">
+          <header class="qw-head"><p class="qw-kicker"></p><h2>A sign-up that asks permission</h2></header>
+          <div class="qw-text">
+            <div><h3>Today</h3><p>The footer sign-up asks only for an email address, labelled "Comments" in the page's text, with nothing about what will be sent, no consent wording and no privacy link. Under the same law, electronic marketing needs prior consent.</p></div>
+            <div><h3>The change</h3><p>A labelled field, a sentence on what is sent and how often, an unticked consent box and a privacy link.</p></div>
+          </div>
+          <div class="seg qw-switch" role="group" aria-label="Show"><button type="button" data-v="today" aria-pressed="false">Today</button><button type="button" data-v="proposed" aria-pressed="true">Proposed</button></div>
+          <div class="qw-demo">
+            <figure class="qw-stage qw-today">
+              <figcaption><span class="qw-label">Today</span> Footer</figcaption>
+              <div class="mock-foot mock-foot--form"><span>Get our latest promotions straight to your inbox</span><span class="mock-input">Email</span><span class="mock-submit">→</span></div>
+            </figure>
+            <figure class="qw-stage qw-proposed">
+              <figcaption><span class="qw-label">Proposed</span> Footer</figcaption>
+              <form id="qw-nl" novalidate>
+                <p><strong>Offers and new arrivals, once a month</strong></p>
+                <div class="field"><label for="qnl-email">Email address</label><input type="email" id="qnl-email" autocomplete="email" data-required data-pattern="^[^@]+@[^@]+\.[^@]+$"><p class="field-error" hidden>Enter an email address, for example name@company.com.</p></div>
+                <div class="field"><label class="check" for="qnl-ok"><input type="checkbox" id="qnl-ok" data-required> <span>Yes, send me Mantrac offers. I can unsubscribe at any time. <a href="#">Privacy notice</a></span></label><p class="field-error" hidden>Tick the box to agree before we can send you anything.</p></div>
+                <button type="submit" class="btn btn-sm">Sign up</button>
+                <p data-nl-ok hidden role="status"></p>
+              </form>
+            </figure>
+          </div>
+          <p class="wf-note" data-note="28"><span class="wf-note-label">Behaviour</span>The consent box starts unticked and is required. On the live site the address would be confirmed by email before anything is sent (R61).</p>
+          <p class="qw-also">Also part of <a href="~/pages/offers.html">prototype 4</a>.</p>
+        </article>
+
+        <!-- 26 Language tags (idea 52) -->
+        <article class="qw" id="qw-hreflang">
+          <header class="qw-head"><p class="qw-kicker"></p><h2>Language tags that point somewhere</h2></header>
+          <div class="qw-text">
+            <div><h3>Today</h3><p>Each English Egypt page tells search engines it has Russian and Chinese versions, whose addresses are "#". It doesn't declare itself as the English version or give a default. The Arabic tag is correct.</p></div>
+            <div><h3>The change</h3><p>Declare only the versions that exist (English and Arabic for Egypt) plus a default, on every page. Visitors never see this, but it affects which version search engines show to whom.</p></div>
+          </div>
+          <div class="seg qw-switch" role="group" aria-label="Show"><button type="button" data-v="today" aria-pressed="false">Today</button><button type="button" data-v="proposed" aria-pressed="true">Proposed</button></div>
+          <div class="qw-demo">
+            <figure class="qw-stage qw-today">
+              <figcaption><span class="qw-label">Today</span> In the page source (recreated)</figcaption>
+              <pre class="code-block"><code>&lt;link rel="alternate" hreflang="ru" href="#"&gt;
+&lt;link rel="alternate" hreflang="zh" href="#"&gt;
+&lt;link rel="alternate" hreflang="ar-eg"
+      href="https://www.mantracgroup.com/ar-eg/…"&gt;</code></pre>
+            </figure>
+            <figure class="qw-stage qw-proposed">
+              <figcaption><span class="qw-label">Proposed</span> In the page source</figcaption>
+              <pre class="code-block"><code>&lt;link rel="alternate" hreflang="en-eg"
+      href="https://www.mantracgroup.com/en-eg/…"&gt;
+&lt;link rel="alternate" hreflang="ar-eg"
+      href="https://www.mantracgroup.com/ar-eg/…"&gt;
+&lt;link rel="alternate" hreflang="x-default"
+      href="https://www.mantracgroup.com/"&gt;</code></pre>
+            </figure>
+          </div>
+          <p class="small-print">The Russian and Chinese language codes are shown in their simplest form; the addresses are as we found them.</p>
+        </article>
+
+        <!-- 27 Share previews (idea 54) -->
+        <article class="qw" id="qw-share">
+          <header class="qw-head"><p class="qw-kicker"></p><h2>Pictures when links are shared</h2></header>
+          <div class="qw-text">
+            <div><h3>Today</h3><p>The homepage has no share image, so a link to it sent on WhatsApp or posted on LinkedIn arrives without a picture. For a business that invites enquiries by WhatsApp on every page, the preview is much of the first impression.</p></div>
+            <div><h3>The change</h3><p>A share image, title and description on every page template, using the machine photograph on product pages.</p></div>
+          </div>
+          <div class="seg qw-switch" role="group" aria-label="Show"><button type="button" data-v="today" aria-pressed="false">Today</button><button type="button" data-v="proposed" aria-pressed="true">Proposed</button></div>
+          <div class="qw-demo">
+            <figure class="qw-stage qw-today">
+              <figcaption><span class="qw-label">Today</span> Homepage link sent on WhatsApp</figcaption>
+              <div class="wa-chat"><div class="wa-body"><div class="wa-bubble"><div class="share-card share-card--bare"><strong>[Page title]</strong><small>mantracgroup.com</small></div><span>https://www.mantracgroup.com/en-eg</span></div></div></div>
+            </figure>
+            <figure class="qw-stage qw-proposed">
+              <figcaption><span class="qw-label">Proposed</span> Choose a page to share</figcaption>
+              <div class="field"><label for="share-page">Page</label><select id="share-page"><option value="home">Homepage</option><option value="product">Cat 320 GX product page</option></select></div>
+              <div class="wa-chat"><div class="wa-body">
+                <div class="wa-bubble" data-share="home"><div class="share-card"><div class="wf-placeholder ratio-16-9" data-photo="hero:home">Share image</div><strong>Mantrac Egypt: Caterpillar machines, parts and service</strong><span>New, used and rental Cat equipment, with 13 branches across Egypt. Call 19266.</span><small>mantracgroup.com</small></div><span>https://www.mantracgroup.com/en-eg</span></div>
+                <div class="wa-bubble" data-share="product" hidden><div class="share-card"><div class="wf-placeholder ratio-16-9" data-photo="model:320-gx">Share image</div><strong>Cat 320 GX hydraulic excavator | Mantrac Egypt</strong><span>103.6 kW, 20,500 kg, 6,430 mm dig depth. Ask for today's price on WhatsApp.</span><small>mantracgroup.com</small></div><span>https://www.mantracgroup.com/en-eg/…/320-gx</span></div>
+              </div></div>
+            </figure>
+          </div>
+          <p class="wf-note" data-note="29"><span class="wf-note-label">Behaviour</span>The preview text and image come from tags in each page; WhatsApp, LinkedIn and Facebook read the same ones (R62).</p>
+        </article>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- @@include footer.html -->
+</body>
+</html>
